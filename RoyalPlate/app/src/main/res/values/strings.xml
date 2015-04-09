@@ -1,0 +1,24 @@
+<resources>
+
+
+    <string name="app_name">RoyalPlate</string>
+
+
+    <string name="waitress_number">Waitress</string>
+
+    <color name="brown">#A52A2A</color>
+    <color name="antiquewhite">#FAEBD7</color>
+    <color name="chocolate">#D2691E</color>
+    <color name="sienna">#A0522D</color>
+
+    <string-array name="table_number">
+        <item>Table 1</item>
+        <item>Table 2</item>
+        <item>Table 3</item>
+        <item>Table 4</item>
+    </string-array>
+
+    <string name="menu_button">Go to Menu</string>
+
+
+</resources>
