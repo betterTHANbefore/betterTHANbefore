@@ -1,15 +1,30 @@
 <resources>
 
+    <!-- strings for all activity -->
 
     <string name="app_name">RoyalPlate</string>
-
-
-    <string name="waitress_number">Waitress</string>
 
     <color name="brown">#A52A2A</color>
     <color name="antiquewhite">#FAEBD7</color>
     <color name="chocolate">#D2691E</color>
     <color name="sienna">#A0522D</color>
+
+    <!-- strings for welcome to royalplate -->
+
+    <string name="logo">RoyalPlate LOGO</string>
+
+
+    <!-- strings for first activity -->
+    <string name="hostess">HOSTESS</string>
+    <string name="waiter">WAITER</string>
+    <string name="chef">CHEF</string>
+    <string name="manager">MANAGER</string>
+
+    <!-- end first activity -->
+
+
+    <string name="waitress_number">Waitress</string>
+
 
     <string-array name="table_number">
         <item>Table 1</item>
@@ -19,6 +34,6 @@
     </string-array>
 
     <string name="menu_button">Go to Menu</string>
-
+    <!-- end waiter activity -->
 
 </resources>
