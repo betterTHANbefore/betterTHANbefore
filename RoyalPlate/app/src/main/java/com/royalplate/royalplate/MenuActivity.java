@@ -26,33 +26,33 @@ public class MenuActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
 
-        drinksSpinner = (Spinner)findViewById(R.id.drinks_spinner);
-        ArrayAdapter<String> drinksAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,drinks);
+//        drinksSpinner = (Spinner)findViewById(R.id.drinks_spinner);
+//        ArrayAdapter<String> drinksAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,drinks);
+//
+//        drinksAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//        drinksSpinner.setAdapter(drinksAdapter);
+//
+//        saladsSpinner = (Spinner)findViewById(R.id.salads_spinner);
+//        ArrayAdapter<String>saladsAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,salads);
+//
+//        saladsAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//        saladsSpinner.setAdapter(saladsAdapter);
+//
+//        desertsSpinner = (Spinner)findViewById(R.id.deserts_spinner);
+//        ArrayAdapter<String>desertsAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,deserts);
+//
+//        desertsAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//        drinksSpinner.setAdapter(desertsAdapter);
 
-        drinksAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        drinksSpinner.setAdapter(drinksAdapter);
+//        orderedButton = (Button)findViewById(R.id.orderbutton);
+//        orderedButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent chefUI = new Intent(getApplicationContext(),ChefActivity.class );
+//                startActivity(chefUI);
 
-        saladsSpinner = (Spinner)findViewById(R.id.salads_spinner);
-        ArrayAdapter<String>saladsAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,salads);
-
-        saladsAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        saladsSpinner.setAdapter(saladsAdapter);
-
-        desertsSpinner = (Spinner)findViewById(R.id.deserts_spinner);
-        ArrayAdapter<String>desertsAdapter = new ArrayAdapter<String>(MenuActivity.this,android.R.layout.simple_spinner_item,deserts);
-
-        desertsAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        drinksSpinner.setAdapter(desertsAdapter);
-
-        orderedButton = (Button)findViewById(R.id.orderbutton);
-        orderedButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent chefUI = new Intent(getApplicationContext(),ChefActivity.class );
-                startActivity(chefUI);
-
-            }
-        });
+           // }
+  //      });
 
 
 

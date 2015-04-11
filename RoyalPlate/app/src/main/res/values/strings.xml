@@ -4,9 +4,11 @@
 
     <string name="app_name">RoyalPlate</string>
 
-    <color name="brown">#A52A2A</color>
     <color name="antiquewhite">#FAEBD7</color>
+    <color name="brown">#A52A2A</color>
+   <color name="darkOrange">#FF8C00</color>
     <color name="chocolate">#D2691E</color>
+    <color name="marron">#800000</color>
     <color name="sienna">#A0522D</color>
 
     <!-- strings for welcome to royalplate -->

@@ -49,6 +49,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/chef_button"
             android:text="@string/chef"
             android:textSize="20dp"
             android:background="@drawable/draw_button"
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/manager_button"
             android:text="@string/manager"
             android:textSize="20dp"
             android:background="@drawable/draw_button"

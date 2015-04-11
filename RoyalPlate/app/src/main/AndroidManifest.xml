@@ -23,6 +23,7 @@
         <activity android:name=".WaiterActivity"></activity>
         <activity android:name=".MenuActivity"></activity>
         <activity android:name=".ChefActivity"></activity>
+        <activity android:name=".SubMenuActivity"></activity>
 
 
     </application>
