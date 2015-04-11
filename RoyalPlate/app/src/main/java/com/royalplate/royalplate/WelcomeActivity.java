@@ -4,23 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * Created by hetu on 4/9/15.
  */
-public class WelcomeToRoyalPlate_Activity extends Activity {
+public class WelcomeActivity extends Activity {
 
     @Override
     protected void onCreate(final Bundle savedInstancesState){
         super.onCreate((savedInstancesState));
-        setContentView(R.layout.welcome_to_royalplate);
+        setContentView(R.layout.welcome_activity);
+        ImageView logoImage = (ImageView)findViewById(R.id.royalplate_logo);
 
-        Button logoButton = (Button)findViewById(R.id.royalplate_logo);
-        logoButton.setOnClickListener(new View.OnClickListener(){
+        logoImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent welcomeApp = new Intent(getApplicationContext(),First_Activity.class);
+                Intent welcomeApp = new Intent(getApplicationContext(),SelectActivity.class);
                 startActivity(welcomeApp);
             }
         });

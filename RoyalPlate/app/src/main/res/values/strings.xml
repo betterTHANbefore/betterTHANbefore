@@ -19,19 +19,19 @@
     <string name="waiter">WAITER</string>
     <string name="chef">CHEF</string>
     <string name="manager">MANAGER</string>
-
     <!-- end first activity -->
+
+    <!-- strings for Menu Activity -->
+
+    <string name="orderedItems_textview">Ordered Items ------</string>
+    <string name="order_button">Order</string>
+    <!--  end Menu Activity -->
+
+
 
 
     <string name="waitress_number">Waitress</string>
 
-
-    <string-array name="table_number">
-        <item>Table 1</item>
-        <item>Table 2</item>
-        <item>Table 3</item>
-        <item>Table 4</item>
-    </string-array>
 
     <string name="menu_button">Go to Menu</string>
     <!-- end waiter activity -->

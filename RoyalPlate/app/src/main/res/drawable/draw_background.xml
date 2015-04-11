@@ -13,7 +13,7 @@
 
     <gradient android:startColor="@color/brown"
         android:endColor="@color/chocolate"
-        android:angle="25"/>
+        android:angle="225"/>
 
     <corners
         android:bottomRightRadius="7dp"

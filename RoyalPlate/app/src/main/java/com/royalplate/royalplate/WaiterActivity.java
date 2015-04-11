@@ -2,14 +2,13 @@ package com.royalplate.royalplate;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
 
-public class RoyalPlate_MainActivity extends ActionBarActivity {
+public class WaiterActivity extends ActionBarActivity {
 
 
     private Spinner tableSpinner;
@@ -23,7 +22,7 @@ public class RoyalPlate_MainActivity extends ActionBarActivity {
 
 
         tableSpinner = (Spinner)findViewById(R.id.table_spinner);
-        ArrayAdapter<String> tableAdapter = new ArrayAdapter<String>(RoyalPlate_MainActivity.this,android.R.layout.simple_spinner_item,tables);
+        ArrayAdapter<String> tableAdapter = new ArrayAdapter<String>(WaiterActivity.this,android.R.layout.simple_spinner_item,tables);
 
         tableAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         tableSpinner.setAdapter(tableAdapter);
@@ -46,13 +45,13 @@ public class RoyalPlate_MainActivity extends ActionBarActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_royal_plate__main, menu);
-        return true;
-    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_royal_plate__main, menu);
+//        return true;
+//    }
 
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
