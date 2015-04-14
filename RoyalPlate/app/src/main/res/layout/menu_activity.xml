@@ -1,136 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-   android:background="@drawable/draw_background"
+    android:orientation="vertical"
+    android:background="@drawable/draw_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <!-- Right side -->
+    <!-- for royalplate image -->
     <LinearLayout
-
-        android:layout_weight="1"
-        android:orientation="vertical"
+        android:layout_weight="5"
         android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/appetizer_button"
-            android:text="Appeitzer"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView
 
-        <Button
-            android:id="@+id/salads_button"
-            android:text="SALADS"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:src="@drawable/royalplate_logo"
+            android:layout_weight="2"
+            android:layout_gravity="center_horizontal"
 
-        <Button
-            android:id="@+id/burger_button"
-            android:text="BURGERS"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/spetal_button"
-            android:text="TODAY'S SPECIAL"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
 
     </LinearLayout>
 
+
+
+
+
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@android:color/black" />
-
-    </LinearLayout>
-
-    <!-- Left side -->
-    <LinearLayout
+        android:orientation="horizontal"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
+        android:background="@drawable/draw_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <!-- Right side -->
+        <LinearLayout
 
-        <Button
-            android:id="@+id/main_button"
-            android:text="MAIN"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
+            android:layout_weight="1"
+            android:orientation="vertical"
             android:layout_margin="20dp"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
-            android:textColor="@color/antiquewhite"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/pizza_button"
-            android:text="PASTA/PIZZA"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/appetizer_button"
+                android:text="@string/appetizer"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/drinks_button"
-            android:text="DRINKS"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/salads_button"
+                android:text="@string/salads"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/kidsmenu_button"
-            android:text="KIDS MENU"
-            android:textSize="20dp"
-            android:background="@drawable/draw_button"
-            android:layout_margin="20dp"
-            android:textColor="@color/antiquewhite"
+            <Button
+                android:id="@+id/burger_button"
+                android:text="@string/burgers"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/spetal_button"
+                android:text="@string/specials"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@android:color/black" />
+
+        </LinearLayout>
+
+        <!-- Left side -->
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/main_button"
+                android:text="MAIN"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:paddingLeft="70dp"
+                android:paddingRight="70dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/pizza_button"
+                android:text="PASTA/PIZZA"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/drinks_button"
+                android:text="DRINKS"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/kidsmenu_button"
+                android:text="KIDS MENU"
+                android:textSize="20dp"
+                android:background="@drawable/draw_button"
+                android:layout_margin="20dp"
+                android:textColor="@color/antiquewhite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 

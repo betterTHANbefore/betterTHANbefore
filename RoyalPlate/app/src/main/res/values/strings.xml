@@ -6,6 +6,7 @@
 
     <color name="antiquewhite">#FAEBD7</color>
     <color name="brown">#A52A2A</color>
+    <color name="darkRed">#8B0000</color>
    <color name="darkOrange">#FF8C00</color>
     <color name="chocolate">#D2691E</color>
     <color name="marron">#800000</color>
@@ -24,13 +25,21 @@
     <!-- end first activity -->
 
     <!-- strings for Menu Activity -->
-
-    <string name="orderedItems_textview">Ordered Items ------</string>
-    <string name="order_button">Order</string>
+    <string name="appetizer">APPETIZER </string>
+    <string name="drinks">DRINKS </string>
+    <string name="salads">SALADS </string>
+    <string name="burgers">BURGERS </string>
+    <string name="main"> MAIN </string>
+    <string name="pasta_pizza">PASTA/PIZZA</string>
+    <string name="kidsmenu"> KIDS MENU</string>
+    <string name="specials"> SPECIAL </string>
     <!--  end Menu Activity -->
 
 
-
+    <!-- submenu -->
+    <string name="orderedItems_textview"><u>Ordered Items </u></string>
+    <string name="order_button">Order</string>
+    <string name="mainMenu_button">Main Menu</string>
 
     <string name="waitress_number">Waitress</string>
 
