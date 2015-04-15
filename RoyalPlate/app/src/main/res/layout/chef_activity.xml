@@ -8,6 +8,15 @@
 
 
 
+    <Button
+        android:id="@+id/salads_button"
+        android:text="@string/salads"
+        android:textSize="20dp"
+        android:background="@drawable/draw_button"
+        android:layout_margin="20dp"
+        android:textColor="@color/antiquewhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
