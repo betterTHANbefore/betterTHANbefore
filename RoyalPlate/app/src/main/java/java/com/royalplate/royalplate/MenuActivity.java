@@ -23,7 +23,7 @@ public class MenuActivity extends Activity{
         setContentView(R.layout.menu_activity);
 
         final Button appetizerBtn = (Button)findViewById(R.id.appetizer_button);
-            appetizerBtn.setOnClickListener(new View.OnClickListener() {
+        appetizerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
@@ -37,7 +37,7 @@ public class MenuActivity extends Activity{
         });
 
         final Button saladsBtn = (Button)findViewById(R.id.salads_button);
-            saladsBtn.setOnClickListener(new View.OnClickListener() {
+        saladsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
@@ -72,12 +72,12 @@ public class MenuActivity extends Activity{
 
             }
         });
-    /**********************************************
-     * if user clicks on the RoyalPlate logo, it will
-     * activate the SelectActivity.
-    *************************************************/
+        /**********************************************
+         * if user clicks on the RoyalPlate logo, it will
+         * activate the SelectActivity.
+         *************************************************/
 
- //     final ImageView  royalplate = (ImageView) findViewById(R.id.royalplate_logo);
+        //     final ImageView  royalplate = (ImageView) findViewById(R.id.royalplate_logo);
 //        royalplate.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -111,8 +111,8 @@ public class MenuActivity extends Activity{
 //                Intent chefUI = new Intent(getApplicationContext(),ChefActivity.class );
 //                startActivity(chefUI);
 
-           // }
-  //      });
+        // }
+        //      });
 
 
 

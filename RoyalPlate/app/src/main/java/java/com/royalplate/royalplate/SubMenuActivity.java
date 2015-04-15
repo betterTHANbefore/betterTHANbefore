@@ -48,7 +48,7 @@ public class SubMenuActivity extends Activity{
                 icon_right.setImageResource(R.drawable.springrolls);
                 icon_left.setImageResource(R.drawable.springrolls);
 
-              break;
+                break;
 
             case "SALADS":
                 // Image appears in ImageView widgets from the source file

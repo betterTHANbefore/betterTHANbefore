@@ -25,7 +25,7 @@ public class SelectActivity extends Activity{
         hostessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent hostessIntnet = new Intent(getApplicationContext(),HostessActivity.class);
+                Intent hostessIntnet = new Intent(getApplicationContext(), HostessActivity.class);
                 startActivity(hostessIntnet);
             }
         });
@@ -33,7 +33,7 @@ public class SelectActivity extends Activity{
         waiterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent  waiterIntent = new Intent(getApplicationContext(),MenuActivity.class);
+                Intent  waiterIntent = new Intent(getApplicationContext(), SignupOrLoginActivity.class);
                 startActivity(waiterIntent);
             }
         });
@@ -55,9 +55,6 @@ public class SelectActivity extends Activity{
             }
         });
 
-
-
     }
-
 
 }

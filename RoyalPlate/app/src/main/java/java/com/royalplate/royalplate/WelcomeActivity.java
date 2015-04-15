@@ -15,9 +15,9 @@ public class WelcomeActivity extends Activity {
     protected void onCreate(final Bundle savedInstancesState){
         super.onCreate((savedInstancesState));
         setContentView(R.layout.welcome_activity);
-        ImageView royalplate = (ImageView)findViewById(R.id.royalplate_logo);
+        ImageView logoImage = (ImageView)findViewById(R.id.royalplate_logo);
 
-        royalplate.setOnClickListener(new View.OnClickListener(){
+        logoImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent welcomeApp = new Intent(getApplicationContext(),SelectActivity.class);
