@@ -8,6 +8,8 @@ import com.parse.Parse;
 public class SampleApplication extends Application {
     @Override
     public void onCreate() {
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
         // connect to sue's parse account
         Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_client_id));
     }
