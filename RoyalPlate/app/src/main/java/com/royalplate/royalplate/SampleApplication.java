@@ -10,6 +10,10 @@ public class SampleApplication extends Application {
     public void onCreate() {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
+<<<<<<< HEAD
+=======
+        // TEST TEST TEST
+>>>>>>> da38e53c8d41c5f6f45616f08a0e6d99d335aa3f
         // connect to sue's parse account
         Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_client_id));
     }
