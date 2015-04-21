@@ -49,13 +49,13 @@
 
         <Button
             android:id="@+id/action_button"
+            android:text="@string/sign_in"
             android:background="@drawable/rounded_corner"
             android:textColor="@color/antiquewhite"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
             android:paddingLeft="32dp"
             android:paddingRight="32dp"
-            android:text="Sign In"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.royalplate.royalplate" >
 
+    <!-- give permission to Internet to communicate -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -30,6 +31,8 @@
         <activity android:name=".SignupOrLoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".ShowKidsMenu"></activity>
     </application>
 
 </manifest>

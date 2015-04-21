@@ -3,6 +3,7 @@ package com.royalplate.royalplate;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +27,16 @@ public class MenuActivity extends Activity{
         appetizerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                Intent appIntent = new Intent(getApplicationContext(), ShowKidsMenu.class);
+//                startActivity(appIntent);
+//
+//
+//
+
+
+
+
                 Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
 
                 //pass title to next UI to show in a TextView

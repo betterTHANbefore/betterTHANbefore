@@ -65,6 +65,7 @@
     <string name="mainMenu_button">Main Menu</string>
 
     <string name="waitress_number">Waitress</string>
+    <string name="title_activity_main">Parse Simple ListView</string>
 
 
     <string name="menu_button">Go to Menu</string>
@@ -73,4 +74,13 @@
     <string name="sign_up">Sign Up</string>
     <!-- end waiter activity -->
 
+
+
+
+    <!-- login_activity -->
+    <string name="sign_in">Sign In</string>
+    <string name="log_in">Log In</string>
+
+    <!-- account activity -->
+    <string name="bill">Bill</string>
 </resources>
