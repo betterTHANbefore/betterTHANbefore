@@ -1,0 +1,14 @@
+package com.royalplate.royalplate.data;
+
+import com.parse.ParseClassName;
+
+/**
+ * Created by hetu on 4/23/15.
+ */
+@ParseClassName("KidsMenuParse")
+public class KidsMenuData extends MenuData {
+
+    public KidsMenuData() {
+    }
+
+}

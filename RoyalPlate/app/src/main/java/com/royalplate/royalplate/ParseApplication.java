@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
-import com.royalplate.royalplate.data.KidsMenuParse;
+import com.royalplate.royalplate.data.KidsMenuData;
 
 /**
  * Created by operamac on 4/14/15.
@@ -23,7 +23,7 @@ public class ParseApplication extends Application {
                 getString(R.string.parse_app_id),
                 getString(R.string.parse_client_id));
 
-        ParseObject.registerSubclass(KidsMenuParse.class);
+        ParseObject.registerSubclass(KidsMenuData.class);
        // ParseObject.registerSubclass(ManuParse.class);
 
         Log.i("Application", "Initialized");

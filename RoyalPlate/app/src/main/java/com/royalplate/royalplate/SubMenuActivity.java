@@ -18,7 +18,7 @@ import com.parse.ParseQuery;
 import android.widget.ListView;
 
 import com.royalplate.royalplate.adapter.MenuAdapter;
-import com.royalplate.royalplate.data.KidsMenuParse;
+
 /**
  * Created by hetu on 4/11/15.
  */
@@ -75,8 +75,6 @@ public class SubMenuActivity extends Activity {
 
                 icon_right.setImageResource(R.drawable.springrolls);
                 icon_left.setImageResource(R.drawable.springrolls);
-
-
                 break;
 
             case "FRESH SALADS":
@@ -90,9 +88,7 @@ public class SubMenuActivity extends Activity {
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.fries);
                 icon_left.setImageResource(R.drawable.chocolatemilk);
-
-                loadKidsItems();
-
+//                loadKidsItems();
                 break;
 
             default:
@@ -104,8 +100,6 @@ public class SubMenuActivity extends Activity {
         goToMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent goToMenuIntent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(goToMenuIntent);
             }
@@ -123,22 +117,21 @@ public class SubMenuActivity extends Activity {
             }
         });
     }
-
-    private void loadKidsItems() {
-
-        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
-
-        kidsItems.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> kidsItems, ParseException e) {
-                    kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
-
-                listview.setAdapter(kidsmenuAdapter);
-
-                Log.e("name", " pass kidsItem");
-            }
-        });
-    }
+//
+//    private void loadKidsItems() {
+//
+//        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
+//
+//        kidsItems.findInBackground(new FindCallback<ParseObject>() {
+//            @Override
+//            public void done(List<ParseObject> kidsItems, ParseException e) {
+//                kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
+//
+//                listview.setAdapter(kidsmenuAdapter);
+//                Log.e("name", " pass kidsItem");
+//            }
+//        });
+//    }
 
     private void loadSaladItems() {
 
@@ -148,10 +141,8 @@ public class SubMenuActivity extends Activity {
             @Override
             public void done(List<ParseObject> saladItems, ParseException e) {
                 saladmenuAdapter = new MenuAdapter(SubMenuActivity.this, saladItems);
-
                 listview.setAdapter(saladmenuAdapter);
-
-                Log.e("name", " pass SALAD");
+                Log.e("name", " pass SaladItem");
             }
         });
     }

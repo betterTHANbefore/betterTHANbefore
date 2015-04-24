@@ -1,18 +1,18 @@
 package com.royalplate.royalplate.data;
 
-import com.parse.ParseClassName;
+import android.support.v7.app.ActionBarActivity;
+
 import com.parse.ParseObject;
 
 /**
- * Created by hetu on 4/23/15.
+ * Created by operamac on 4/24/15.
  */
-@ParseClassName("KidsMenuParse")
-public class KidsMenuParse extends ParseObject {
+public class MenuData extends ParseObject {
 
-    public KidsMenuParse() {
+    public MenuData() {
+
     }
     public String getName() {
-
         return getString("ItemName");
     }
 
@@ -30,5 +30,4 @@ public class KidsMenuParse extends ParseObject {
 
         put("ItemPrice", price);
     }
-
 }

@@ -14,7 +14,7 @@ import java.util.List;
 
 import com.parse.ParseObject;
 import com.royalplate.royalplate.R;
-import com.royalplate.royalplate.data.KidsMenuParse;
+import com.royalplate.royalplate.data.MenuData;
 
 /**
  * Created by hetu on 4/23/15.
@@ -49,10 +49,10 @@ public class MenuAdapter extends ArrayAdapter<ParseObject> {
        // Log.i("name", "show items from the kids menu");
 
         TextView textView = (TextView) view.findViewById((R.id.itemName));
-        textView.setText("HELLOOOOOO");
-//        textView.setText( (KidsMenuParse) menuItems.get(position).getName());
+//        Log.i("SUEEEEEEEEE", menuItems.get(position).getClassName());
+//        textView.setText("HELLOOOOOO");
+        textView.setText(((MenuData) (menuItems.get(position))).getName());
 
         return view;
     }
-
 }
