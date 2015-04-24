@@ -38,7 +38,7 @@ public class SubMenuActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submenu_activity);
-
+listview = (ListView) findViewById(R.id.itemlist);
 
      //   loadKidsItems(); // loads all items
 
@@ -67,9 +67,9 @@ public class SubMenuActivity extends Activity {
         /***************************************************************
          * get the text from the textview
          ***************************************************************/
-        title = subMenuTitle.getText().toString();
+       // title = subMenuTitle.getText().toString();
 
-
+        title=getIntent().getExtras().getString("title");
         switch (title) {
 
             case "HAVE IT ALL":
@@ -134,11 +134,11 @@ public class SubMenuActivity extends Activity {
             @Override
             public void done(List<KidsMenuParse> kidsItems, ParseException e) {
                     kidsmenuAdapter = new KidsMenuAdapter(SubMenuActivity.this, kidsItems);
-                Log.e("name", " pass kidsItem");
+
 
                 listview.setAdapter(kidsmenuAdapter);
 
-
+                Log.e("name", " pass kidsItem");
             }
         });
     }
