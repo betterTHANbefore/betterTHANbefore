@@ -1,21 +1,13 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Spinner;
 
-import com.parse.ParseObject;
-import com.royalplate.royalplate.adapter.KidsMenuAdapter;
-
-import java.util.List;
+import com.royalplate.royalplate.adapter.MenuAdapter;
 
 /**
  * Created by hetu on 4/9/15.
@@ -23,7 +15,7 @@ import java.util.List;
 public class MenuActivity extends Activity{
 
     ListView listview;
-    KidsMenuAdapter kidsmenuAdapter;
+    MenuAdapter kidsmenuAdapter;
 
     private Button orderedButton;
 

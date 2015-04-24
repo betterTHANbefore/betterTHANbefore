@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
-import com.parse.ParseUser;
 import com.royalplate.royalplate.data.KidsMenuParse;
 
 /**

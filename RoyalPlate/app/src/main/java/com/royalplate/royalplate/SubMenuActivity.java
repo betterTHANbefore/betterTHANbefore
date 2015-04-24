@@ -2,25 +2,22 @@ package com.royalplate.royalplate;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
 import com.parse.FindCallback;
-import com.parse.ParseObject;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import java.util.List;
+
 import android.widget.ListView;
 
-import com.royalplate.royalplate.adapter.KidsMenuAdapter;
+import com.royalplate.royalplate.adapter.MenuAdapter;
 import com.royalplate.royalplate.data.KidsMenuParse;
 /**
  * Created by hetu on 4/11/15.
@@ -28,8 +25,8 @@ import com.royalplate.royalplate.data.KidsMenuParse;
 public class SubMenuActivity extends Activity {
 
     ListView listview;
-    KidsMenuAdapter kidsmenuAdapter;
-
+    MenuAdapter kidsmenuAdapter;
+    MenuAdapter saladmenuAdapter;
     //    List<ParseObject> ob;
 //    ProgressDialog mProgressDialog;
 //    ArrayAdapter<String> nameAdapter;
@@ -38,7 +35,7 @@ public class SubMenuActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submenu_activity);
-listview = (ListView) findViewById(R.id.itemlist);
+        listview = (ListView) findViewById(R.id.itemlist);
 
      //   loadKidsItems(); // loads all items
 
@@ -82,10 +79,11 @@ listview = (ListView) findViewById(R.id.itemlist);
 
                 break;
 
-            case "SALADS":
+            case "FRESH SALADS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.gardensalad);
                 icon_left.setImageResource(R.drawable.spinachsalad);
+                loadSaladItems();
                 break;
 
             case "KIDS":
@@ -128,17 +126,32 @@ listview = (ListView) findViewById(R.id.itemlist);
 
     private void loadKidsItems() {
 
-        final ParseQuery<KidsMenuParse> kidsItems = ParseQuery.getQuery(KidsMenuParse.class);
+        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
 
-        kidsItems.findInBackground(new FindCallback<KidsMenuParse>() {
+        kidsItems.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void done(List<KidsMenuParse> kidsItems, ParseException e) {
-                    kidsmenuAdapter = new KidsMenuAdapter(SubMenuActivity.this, kidsItems);
-
+            public void done(List<ParseObject> kidsItems, ParseException e) {
+                    kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
 
                 listview.setAdapter(kidsmenuAdapter);
 
                 Log.e("name", " pass kidsItem");
+            }
+        });
+    }
+
+    private void loadSaladItems() {
+
+        final ParseQuery<ParseObject> saladItems = ParseQuery.getQuery("FreshSaladsParse");
+
+        saladItems.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> saladItems, ParseException e) {
+                saladmenuAdapter = new MenuAdapter(SubMenuActivity.this, saladItems);
+
+                listview.setAdapter(saladmenuAdapter);
+
+                Log.e("name", " pass SALAD");
             }
         });
     }
