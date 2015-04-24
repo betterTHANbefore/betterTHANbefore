@@ -48,8 +48,8 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/appetizer_button"
-                android:text="@string/appetizer"
+                android:id="@+id/haveItAll_button"
+                android:text="@string/haveItAll"
                 android:textSize="20dp"
                 android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
                 android:paddingLeft="70dp"
@@ -60,7 +60,7 @@
 
             <Button
                 android:id="@+id/salads_button"
-                android:text="@string/salads"
+                android:text="@string/freshSalads"
                 android:textSize="20dp"
                 android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
@@ -71,7 +71,8 @@
                 android:id="@+id/burger_button"
                 android:text="@string/burgers"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -80,7 +81,8 @@
                 android:id="@+id/spetal_button"
                 android:text="@string/specials"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -94,10 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@android:color/black" />
+
 
         </LinearLayout>
 
@@ -113,9 +112,10 @@
 
             <Button
                 android:id="@+id/main_button"
-                android:text="MAIN"
+                android:text="@string/twoFor20"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
                 android:textColor="@color/antiquewhite"
@@ -124,9 +124,10 @@
 
             <Button
                 android:id="@+id/pizza_button"
-                android:text="PASTA/PIZZA"
+                android:text="SANDWICHIS"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -135,16 +136,18 @@
                 android:id="@+id/drinks_button"
                 android:text="DRINKS"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <Button
-                android:id="@+id/kidsmenu_button"
-                android:text="KIDS MENU"
+                android:id="@+id/kids_button"
+                android:text="KIDS"
                 android:textSize="20dp"
-                android:background="@drawable/rounded_corner"                android:layout_margin="20dp"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="20dp"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

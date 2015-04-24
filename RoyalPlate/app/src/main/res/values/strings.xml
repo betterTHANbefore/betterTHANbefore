@@ -48,14 +48,17 @@
     <!-- end first activity -->
 
     <!-- strings for Menu Activity -->
-    <string name="appetizer">APPETIZER </string>
-    <string name="drinks">DRINKS </string>
-    <string name="salads">SALADS </string>
+    <string name="haveItAll">HAVE IT ALL</string>
+    <string name="beverages">BEVERAGES </string>
+    <string name="freshSalads">FRESH SALADS </string>
     <string name="burgers">BURGERS </string>
-    <string name="main"> MAIN </string>
-    <string name="pasta_pizza">PASTA/PIZZA</string>
-    <string name="kidsmenu"> KIDS MENU</string>
+    <string name="desserts"> DESSERTS </string>
+    <string name="sandwichis">SANDWICHIS</string>
+    <string name="kidsmenu"> KIDS</string>
     <string name="specials"> SPECIAL </string>
+    <string name="lunchCombos"> LUNCH COMBOS </string>
+    <string name="entriees"> ENTREES </string>
+    <string name="twoFor20">2 FOR $20</string>
     <!--  end Menu Activity -->
 
 

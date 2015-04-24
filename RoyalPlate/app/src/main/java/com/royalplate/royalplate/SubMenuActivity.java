@@ -4,49 +4,49 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
+
+import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.app.ProgressDialog;
-import android.util.Log;
-
 import java.util.List;
+import android.widget.ListView;
 
+import com.royalplate.royalplate.adapter.KidsMenuAdapter;
+import com.royalplate.royalplate.data.KidsMenuParse;
 /**
  * Created by hetu on 4/11/15.
  */
-public class SubMenuActivity extends Activity{
+public class SubMenuActivity extends Activity {
+
     ListView listview;
-    List<ParseObject> ob;
-    ProgressDialog mProgressDialog;
-    ArrayAdapter<String> adapter;
+    KidsMenuAdapter kidsmenuAdapter;
 
-
-
-
+    //    List<ParseObject> ob;
+//    ProgressDialog mProgressDialog;
+//    ArrayAdapter<String> nameAdapter;
+//    ArrayAdapter<Double> priceAdapter;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submenu_activity);
 
+
+     //   loadKidsItems(); // loads all items
+
 //        // Execute RemoteDataTask AsyncTask
 //        new RemoteDataTask().execute();
 //        // RemoteDataTask AsyncTask
-        // Execute RemoteDataTask AsyncTask
-        new RemoteDataTask().execute();
-        // RemoteDataTask AsyncTask
-
-
+//
+        //loadItems(null);
 
         String appetizerTitle;
         String kidsMenuTitle;
@@ -59,7 +59,7 @@ public class SubMenuActivity extends Activity{
          * ImageView for tp set the images according to submenu to left
          * and right
          ****************************************************************/
-        subMenuTitle = (TextView)findViewById(R.id.submenuTitle_textview);
+        subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
         subMenuTitle.setText(getIntent().getExtras().getString("title"));
 
         ImageView icon_right = (ImageView) findViewById(R.id.imageRight_icon);
@@ -70,9 +70,9 @@ public class SubMenuActivity extends Activity{
         title = subMenuTitle.getText().toString();
 
 
-        switch(title) {
+        switch (title) {
 
-            case "APPETIZER":
+            case "HAVE IT ALL":
 
                 // Image appears in ImageView widgets from the source file
 
@@ -88,11 +88,12 @@ public class SubMenuActivity extends Activity{
                 icon_left.setImageResource(R.drawable.spinachsalad);
                 break;
 
-            case "KIDS MENU":
+            case "KIDS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.fries);
                 icon_left.setImageResource(R.drawable.chocolatemilk);
 
+                loadKidsItems();
 
                 break;
 
@@ -101,11 +102,10 @@ public class SubMenuActivity extends Activity{
         }
 
 
-        goToMenuBtn = (Button)findViewById(R.id.mainMenuBtn);
+        goToMenuBtn = (Button) findViewById(R.id.mainMenuBtn);
         goToMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
                 Intent goToMenuIntent = new Intent(getApplicationContext(), MenuActivity.class);
@@ -125,50 +125,75 @@ public class SubMenuActivity extends Activity{
             }
         });
     }
-    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            // Create a progressdialog
-            mProgressDialog = new ProgressDialog(SubMenuActivity.this);
-            // Set progressdialog title
-            mProgressDialog.setTitle("Parse.com Simple ListView Tutorial");
-            // Set progressdialog message
-            mProgressDialog.setMessage("Loading...");
-            mProgressDialog.setIndeterminate(false);
-            // Show progressdialog
-            mProgressDialog.show();
-        }
-        @Override
-        protected Void doInBackground(Void... params) {
-            // Locate the class table named "Country" in Parse.com
-            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                    "KidsMenu");
-          //  query.orderByDescending("_created_at");
-            try {
-                ob = query.find();
-            } catch (ParseException e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return null;
-        }
 
-        @Override
-        protected void onPostExecute(Void result) {
-            // Locate the listview in listview_main.xml
-            listview = (ListView) findViewById(R.id.listview);
-            // Pass the results into an ArrayAdapter
-            adapter = new ArrayAdapter<String>(SubMenuActivity.this,
-                    R.layout.listview_item);
-            // Retrieve object "name" from Parse.com database
-            for (ParseObject kidsmenu : ob) {
-                adapter.add((String) kidsmenu.get("Item_Name"));
+    private void loadKidsItems() {
+
+        final ParseQuery<KidsMenuParse> kidsItems = ParseQuery.getQuery(KidsMenuParse.class);
+
+        kidsItems.findInBackground(new FindCallback<KidsMenuParse>() {
+            @Override
+            public void done(List<KidsMenuParse> kidsItems, ParseException e) {
+                    kidsmenuAdapter = new KidsMenuAdapter(SubMenuActivity.this, kidsItems);
+                Log.e("name", " pass kidsItem");
+
+                listview.setAdapter(kidsmenuAdapter);
+
+
             }
-            // Binds the Adapter to the ListView
-            listview.setAdapter(adapter);
-            // Close the progressdialog
-            mProgressDialog.dismiss();
+        });
+    }
+ }
+
+
+
+
+
+
+
+//    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            // Create a progressdialog
+//            mProgressDialog = new ProgressDialog(SubMenuActivity.this);
+//            // Set progressdialog title
+//            mProgressDialog.setTitle("Parse.com Simple ListView Tutorial");
+//            // Set progressdialog message
+//            mProgressDialog.setMessage("Loading...");
+//            mProgressDialog.setIndeterminate(false);
+//            // Show progressdialog
+//            mProgressDialog.show();
+//        }
+//        @Override
+//        protected Void doInBackground(Void... params) {
+//            // Locate the class table named "Country" in Parse.com
+//            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+//                    "KidsMenuParse");
+//          //  query.orderByDescending("_created_at");
+//            try {
+//                ob = query.find();
+//            } catch (ParseException e) {
+//                Log.e("Error", e.getMessage());
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Void result) {
+//            // Locate the listview in listview_main.xml
+//            listview = (ListView) findViewById(R.id.listview);
+//            // Pass the results into an ArrayAdapter
+//            nameAdapter = new ArrayAdapter<String>(SubMenuActivity.this,
+//                    R.layout.listview_item);
+//            // Retrieve object "name" from Parse.com database
+//            for (ParseObject kidsmenu : ob) {
+//                nameAdapter.add((String) kidsmenu.get("ItemName"));
+//            }
+//            // Binds the Adapter to the ListView
+//            listview.setAdapter(nameAdapter);
+//            // Close the progressdialog
+//            mProgressDialog.dismiss();
             // Capture button clicks on ListView items
 //            listview.setOnItemClickListener(new OnItemClickListener() {
 //                @Override
@@ -184,6 +209,6 @@ public class SubMenuActivity extends Activity{
 //                    startActivity(i);
 //                }
 //            });
-        }
-    }
-}
+//        }
+//    }
+//}

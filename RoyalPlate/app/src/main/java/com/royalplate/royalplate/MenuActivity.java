@@ -1,6 +1,7 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,13 +9,21 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.parse.ParseObject;
+import com.royalplate.royalplate.adapter.KidsMenuAdapter;
+
+import java.util.List;
 
 /**
  * Created by hetu on 4/9/15.
  */
 public class MenuActivity extends Activity{
 
+    ListView listview;
+    KidsMenuAdapter kidsmenuAdapter;
 
     private Button orderedButton;
 
@@ -22,26 +31,18 @@ public class MenuActivity extends Activity{
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
+        // Execute RemoteDataTask AsyncTask
 
-        final Button appetizerBtn = (Button)findViewById(R.id.appetizer_button);
+        final Button appetizerBtn = (Button)findViewById(R.id.haveItAll_button);
         appetizerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                Intent appIntent = new Intent(getApplicationContext(), ShowKidsMenu.class);
-//                startActivity(appIntent);
-//
-//
-//
-
-
-
-
-                Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
+                Intent haveItAllIntent = new Intent(MenuActivity.this,SubMenuActivity.class);
 
                 //pass title to next UI to show in a TextView
-                appetizerIntent.putExtra("title", appetizerBtn.getText().toString());
-                startActivity(appetizerIntent);
+                haveItAllIntent.putExtra("title", appetizerBtn.getText().toString());
+                startActivity(haveItAllIntent);
 
 
             }
@@ -72,12 +73,16 @@ public class MenuActivity extends Activity{
 // add all other buttons activity here.
 
 
-        final Button kidsMenuBtn = (Button)findViewById(R.id.kidsmenu_button);
+        final Button kidsMenuBtn = (Button)findViewById(R.id.kids_button);
 
         kidsMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent kidsMenuIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
+               Intent kidsMenuIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
+
+              //  Intent kidsMenuIntent = new Intent(MenuActivity.this,ListActivity.class);
+
+
                 kidsMenuIntent.putExtra("title", kidsMenuBtn.getText().toString());
                 startActivity(kidsMenuIntent);
 

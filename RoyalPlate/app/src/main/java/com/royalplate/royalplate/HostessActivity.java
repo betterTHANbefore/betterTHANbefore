@@ -5,4 +5,6 @@ package com.royalplate.royalplate;
  */
 public class HostessActivity {
 
+
+
 }

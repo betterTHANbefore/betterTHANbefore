@@ -1,6 +1,7 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -77,7 +78,18 @@ public class LoginActivity extends Activity {
                             Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         } else {
                             // Start an intent for the dispatch activity
+
+
+
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
+
+
+
+                           // Intent intent = new Intent(LoginActivity.this, ListActivity.class);
+
+
+
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                         }
