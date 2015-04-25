@@ -11,9 +11,10 @@
         android:color="@color/marron" />
 
 
-    <gradient android:startColor="@color/sienna"
-
-        android:endColor="@color/chocolate"
+    <gradient
+        android:startColor="@color/brown"
+        android:centerColor="@color/chocolate"
+        android:endColor="@color/brown"
         android:angle="90"/>
 
     <corners

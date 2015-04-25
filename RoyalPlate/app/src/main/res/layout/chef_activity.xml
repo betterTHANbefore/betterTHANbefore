@@ -10,15 +10,5 @@
 
 
 
-    <Button
-        android:id="@+id/spetal_button"
-        android:text="@string/specials"
-        android:textSize="20dp"
-        android:background="@drawable/draw_button"
-        android:layout_margin="20dp"
-        android:textColor="@color/antiquewhite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 
 </LinearLayout>

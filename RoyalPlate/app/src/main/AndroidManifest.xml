@@ -34,7 +34,6 @@
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".AccountActivity"></activity>
-    <activity android:name=".ListActivity"></activity>
     </application>
 
 </manifest>

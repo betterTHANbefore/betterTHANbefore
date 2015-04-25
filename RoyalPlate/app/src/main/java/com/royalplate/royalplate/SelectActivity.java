@@ -33,7 +33,9 @@ public class SelectActivity extends Activity{
         waiterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+              //  Intent  waiterIntent = new Intent(getApplicationContext(), MenuActivity.class);
                 Intent  waiterIntent = new Intent(getApplicationContext(), MenuActivity.class);
+
                 startActivity(waiterIntent);
             }
         });

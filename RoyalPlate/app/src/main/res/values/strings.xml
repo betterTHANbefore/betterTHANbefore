@@ -27,13 +27,14 @@
 
     <string name="app_name">RoyalPlate</string>
 
-    <color name="antiquewhite">#FAEBD7</color>
-    <color name="brown">#A52A2A</color>
-    <color name="darkRed">#8B0000</color>
-   <color name="darkOrange">#FF8C00</color>
-    <color name="chocolate">#D2691E</color>
-    <color name="marron">#800000</color>
-    <color name="sienna">#A0522D</color>
+    <!--<color name="antiquewhite">#FAEBD7</color>-->
+    <!--<color name="brown">#A52A2A</color>-->
+    <!--<color name="darkRed">#8B0000</color>-->
+   <!--<color name="darkOrange">#FF8C00</color>-->
+    <!--<color name="chocolate">#D2691E</color>-->
+    <!--<color name="marron">#800000</color>-->
+    <!--<color name="sienna">#A0522D</color>-->
+    <!--<color name="saddlebrown">#8B4513</color>-->
 
     <!-- strings for welcome to royalplate -->
 
@@ -47,7 +48,7 @@
     <string name="manager">MANAGER</string>
     <!-- end first activity -->
 
-    <!-- strings for Menu Activity -->
+     <!--strings for Menu Activity -->
     <string name="haveItAll">HAVE IT ALL</string>
     <string name="beverages">BEVERAGES </string>
     <string name="freshSalads">FRESH SALADS </string>
@@ -59,7 +60,7 @@
     <string name="lunchCombos"> LUNCH COMBOS </string>
     <string name="entriees"> ENTREES </string>
     <string name="twoFor20">2 FOR $20</string>
-    <!--  end Menu Activity -->
+      <!--end Menu Activity -->
 
 
     <!-- submenu -->

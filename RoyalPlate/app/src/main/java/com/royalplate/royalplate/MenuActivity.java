@@ -3,11 +3,22 @@ package com.royalplate.royalplate;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.royalplate.royalplate.adapter.MainMenuAdapter;
 import com.royalplate.royalplate.adapter.MenuAdapter;
+import com.royalplate.royalplate.data.MainMenuData;
+
+import java.util.List;
 
 /**
  * Created by hetu on 4/9/15.
@@ -15,71 +26,99 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 public class MenuActivity extends Activity{
 
     ListView listview;
-    MenuAdapter kidsmenuAdapter;
+    MainMenuAdapter mainMenuAdapter;
 
     private Button orderedButton;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_activity);
-        // Execute RemoteDataTask AsyncTask
+      //  setContentView(R.layout.menu_activity);
+        setContentView(R.layout.mainmenu_activity);
+        listview = (ListView) findViewById(R.id.menulist_right);
+        loadMainMenuItems();
 
-        final Button appetizerBtn = (Button)findViewById(R.id.haveItAll_button);
-        appetizerBtn.setOnClickListener(new View.OnClickListener() {
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
 
-                Intent haveItAllIntent = new Intent(MenuActivity.this,SubMenuActivity.class);
+                 String name = ((TextView)view).getText().toString();
 
-                //pass title to next UI to show in a TextView
-                haveItAllIntent.putExtra("title", appetizerBtn.getText().toString());
-                startActivity(haveItAllIntent);
+               // listviewIntent.putExtra("title",parent.getItemAtPosition(position).toString());
+              listviewIntent.putExtra("title",name);
 
-
+                startActivity(listviewIntent);
+                Log.d("try", "print item " + name);
             }
         });
 
-        final Button saladsBtn = (Button)findViewById(R.id.salads_button);
-        saladsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
-
-                //pass title to next UI to show in a TextView
-                appetizerIntent.putExtra("title", saladsBtn.getText().toString());
-                startActivity(appetizerIntent);
-            }
-        });
-
-        final Button burgersBtn = (Button) findViewById(R.id.burger_button);
-        burgersBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent burgerBtnIntent = new Intent(getApplicationContext(), SubMenuActivity.class);
-                burgerBtnIntent.putExtra("title", burgersBtn.getText().toString());
-                startActivity(burgerBtnIntent);
-            }
-        });
-
-// add all other buttons activity here.
 
 
-        final Button kidsMenuBtn = (Button)findViewById(R.id.kids_button);
-
-        kidsMenuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Intent kidsMenuIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
-
-              //  Intent kidsMenuIntent = new Intent(MenuActivity.this,ListActivity.class);
 
 
-                kidsMenuIntent.putExtra("title", kidsMenuBtn.getText().toString());
-                startActivity(kidsMenuIntent);
 
-            }
-        });
+//        final Button appetizerBtn = (Button)findViewById(R.id.haveItAll_button);
+//        appetizerBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent haveItAllIntent = new Intent(MenuActivity.this,SubMenuActivity.class);
+//
+//                //pass title to next UI to show in a TextView
+//                haveItAllIntent.putExtra("title", appetizerBtn.getText().toString());
+//                startActivity(haveItAllIntent);
+//
+//            }
+//        });
+//
+//        final Button saladsBtn = (Button)findViewById(R.id.salads_button);
+//        saladsBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent appetizerIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
+//
+//                //pass title to next UI to show in a TextView
+//                appetizerIntent.putExtra("title", saladsBtn.getText().toString());
+//                startActivity(appetizerIntent);
+//            }
+//        });
+//
+//        final Button burgersBtn = (Button) findViewById(R.id.burger_button);
+//        burgersBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent burgerBtnIntent = new Intent(getApplicationContext(), SubMenuActivity.class);
+//                burgerBtnIntent.putExtra("title", burgersBtn.getText().toString());
+//                startActivity(burgerBtnIntent);
+//            }
+//        });
+//
+//// add all other buttons activity here.
+//
+//
+//        final Button kidsMenuBtn = (Button)findViewById(R.id.kids_button);
+//
+//        kidsMenuBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               Intent kidsMenuIntent = new Intent(getApplicationContext(),SubMenuActivity.class);
+//
+//              //  Intent kidsMenuIntent = new Intent(MenuActivity.this,ListActivity.class);
+//
+//
+//                kidsMenuIntent.putExtra("title", kidsMenuBtn.getText().toString());
+//                startActivity(kidsMenuIntent);
+//
+//            }
+//        });
+
+
+
+
+
+
+
         /**********************************************
          * if user clicks on the RoyalPlate logo, it will
          * activate the SelectActivity.
@@ -129,6 +168,24 @@ public class MenuActivity extends Activity{
 
 
 
+    }
+
+    /*************************************************************************************
+     * This function loads the data from the parse, where the class is
+     * called "MenuParse". It uses MainMenuAdapter. And Listview to
+     * display the data.
+     **************************************************************************************/
+    private void loadMainMenuItems() {
+        final ParseQuery<MainMenuData> mainMenuItems = ParseQuery.getQuery("MenuParse");
+        mainMenuItems.findInBackground(new FindCallback<MainMenuData>() {
+
+            @Override
+            public void done(List<MainMenuData> mainMenuItems, ParseException e) {
+                mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
+                listview.setAdapter(mainMenuAdapter);
+
+            }
+        });
     }
 
 }

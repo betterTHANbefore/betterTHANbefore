@@ -22,6 +22,12 @@
         android:bottom="4dp"    >
     </padding>
 
+        <gradient
+            android:startColor="@color/brown"
+            android:centerColor="@color/chocolate"
+            android:endColor="@color/brown"
+            android:angle="270" />
+
     <!-- Here is the corner radius -->
     <corners
         android:radius="10dp"   >

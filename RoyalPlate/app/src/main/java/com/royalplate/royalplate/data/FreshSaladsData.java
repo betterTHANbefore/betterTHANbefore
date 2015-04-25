@@ -5,7 +5,7 @@ import com.parse.ParseClassName;
 /**
  * Created by operamac on 4/24/15.
  */
-@ParseClassName("FreshSaladParse")
+@ParseClassName("FreshSaladsParse")
 public class FreshSaladsData extends MenuData {
 
         public FreshSaladsData() {

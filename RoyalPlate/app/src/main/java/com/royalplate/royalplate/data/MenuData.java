@@ -13,13 +13,15 @@ public class MenuData extends ParseObject {
 
     }
     public String getName() {
+
         return getString("ItemName");
     }
-
     public void setName(String itemName) {
 
         put("ItemName", itemName);
     }
+
+
 
     public double getPrice() {
 

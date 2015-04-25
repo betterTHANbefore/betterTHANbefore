@@ -2,34 +2,34 @@ package com.royalplate.royalplate.adapter;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
-
-
-import java.util.List;
 
 import com.parse.ParseObject;
 import com.royalplate.royalplate.R;
+import com.royalplate.royalplate.data.MainMenuData;
 import com.royalplate.royalplate.data.MenuData;
+
+import java.util.List;
 
 /**
  * Created by hetu on 4/23/15.
  */
-public class MenuAdapter extends ArrayAdapter<ParseObject> {
+public class MainMenuAdapter extends ArrayAdapter<MainMenuData> {
 
     Context context;
-    List<ParseObject> menuItems;
+    List<MainMenuData> mainMenuItems;
 
 // Context is the SubMenuActivity
     // objects is the list of items
-    public MenuAdapter(Context context, List<ParseObject> objects) {
-        super(context, R.layout.listview_item, objects);
+    public MainMenuAdapter(Context context, List<MainMenuData> objects) {
+        super(context, R.layout.listview_mainmenu, objects);
         this.context = context;
-        this.menuItems = objects;
+        this.mainMenuItems = objects;
     }
 
     @Override
@@ -37,11 +37,14 @@ public class MenuAdapter extends ArrayAdapter<ParseObject> {
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.listview_item, parent, false);
+        View view = inflater.inflate(R.layout.listview_mainmenu, parent, false);
 
-        TextView textView = (TextView) view.findViewById((R.id.itemName));
+        Button menuButton = (Button) view.findViewById((R.id.mainmenu));
+        menuButton.setText(mainMenuItems.get(position).getMenuName());
 
-        textView.setText(((MenuData) (menuItems.get(position))).getName());
+       // TextView textView = (TextView) view.findViewById((R.id.itemName));
+
+       // textView.setText(((mainMenuItems.get(position))).getName());
 
         return view;
     }
