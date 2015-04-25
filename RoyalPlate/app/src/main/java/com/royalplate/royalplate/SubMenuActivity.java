@@ -25,8 +25,8 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 public class SubMenuActivity extends Activity {
 
     ListView listview;
-    MenuAdapter kidsmenuAdapter;
-    MenuAdapter saladmenuAdapter;
+//    MenuAdapter kidsmenuAdapter;
+    MenuAdapter menuAdapter;
     //    List<ParseObject> ob;
 //    ProgressDialog mProgressDialog;
 //    ArrayAdapter<String> nameAdapter;
@@ -75,19 +75,58 @@ public class SubMenuActivity extends Activity {
 
                 icon_right.setImageResource(R.drawable.springrolls);
                 icon_left.setImageResource(R.drawable.springrolls);
+                loadItems("HaveitallMenuParse");
                 break;
 
             case "FRESH SALADS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.gardensalad);
                 icon_left.setImageResource(R.drawable.spinachsalad);
-                loadSaladItems();
+                loadItems("FreshSaladsParse");
+//                loadSaladItems();
                 break;
 
+            case "2 FOR $20":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("TwoTwenty");
+//                loadKidsItems();
+                break;
+            case "SANDWICHES":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("SandwichMenuParse");
+//                loadKidsItems();
+                break;
+
+            case "DRINKS":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("DrinkMenuParse");
+//                loadKidsItems();
+                break;
+            case "BURGERS":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("BurgerMenuParse");
+//                loadKidsItems();
+                break;
+            case "APPETIZER":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("AppetizerMenuParse");
+//                loadKidsItems();
+                break;
             case "KIDS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.fries);
                 icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("KidsMenuParse");
 //                loadKidsItems();
                 break;
 
@@ -117,10 +156,27 @@ public class SubMenuActivity extends Activity {
             }
         });
     }
-//
+    // made it generic
+    private void loadItems(String str) {
+
+//        String temp = str;
+        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery(str);
+
+        kidsItems.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> kidsItems, ParseException e) {
+                menuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
+
+                listview.setAdapter(menuAdapter);
+                Log.e("name", " pass kidsItem");
+            }
+        });
+    }
+
 //    private void loadKidsItems() {
 //
 //        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
+//
 //
 //        kidsItems.findInBackground(new FindCallback<ParseObject>() {
 //            @Override
@@ -133,20 +189,21 @@ public class SubMenuActivity extends Activity {
 //        });
 //    }
 
-    private void loadSaladItems() {
 
-        final ParseQuery<ParseObject> saladItems = ParseQuery.getQuery("FreshSaladsParse");
-
-        saladItems.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> saladItems, ParseException e) {
-                saladmenuAdapter = new MenuAdapter(SubMenuActivity.this, saladItems);
-                listview.setAdapter(saladmenuAdapter);
-                Log.e("name", " pass SaladItem");
-            }
-        });
-    }
- }
+//    private void loadSaladItems() {
+//
+//        final ParseQuery<ParseObject> saladItems = ParseQuery.getQuery("FreshSaladsParse");
+//
+//        saladItems.findInBackground(new FindCallback<ParseObject>() {
+//            @Override
+//            public void done(List<ParseObject> saladItems, ParseException e) {
+//                saladmenuAdapter = new MenuAdapter(SubMenuActivity.this, saladItems);
+//                listview.setAdapter(saladmenuAdapter);
+//                Log.e("name", " pass SaladItem");
+//            }
+//        });
+//    }
+}
 
 
 
