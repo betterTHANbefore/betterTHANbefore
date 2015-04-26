@@ -8,10 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
-
 import java.util.List;
-
 import com.parse.ParseObject;
 import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.MenuData;
@@ -35,14 +32,18 @@ public class MenuAdapter extends ArrayAdapter<ParseObject> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
 
+        String getitemprice;
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.listview_item, parent, false);
 
-        TextView textView = (TextView) view.findViewById((R.id.itemName));
+        TextView itemTextView = (TextView) view.findViewById((R.id.itemName));
 
-        textView.setText(((MenuData) (menuItems.get(position))).getName());
+            itemTextView.setText(((MenuData) (menuItems.get(position))).getName());
 
+        TextView priceTextView = (TextView) view.findViewById(R.id.itemPrice);
+        getitemprice =Double.toString(((MenuData) (menuItems.get(position))).getPrice());
+        priceTextView.setText(getitemprice);
         return view;
     }
 }

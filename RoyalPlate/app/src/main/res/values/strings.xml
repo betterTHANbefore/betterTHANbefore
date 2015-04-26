@@ -78,7 +78,8 @@
     <string name="sign_up">Sign Up</string>
     <!-- end waiter activity -->
 
-
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
 
 
     <!-- login_activity -->

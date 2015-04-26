@@ -79,7 +79,7 @@
 
             <Button
                 android:id="@+id/spetal_button"
-                android:text="@string/specials"
+                android:text="APPETIZER"
                 android:textSize="20dp"
                 android:background="@drawable/rounded_corner"
                 android:layout_margin="20dp"
@@ -124,7 +124,7 @@
 
             <Button
                 android:id="@+id/pizza_button"
-                android:text="SANDWICHIS"
+                android:text="SANDWICHES"
                 android:textSize="20dp"
                 android:background="@drawable/rounded_corner"
                 android:layout_margin="20dp"

@@ -41,17 +41,43 @@ public class MenuActivity extends Activity{
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
 
-                 String name = ((TextView)view).getText().toString();
+                    Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
 
-               // listviewIntent.putExtra("title",parent.getItemAtPosition(position).toString());
-              listviewIntent.putExtra("title",name);
+                    Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
+                   final  String menuItemName = listBtn.getText().toString();
 
-                startActivity(listviewIntent);
-                Log.d("try", "print item " + name);
+                    listviewIntent.putExtra("title",menuItemName);
+                    startActivity(listviewIntent);
+
+                    Log.v("value ", "result is " + menuItemName);
+                  //  Log.i("item", "Position " + position);
             }
         });
+
+
+
+    }
+
+    /*************************************************************************************
+     * This function loads the data from the parse, where the class is
+     * called "MenuParse". It uses MainMenuAdapter. And Listview to
+     * display the data.
+     **************************************************************************************/
+    private void loadMainMenuItems() {
+        final ParseQuery<MainMenuData> mainMenuItems = ParseQuery.getQuery("MenuParse");
+        mainMenuItems.findInBackground(new FindCallback<MainMenuData>() {
+
+            @Override
+            public void done(List<MainMenuData> mainMenuItems, ParseException e) {
+                mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
+                listview.setAdapter(mainMenuAdapter);
+
+            }
+        });
+    }
+
+}
 
 
 
@@ -165,30 +191,6 @@ public class MenuActivity extends Activity{
 
 
 
-
-
-
-    }
-
-    /*************************************************************************************
-     * This function loads the data from the parse, where the class is
-     * called "MenuParse". It uses MainMenuAdapter. And Listview to
-     * display the data.
-     **************************************************************************************/
-    private void loadMainMenuItems() {
-        final ParseQuery<MainMenuData> mainMenuItems = ParseQuery.getQuery("MenuParse");
-        mainMenuItems.findInBackground(new FindCallback<MainMenuData>() {
-
-            @Override
-            public void done(List<MainMenuData> mainMenuItems, ParseException e) {
-                mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
-                listview.setAdapter(mainMenuAdapter);
-
-            }
-        });
-    }
-
-}
 
 
 

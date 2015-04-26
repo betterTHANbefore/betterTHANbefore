@@ -25,8 +25,11 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 public class SubMenuActivity extends Activity {
 
     ListView listview;
+
     MenuAdapter kidsmenuAdapter;
     MenuAdapter saladmenuAdapter;
+
+    MenuAdapter menuAdapter;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -54,32 +57,88 @@ public class SubMenuActivity extends Activity {
         /***************************************************************
          * get the text from the textview
          ***************************************************************/
-       // title = subMenuTitle.getText().toString();
+        // title = subMenuTitle.getText().toString();
 
-        title=getIntent().getExtras().getString("title");
+        title = getIntent().getExtras().getString("title");
+
         switch (title) {
-
-            case "HAVE IT ALL":
+            case "APPETIZER":
                 // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("AppetizerMenuParse");
+                break;
 
-                icon_right.setImageResource(R.drawable.springrolls);
-                icon_left.setImageResource(R.drawable.springrolls);
+            case "BEVERAGES":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("DrinkMenuParse");
+                break;
+
+            case "BURGERS":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("BurgerMenuParse");
+                break;
+
+            case "DESSERTS":
+                loadItems("DessertsMenuParse");
+                break;
+
+            case "ENTREES":
+                loadItems("EntreesMenuParse");
+                break;
+
+            case "ENTREES & MAIN DISHES":
+                loadItems("EntreesMainMenuParse");
                 break;
 
             case "FRESH SALADS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.gardensalad);
                 icon_left.setImageResource(R.drawable.spinachsalad);
-                loadSaladItems();
+                loadItems("FreshSaladsParse");
+                break;
+
+            case "HAVE IT ALL":
+                // Image appears in ImageView widgets from the source file
+
+                icon_right.setImageResource(R.drawable.springrolls);
+                icon_left.setImageResource(R.drawable.springrolls);
+                loadItems("HaveitallMenuParse");
                 break;
 
             case "KIDS":
                 // Image appears in ImageView widgets from the source file
                 icon_right.setImageResource(R.drawable.fries);
-                icon_left.setImageResource(R.drawable.chocolatemilk);
-                loadKidsItems();
-
+                loadItems("KidsMenuParse");
                 break;
+
+            case "LUNCH COMBOS":
+                loadItems("LunchCombosMenuParse");
+                break;
+
+            case "NEW BAR MENU":
+                loadItems("NewBarMenuParse");
+                break;
+
+            case "SANDWICHES":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("SandwichMenuParse");
+                break;
+
+            case "2 FOR $20":
+                // Image appears in ImageView widgets from the source file
+                icon_right.setImageResource(R.drawable.fries);
+                icon_left.setImageResource(R.drawable.chocolatemilk);
+                loadItems("TwoTwenty");
+                break;
+
+
 
             default:
                 subMenuTitle.setText(getIntent().getExtras().getString("To go Main Manu"));
@@ -108,9 +167,10 @@ public class SubMenuActivity extends Activity {
         });
     }
 
-    private void loadKidsItems() {
+    private void loadItems(String str) {
 
-        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
+//        String temp = str;
+        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery(str);
 
         kidsItems.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -120,25 +180,29 @@ public class SubMenuActivity extends Activity {
             }
         });
     }
+//                menuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
+//
+//                listview.setAdapter(menuAdapter);
+//                Log.e("name", " pass kidsItem");
+//            }
+//        });
+//    }
 
-    private void loadSaladItems() {
-
-        final ParseQuery<ParseObject> saladItems = ParseQuery.getQuery("FreshSaladsParse");
-
-        saladItems.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> saladItems, ParseException e) {
-                saladmenuAdapter = new MenuAdapter(SubMenuActivity.this, saladItems);
-                listview.setAdapter(saladmenuAdapter);
-            }
-        });
-    }
- }
-
-
-
-
-
+//    private void loadKidsItems() {
+//
+//        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
+//
+//
+//        kidsItems.findInBackground(new FindCallback<ParseObject>() {
+//            @Override
+//            public void done(List<ParseObject> kidsItems, ParseException e) {
+//                kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
+//
+//                listview.setAdapter(kidsmenuAdapter);
+//                Log.e("name", " pass kidsItem");
+//            }
+//        });
+//    }
 
 
 //    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
@@ -185,7 +249,7 @@ public class SubMenuActivity extends Activity {
 //            listview.setAdapter(nameAdapter);
 //            // Close the progressdialog
 //            mProgressDialog.dismiss();
-            // Capture button clicks on ListView items
+    // Capture button clicks on ListView items
 //            listview.setOnItemClickListener(new OnItemClickListener() {
 //                @Override
 //                public void onItemClick(AdapterView<?> parent, View view,
@@ -203,3 +267,4 @@ public class SubMenuActivity extends Activity {
 //        }
 //    }
 //}
+}
