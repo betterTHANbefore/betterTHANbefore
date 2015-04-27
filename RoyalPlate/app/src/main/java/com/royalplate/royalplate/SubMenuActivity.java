@@ -25,10 +25,6 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 public class SubMenuActivity extends Activity {
 
     ListView listview;
-
-    MenuAdapter kidsmenuAdapter;
-    MenuAdapter saladmenuAdapter;
-
     MenuAdapter menuAdapter;
 
     @Override
@@ -37,9 +33,8 @@ public class SubMenuActivity extends Activity {
         setContentView(R.layout.submenu_activity);
         listview = (ListView) findViewById(R.id.itemlist);
 
-
-        String appetizerTitle;
-        String kidsMenuTitle;
+//        String appetizerTitle;
+//        String kidsMenuTitle;
         TextView subMenuTitle;
         Button goToMenuBtn;
         String title;
@@ -138,12 +133,9 @@ public class SubMenuActivity extends Activity {
                 loadItems("TwoTwenty");
                 break;
 
-
-
             default:
                 subMenuTitle.setText(getIntent().getExtras().getString("To go Main Manu"));
         }
-
 
         goToMenuBtn = (Button) findViewById(R.id.mainMenuBtn);
         goToMenuBtn.setOnClickListener(new View.OnClickListener() {
@@ -169,102 +161,15 @@ public class SubMenuActivity extends Activity {
 
     private void loadItems(String str) {
 
-//        String temp = str;
-        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery(str);
+        final ParseQuery<ParseObject> items = ParseQuery.getQuery(str);
 
-        kidsItems.findInBackground(new FindCallback<ParseObject>() {
+        items.findInBackground(new FindCallback<ParseObject>() {
             @Override
-            public void done(List<ParseObject> kidsItems, ParseException e) {
-                kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
-                listview.setAdapter(kidsmenuAdapter);
+            public void done(List<ParseObject> items, ParseException e) {
+                menuAdapter = new MenuAdapter(SubMenuActivity.this, items);
+                listview.setAdapter(menuAdapter);
             }
         });
     }
-//                menuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
-//
-//                listview.setAdapter(menuAdapter);
-//                Log.e("name", " pass kidsItem");
-//            }
-//        });
-//    }
 
-//    private void loadKidsItems() {
-//
-//        final ParseQuery<ParseObject> kidsItems = ParseQuery.getQuery("KidsMenuParse");
-//
-//
-//        kidsItems.findInBackground(new FindCallback<ParseObject>() {
-//            @Override
-//            public void done(List<ParseObject> kidsItems, ParseException e) {
-//                kidsmenuAdapter = new MenuAdapter(SubMenuActivity.this, kidsItems);
-//
-//                listview.setAdapter(kidsmenuAdapter);
-//                Log.e("name", " pass kidsItem");
-//            }
-//        });
-//    }
-
-
-//    private class RemoteDataTask extends AsyncTask<Void, Void, Void> {
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            // Create a progressdialog
-//            mProgressDialog = new ProgressDialog(SubMenuActivity.this);
-//            // Set progressdialog title
-//            mProgressDialog.setTitle("Parse.com Simple ListView Tutorial");
-//            // Set progressdialog message
-//            mProgressDialog.setMessage("Loading...");
-//            mProgressDialog.setIndeterminate(false);
-//            // Show progressdialog
-//            mProgressDialog.show();
-//        }
-//        @Override
-//        protected Void doInBackground(Void... params) {
-//            // Locate the class table named "Country" in Parse.com
-//            ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-//                    "KidsMenuParse");
-//          //  query.orderByDescending("_created_at");
-//            try {
-//                ob = query.find();
-//            } catch (ParseException e) {
-//                Log.e("Error", e.getMessage());
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void result) {
-//            // Locate the listview in listview_main.xml
-//            listview = (ListView) findViewById(R.id.listview);
-//            // Pass the results into an ArrayAdapter
-//            nameAdapter = new ArrayAdapter<String>(SubMenuActivity.this,
-//                    R.layout.listview_item);
-//            // Retrieve object "name" from Parse.com database
-//            for (ParseObject kidsmenu : ob) {
-//                nameAdapter.add((String) kidsmenu.get("ItemName"));
-//            }
-//            // Binds the Adapter to the ListView
-//            listview.setAdapter(nameAdapter);
-//            // Close the progressdialog
-//            mProgressDialog.dismiss();
-    // Capture button clicks on ListView items
-//            listview.setOnItemClickListener(new OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view,
-//                                        int position, long id) {
-//                    // Send single item click data to SingleItemView Class
-//                    Intent i = new Intent(ShowKidsMenu.this,
-//                            ShowKidsMenu.class);
-//                    // Pass data "name" followed by the position
-//                    i.putExtra("name", ob.get(position).getString("name")
-//                            .toString());
-//                    // Open SingleItemView.java Activity
-//                    startActivity(i);
-//                }
-//            });
-//        }
-//    }
-//}
 }
