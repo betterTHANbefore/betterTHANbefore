@@ -54,9 +54,6 @@ public class MenuActivity extends Activity{
                   //  Log.i("item", "Position " + position);
             }
         });
-
-
-
     }
 
     /*************************************************************************************
@@ -72,7 +69,6 @@ public class MenuActivity extends Activity{
             public void done(List<MainMenuData> mainMenuItems, ParseException e) {
                 mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
                 listview.setAdapter(mainMenuAdapter);
-
             }
         });
     }

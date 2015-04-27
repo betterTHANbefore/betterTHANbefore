@@ -25,8 +25,8 @@ public class SelectActivity extends Activity{
         hostessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent hostessIntnet = new Intent(getApplicationContext(), HostessActivity.class);
-                startActivity(hostessIntnet);
+                Intent hostessIntent = new Intent(getApplicationContext(), HostessActivity.class);
+                startActivity(hostessIntent);
             }
         });
 
@@ -52,8 +52,8 @@ public class SelectActivity extends Activity{
         managerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent managerInten = new Intent(getApplicationContext(), ManagerActivity.class);
-                startActivity(managerInten);
+                Intent managerIntent = new Intent(getApplicationContext(), ManagerActivity.class);
+                startActivity(managerIntent);
             }
         });
 

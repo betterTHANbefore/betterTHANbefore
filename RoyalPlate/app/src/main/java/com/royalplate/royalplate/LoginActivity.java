@@ -25,8 +25,6 @@ public class LoginActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState ) {
 
-       // super.onCreate(savedInstanceState);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
@@ -78,36 +76,18 @@ public class LoginActivity extends Activity {
                             Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         } else {
                             // Start an intent for the dispatch activity
-
-
-
                             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-
-
-
-
-                           // Intent intent = new Intent(LoginActivity.this, ListActivity.class);
-
-
-
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                         }
                     }
                 });
-//                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-//                startActivity(intent);
-
-
-
             }
         });
-
     }
 
     private boolean isEmpty(EditText etText) {
         if (etText.getText().toString().trim().length() > 0) {
-
             return false;
         } else {
             return true;

@@ -25,14 +25,15 @@ import com.royalplate.royalplate.data.TwoTwentyData;
  * Created by operamac on 4/14/15.
  */
 public class ParseApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
+
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
 
-
-        // connect to sue's parse account
+        // connect to parse account
         Parse.initialize(this,
                 getString(R.string.parse_app_id),
                 getString(R.string.parse_client_id));
@@ -53,6 +54,5 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(TwoTwentyData.class);
 
         Log.i("Application", "Initialized");
-
     }
 }

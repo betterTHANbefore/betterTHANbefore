@@ -33,8 +33,6 @@ public class SubMenuActivity extends Activity {
         setContentView(R.layout.submenu_activity);
         listview = (ListView) findViewById(R.id.itemlist);
 
-//        String appetizerTitle;
-//        String kidsMenuTitle;
         TextView subMenuTitle;
         Button goToMenuBtn;
         String title;
@@ -162,7 +160,6 @@ public class SubMenuActivity extends Activity {
     private void loadItems(String str) {
 
         final ParseQuery<ParseObject> items = ParseQuery.getQuery(str);
-
         items.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> items, ParseException e) {
@@ -171,5 +168,4 @@ public class SubMenuActivity extends Activity {
             }
         });
     }
-
 }

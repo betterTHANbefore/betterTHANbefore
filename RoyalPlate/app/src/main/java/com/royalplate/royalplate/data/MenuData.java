@@ -7,6 +7,8 @@ import com.parse.ParseObject;
 /**
  * Created by operamac on 4/24/15.
  */
+
+// This MenuData is the parent of all ***MenuData classes.
 public class MenuData extends ParseObject {
 
     public MenuData() {
@@ -20,8 +22,6 @@ public class MenuData extends ParseObject {
 
         put("ItemName", itemName);
     }
-
-
 
     public double getPrice() {
 

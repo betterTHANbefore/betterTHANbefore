@@ -14,11 +14,13 @@ public class SignupOrLoginActivity extends Activity {
 
     private Button signupButton;
     private Button loginButton;
+
     @Override
     public void onCreate(Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_or_login_activity);
 
+        // Sign Up
         signupButton = (Button) findViewById(R.id.SignUpButton);
         signupButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -27,6 +29,8 @@ public class SignupOrLoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        // Login
         loginButton = (Button) findViewById(R.id.LoginButton);
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
