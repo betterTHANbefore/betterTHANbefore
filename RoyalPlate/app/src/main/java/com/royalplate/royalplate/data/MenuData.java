@@ -12,19 +12,15 @@ import com.parse.ParseObject;
 public class MenuData extends ParseObject {
 
     public MenuData() {
-
     }
     public String getName() {
-
         return getString("ItemName");
     }
     public void setName(String itemName) {
-
         put("ItemName", itemName);
     }
 
     public double getPrice() {
-
         return getDouble("ItemPrice");
     }
 

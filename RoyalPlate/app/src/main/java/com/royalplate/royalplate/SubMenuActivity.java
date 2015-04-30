@@ -3,6 +3,7 @@ package com.royalplate.royalplate;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 /**
  * Created by hetu on 4/11/15.
  */
-public class SubMenuActivity extends Activity {
+public class SubMenuActivity extends FragmentActivity {
 
     ListView listview;
     MenuAdapter menuAdapter;
@@ -151,14 +152,14 @@ public class SubMenuActivity extends Activity {
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent orderBtnIntent = new Intent(getApplicationContext(), ChefActivity.class);
+                Intent orderBtnIntent = new Intent(getApplicationContext(), SendOrder.class);
+                orderBtnIntent.putExtra("table no", 1);
                 startActivity(orderBtnIntent);
             }
         });
     }
 
     private void loadItems(String str) {
-
         final ParseQuery<ParseObject> items = ParseQuery.getQuery(str);
         items.findInBackground(new FindCallback<ParseObject>() {
             @Override
