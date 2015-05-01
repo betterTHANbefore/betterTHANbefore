@@ -6,16 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <!-- for royalplate image -->
     <LinearLayout
         android:layout_weight="5"
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
         <ImageView
 
@@ -32,17 +28,12 @@
     </LinearLayout>
 
 
-
-
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_weight="1"
         android:background="@drawable/draw_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
 
         <!-- Right side -->
         <LinearLayout
@@ -55,14 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-           <ListView
-               android:id="@+id/menulist_right"
-               android:clickable="true"
-               android:focusable="true"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/menulist_right"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-           </ListView>
+            </ListView>
 
         </LinearLayout>
 
@@ -76,7 +67,6 @@
 
         </LinearLayout>
 
-        <!-- Left side -->
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
@@ -85,19 +75,46 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/table_num_view"
-                android:textSize="45dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ListView
-                android:id="@+id/menulist_left"
+                android:textSize="30dp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" />
 
-            </ListView>
+            <TextView
+                android:layout_weight="1"
+                android:text="Order Went Thru Successfully"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
         </LinearLayout>
+
+        <!-- Left side -->
+        <!--<LinearLayout-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<TextView-->
+                <!--android:id="@+id/table_num_view"-->
+                <!--android:textSize="45dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--<ListView-->
+                <!--android:id="@+id/menulist_left"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+            <!--</ListView>-->
+        <!--</LinearLayout>-->
 
     </LinearLayout>
 

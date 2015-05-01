@@ -5,7 +5,21 @@
     android:background="@drawable/draw_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/table_num_view"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="65sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
     <!-- for royalplate image -->
     <LinearLayout
         android:layout_weight="5"

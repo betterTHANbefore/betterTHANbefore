@@ -44,7 +44,9 @@ public class SubMenuActivity extends FragmentActivity {
          * and right
          ****************************************************************/
         subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
-        subMenuTitle.setText(getIntent().getExtras().getString("title"));
+
+        // lumpped text -> needs to get prettier
+        subMenuTitle.setText(getIntent().getExtras().getString("title") + " " + getIntent().getExtras().getString("table no"));
 
         ImageView icon_right = (ImageView) findViewById(R.id.imageRight_icon);
         ImageView icon_left = (ImageView) findViewById(R.id.imageLeft_icon);
@@ -145,18 +147,6 @@ public class SubMenuActivity extends FragmentActivity {
             }
         });
 
-        /*****************************************************************************************
-         * if order confirmed, order button send all the items ordered by the customer to the CHEF
-         ******************************************************************************************/
-        Button orderBtn = (Button) findViewById(R.id.orderbutton);
-        orderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent orderBtnIntent = new Intent(getApplicationContext(), SendOrder.class);
-                orderBtnIntent.putExtra("table no", 1);
-                startActivity(orderBtnIntent);
-            }
-        });
     }
 
     private void loadItems(String str) {

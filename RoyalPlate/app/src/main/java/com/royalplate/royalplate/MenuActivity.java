@@ -30,11 +30,22 @@ public class MenuActivity extends Activity{
 
     private Button orderedButton;
 
+    private TextView tableNumView;
+
+//    int tableNum = getIntent().getIntExtra("table no");
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.menu_activity);
         setContentView(R.layout.mainmenu_activity);
+
+       tableNumView = (TextView) findViewById(R.id.table_num_view);
+
+//        tableNumView.setText(getIntent().getExtras().getString("table no"));
+
+        Log.i("TABLE NOOOOOO", getIntent().getExtras().getString("table no"));
+
+
         listview = (ListView) findViewById(R.id.menulist_right);
         loadMainMenuItems();
 
@@ -42,16 +53,19 @@ public class MenuActivity extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
+                Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
 
-                    Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
-                   final  String menuItemName = listBtn.getText().toString();
+                Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
+                final  String menuItemName = listBtn.getText().toString();
+                String tableNum = getIntent().getExtras().getString("table no");
 
-                    listviewIntent.putExtra("title",menuItemName);
-                    startActivity(listviewIntent);
+                listviewIntent.putExtra("title", menuItemName);
 
-                    Log.v("value ", "result is " + menuItemName);
-                  //  Log.i("item", "Position " + position);
+                listviewIntent.putExtra("table no", tableNum);
+                startActivity(listviewIntent);
+
+                Log.v("value ", "result is " + menuItemName);
+                //  Log.i("item", "Position " + position);
             }
         });
     }
