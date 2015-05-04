@@ -6,6 +6,6 @@ import com.parse.ParseClassName;
  * Created by operamac on 4/24/15.
  */
 @ParseClassName("TwoTwenty")
-public class TwoTwentyData extends MenuData {
+public class TwoTwentyData extends SubMenuData {
     public TwoTwentyData(){}
 }

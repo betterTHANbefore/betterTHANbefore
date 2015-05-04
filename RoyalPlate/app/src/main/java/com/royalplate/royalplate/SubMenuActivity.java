@@ -19,7 +19,7 @@ import com.parse.ParseQuery;
 
 import android.widget.ListView;
 
-import com.royalplate.royalplate.adapter.MenuAdapter;
+import com.royalplate.royalplate.adapter.SubMenuAdapter;
 
 /**
  * Created by hetu on 4/11/15.
@@ -27,7 +27,7 @@ import com.royalplate.royalplate.adapter.MenuAdapter;
 public class SubMenuActivity extends FragmentActivity {
 
     ListView listview;
-    MenuAdapter menuAdapter;
+    SubMenuAdapter menuAdapter;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -159,7 +159,7 @@ public class SubMenuActivity extends FragmentActivity {
         items.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> items, ParseException e) {
-                menuAdapter = new MenuAdapter(SubMenuActivity.this, items);
+                menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items);
                 listview.setAdapter(menuAdapter);
             }
         });

@@ -1,7 +1,5 @@
 package com.royalplate.royalplate.data;
 
-import android.support.v7.app.ActionBarActivity;
-
 import com.parse.ParseObject;
 
 /**
@@ -11,14 +9,16 @@ import com.parse.ParseObject;
 // This MenuData is the parent of all ***MenuData classes.
 public class MenuData extends ParseObject {
 
-    public MenuData() {
-    }
+    public MenuData() {}
+
     public String getName() {
         return getString("ItemName");
     }
     public void setName(String itemName) {
         put("ItemName", itemName);
     }
+
+
 
     public double getPrice() {
         return getDouble("ItemPrice");

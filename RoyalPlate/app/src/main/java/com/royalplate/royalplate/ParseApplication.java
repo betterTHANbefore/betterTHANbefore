@@ -19,7 +19,9 @@ import com.royalplate.royalplate.data.DrinkMenuData;
 import com.royalplate.royalplate.data.HaveitallMenuData;
 import com.royalplate.royalplate.data.NewBarMenuData;
 import com.royalplate.royalplate.data.SandwichMenuData;
+import com.royalplate.royalplate.data.TablesData;
 import com.royalplate.royalplate.data.TwoTwentyData;
+import com.royalplate.royalplate.data.WaiterData;
 
 /**
  * Created by operamac on 4/14/15.
@@ -52,6 +54,8 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(NewBarMenuData.class);
         ParseObject.registerSubclass(SandwichMenuData.class);
         ParseObject.registerSubclass(TwoTwentyData.class);
+        ParseObject.registerSubclass(TablesData.class);
+        ParseObject.registerSubclass(WaiterData.class);
 
         Log.i("Application", "Initialized");
     }

@@ -7,15 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.royalplate.royalplate.adapter.MainMenuAdapter;
-import com.royalplate.royalplate.adapter.MenuAdapter;
 import com.royalplate.royalplate.data.MainMenuData;
 
 import java.util.List;
@@ -26,6 +25,7 @@ import java.util.List;
 public class MenuActivity extends Activity{
 
     ListView listview;
+    GridView gridview;
     MainMenuAdapter mainMenuAdapter;
 
     private Button orderedButton;
@@ -39,6 +39,7 @@ public class MenuActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_activity);
 
+
        tableNumView = (TextView) findViewById(R.id.table_num_view);
 
 //        tableNumView.setText(getIntent().getExtras().getString("table no"));
@@ -46,10 +47,15 @@ public class MenuActivity extends Activity{
         Log.i("TABLE NOOOOOO", getIntent().getExtras().getString("table no"));
 
 
-        listview = (ListView) findViewById(R.id.menulist_right);
+      //  listview = (ListView) findViewById(R.id.menulist_right);
+
         loadMainMenuItems();
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridview = (GridView) findViewById(R.id.menulist_right);
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+      //  listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -82,7 +88,11 @@ public class MenuActivity extends Activity{
             @Override
             public void done(List<MainMenuData> mainMenuItems, ParseException e) {
                 mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
-                listview.setAdapter(mainMenuAdapter);
+
+               // listview.setAdapter(mainMenuAdapter);
+        // listview.setAdapter(mainMenuAdapter);
+                gridview.setAdapter(mainMenuAdapter);
+
             }
         });
     }
@@ -156,7 +166,7 @@ public class MenuActivity extends Activity{
 
 
         /**********************************************
-         * if user clicks on the RoyalPlate logo, it will
+         * if user clicks on the RoyalPlate_logo, it will
          * activate the SelectActivity.
          *************************************************/
 

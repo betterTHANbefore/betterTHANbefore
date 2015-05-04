@@ -7,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.parse.ParseObject;
 import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.MainMenuData;
-import com.royalplate.royalplate.data.MenuData;
 
 import java.util.List;
 
