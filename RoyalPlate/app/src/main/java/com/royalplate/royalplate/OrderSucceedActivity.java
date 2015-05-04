@@ -2,6 +2,8 @@ package com.royalplate.royalplate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -10,6 +12,7 @@ import android.widget.TextView;
 public class OrderSucceedActivity extends Activity {
 
     private TextView tv;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +22,8 @@ public class OrderSucceedActivity extends Activity {
         tv = (TextView) findViewById(R.id.table_num_view);
         tv.setText("Table " + getIntent().getExtras().getString("table no"));
 
+        lv = (ListView) findViewById(R.id.menulist_left);
+
+//        lv.setAdapter(new ArrayAdapter<>());
     }
 }

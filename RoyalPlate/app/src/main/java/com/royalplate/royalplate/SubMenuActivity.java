@@ -1,6 +1,7 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -147,6 +148,10 @@ public class SubMenuActivity extends FragmentActivity {
             }
         });
 
+        // this contains OrderListFragment class
+        FragmentManager fm = getFragmentManager();
+        fm.beginTransaction().replace(R.id.fragmentContainer, new OrderListFragment()).commit();
+//        Log.i("FRAGMENT", "MANNGEEEEE");
     }
 
     private void loadItems(String str) {
