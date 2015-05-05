@@ -76,14 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-
-
         </LinearLayout>
 
-
-<<<<<<< HEAD
-        </LinearLayout>
-=======
         <!--&lt;!&ndash; Left side &ndash;&gt;-->
         <!--<LinearLayout-->
             <!--android:layout_weight="1"-->
@@ -105,7 +99,6 @@
             <!--android:layout_height="match_parent">-->
 
 
->>>>>>> 69e90fa4d537b53c3246ad1826f4d1cac114785e
 
         <!--</LinearLayout>-->
 

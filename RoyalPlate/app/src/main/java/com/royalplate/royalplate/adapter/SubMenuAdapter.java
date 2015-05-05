@@ -4,61 +4,85 @@ package com.royalplate.royalplate.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import android.content.Intent;
 
 import com.parse.ParseObject;
 import com.royalplate.royalplate.CountItems;
+import com.royalplate.royalplate.OrderedItem;
 import com.royalplate.royalplate.R;
+import com.royalplate.royalplate.SubMenuActivity;
 import com.royalplate.royalplate.data.MenuData;
 import com.royalplate.royalplate.data.SubMenuData;
-
 import android.view.ViewGroup.LayoutParams;
+
+import org.w3c.dom.Text;
+
+import static android.content.Intent.getIntent;
+import static android.content.Intent.getIntentOld;
+import static android.support.v4.app.NotificationCompat.getExtras;
+import static com.royalplate.royalplate.R.layout.fragment_orderlist;
 
 
 /**
  * Created by hetu on 4/23/15.
  */
-public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
+public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
 
     Context context;
     List<ParseObject> menuItems;
-    int pluscount =0;
+    double itemcost;
+    String tableNo;
+    int pluscount = 0;
     int minuscount = 0;
-    Map<Integer, Integer> noOfItems = new HashMap<Integer, Integer>();
+
+    TextView noOfItemsTextview;
+   List<OrderedItem> orderedList;
+
+
+
+    //Map<String, Ordered> noOfItems = new HashMap<String, Ordered>();
 
     // Context is the SubMenuActivity
     // objects is the list of items
-    public SubMenuAdapter(Context context, List<ParseObject> objects) {
+    public SubMenuAdapter(Context context, List<ParseObject> objects, double itemcost, String tableNo) {
         super(context, R.layout.listview_item, objects);
         this.context = context;
         this.menuItems = objects;
-
+        this.itemcost = itemcost;
+        this.tableNo = tableNo;
     }
 
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        String getItemPrice;
+        final String getItemPrice;
         String getItemID;
-
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.listview_item, parent, false);
+        final View view = inflater.inflate(R.layout.listview_item, parent, false);
 
         // view id
         final TextView itemIdTextView = (TextView) view.findViewById(R.id.itemId);
@@ -70,54 +94,131 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
         itemTextView.setText(((SubMenuData) (menuItems.get(position))).getName());
 
-        // view Item Price
-        TextView priceTextView = (TextView) view.findViewById(R.id.itemPrice);
+        final TextView priceTextView = (TextView) view.findViewById(R.id.itemPrice);
         getItemPrice = Double.toString(((SubMenuData) (menuItems.get(position))).getPrice());
         priceTextView.setText(getItemPrice);
 
-        /***************************
-         * get total item numbers
-         ***********************/
-        final TextView numberofItems = (TextView) view.findViewById(R.id.no_of_items);
+        /******
+         * select no of items from the number picker
+         */
+        NumberPicker np = (NumberPicker) view.findViewById(R.id.numberPicker);
 
-        final int getNumberofItems = Integer.parseInt(numberofItems.getText().toString());
+        np.setMinValue(0);
+        np.setMaxValue(10);
+        np.setWrapSelectorWheel(false);
 
-        Log.i("tag", "getNumberof Items  " + getNumberofItems);
-        /******************************************************************
-         * Listen to + and  - button
-         ******************************************************************/
-
-        Button plusButton = (Button) view.findViewById((R.id.plusBtn));
-        plusButton.setOnClickListener(new View.OnClickListener() {
+        np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                noOfItemsTextview = (TextView) view.findViewById(R.id.no_of_items);
+                noOfItemsTextview.setText(String.valueOf(newVal));
+                int noofitems = Integer.parseInt(noOfItemsTextview.getText().toString());
+                double price = Double.parseDouble(getItemPrice); // give 2 decimal places
 
-                String item_name = itemIdTextView.getText().toString();
-                int item_id = Integer.parseInt(Integer.toString(((SubMenuData) (menuItems.get(position))).getID()));
-               if(getNumberofItems == 0){ pluscount = 1;}
-                else{ pluscount = pluscount + getNumberofItems;}
-                Log.i("tag", "pluscount Items  " + pluscount);
+                //set the item price = (price * no of items)
+                TextView itempriceTextview = (TextView) view.findViewById(R.id.cost);
+                double eachItemcost = price * noofitems;
+
+                itempriceTextview.setText(String.format("%.2f", eachItemcost));
+
+                // store Table 1, item name, price and no of items
+                // into HashMap
+                // display the list here
 
 
-                    //check if key exists
-                    if(noOfItems.containsKey(item_id)){ // if item_id found then
+                // creates dynamic scrollView in SubmenuActivity to display
 
-                        noOfItems.put(item_id, pluscount);
-                        numberofItems.setText(Integer.toString(pluscount));
-                        Log.i("tag", "display  " +  noOfItems.get(item_id));
-
-                    }
-                    else
-                    {
-                        noOfItems.put(item_id,pluscount);
-                    }
+                ScrollView scrl  = (ScrollView) view.findViewById(R.id.scrollview);
+                TextView display = new TextView(context);
+               // TextView display = (TextView) view.findViewById(R.id.orderedlist);
+//                final LinearLayout ll = new LinearLayout(context);
+//                ll.setOrientation(LinearLayout.VERTICAL);
+                    display.setText("fasdfa" + "  " +  "rere");
+               // display.setMovementMethod(new ScrollingMovementMethod());
 
 
 
             }
         });
-        Button minuButton = (Button) view.findViewById((R.id.minusBtn));
 
+
+        /***************************
+         * get total item numbers from the noOfItems_editText
+         ***********************/
+//        final EditText noOfItems = (EditText) view.findViewById(R.id.noOfItems_editText);
+//        noOfItems.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+////                int numberofItems = Integer.parseInt(noOfItems.getText().toString()); // convert String to int
+////                Log.i("no", "no of items  " +  numberofItems);
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//               int numberofItems = Integer.parseInt(noOfItems.getText().toString()); // convert String to int
+//                Log.i("no", "no of items  " +  numberofItems);
+//
+//
+//            }
+//        });
+
+
+        //priceTextview = (TextView) findViewById(R.id.cost);
+        //noOfItems = (TextView) findViewById(R.id.no_of_items);
+
+
+//        try {
+//            int iniItemCost = getIntentOld("iniPrice").getExtras().getInt("iniPrice");
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        }
+
+//        final TextView numberofItems = (TextView) view.findViewById(R.id.no_of_items);
+//
+//        final int getNumberofItems = Integer.parseInt(numberofItems.getText().toString());
+//
+//       // Log.i("tag", "getNumberof Items  " + getNumberofItems);
+//        /******************************************************************
+//         * Listen to + and  - button
+//         ******************************************************************/
+//
+//        Button plusButton = (Button) view.findViewById((R.id.plusBtn));
+//        plusButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                String item_name = itemIdTextView.getText().toString();
+//                int item_id = Integer.parseInt(Integer.toString(((SubMenuData) (menuItems.get(position))).getID()));
+//               if(getNumberofItems == 0){ pluscount = 1;}
+//                else{ pluscount = pluscount + getNumberofItems;}
+//                Log.i("tag", "pluscount Items  " + pluscount);
+//
+//
+//                    //check if key exists
+//                    if(noOfItems.containsKey(item_id)){ // if item_id found then
+//
+//                        noOfItems.put(item_id, pluscount);
+//                        numberofItems.setText(Integer.toString(pluscount));
+//                        Log.i("tag", "display  " +  noOfItems.get(item_id));
+//
+//                    }
+//                    else
+//                    {
+//                        noOfItems.put(item_id,pluscount);
+//                    }
+//
+//
+//
+//            }
+//        });
+//        Button minuButton = (Button) view.findViewById((R.id.minusBtn));
+//
 
 //
 //        minuButton.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +237,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
          *****************************/
 
 //        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativeLayout1);
-        ScrollView sv = new ScrollView(context);
 //        sv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 //        LinearLayout l1 = new LinearLayout(context);
 //        l1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));

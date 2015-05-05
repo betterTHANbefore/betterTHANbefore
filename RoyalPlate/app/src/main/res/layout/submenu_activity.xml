@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <!-- Submenu Title Appears here -->
-        <LinearLayout
+        <RelativeLayout
             android:layout_margin="20dp"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -49,8 +49,17 @@
                 android:textSize="65sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tableNumber"
+                android:layout_below="@+id/submenuTitle_textview"
+                android:layout_gravity="center"
+                android:textColor="@color/antiquewhite"
+                android:textSize="45dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <!-- Icon 2 -->
         <LinearLayout
@@ -87,6 +96,8 @@
             <ListView
                 android:id="@+id/itemlist"
                 android:layout_marginLeft="100dp"
+                android:descendantFocusability="afterDescendants"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
@@ -133,16 +144,18 @@
                     <!--android:layout_width="match_parent"-->
                     <!--android:layout_height="match_parent" ></fragment>-->
 
-            <TextView
-                android:text="@string/orderedItems_textview"
-                android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textColor="@color/antiquewhite"
-                android:textSize="35sp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <!--<TextView-->
+                <!--android:id="@+id/orderedID"-->
+                <!--android:text="@string/orderedItems_textview"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/antiquewhite"-->
+                <!--android:textSize="35sp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
 
             <!--<ScrollView-->
                 <!--android:layout_width="match_parent"-->

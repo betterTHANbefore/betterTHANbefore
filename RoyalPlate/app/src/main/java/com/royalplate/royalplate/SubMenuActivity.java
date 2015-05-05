@@ -28,15 +28,16 @@ public class SubMenuActivity extends FragmentActivity {
 
     ListView listview;
     SubMenuAdapter menuAdapter;
-
+String tableNumber;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submenu_activity);
-        Log.i("HETLE", "SUEE");
         listview = (ListView) findViewById(R.id.itemlist);
 
         TextView subMenuTitle;
+        TextView tableNo;
         Button goToMenuBtn;
         String title;
         /*****************************************************************
@@ -45,10 +46,16 @@ public class SubMenuActivity extends FragmentActivity {
          * ImageView for tp set the images according to submenu to left
          * and right
          ****************************************************************/
-        subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
 
+        subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
+        subMenuTitle.setText(getIntent().getExtras().getString("title") + "    "+ getIntent().getExtras().getString("tableNo"));
+
+       tableNumber = getIntent().getExtras().getString("tableNo"); // pass table no to adapter
+
+
+       // tableNo = (TextView) findViewById(R.id.tableNo_textview);
         // lumpped text -> needs to get prettier
-        subMenuTitle.setText(getIntent().getExtras().getString("title") + " " + getIntent().getExtras().getString("table no"));
+      //  tableNo.setText(getIntent().getExtras().getString("tableNo"));
 
         ImageView icon_right = (ImageView) findViewById(R.id.imageRight_icon);
         ImageView icon_left = (ImageView) findViewById(R.id.imageLeft_icon);
@@ -152,17 +159,31 @@ public class SubMenuActivity extends FragmentActivity {
         // this contains OrderListFragment class
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.fragmentContainer, new OrderListFragment()).commit();
-//        Log.i("FRAGMENT", "MANNGEEEEE");
+
+//
+//        Intent subMenuIntent = new Intent(SubMenuActivity.this, SubMenuAdapter.class);
+//
+//        int itemCost = getIntent().getExtras().getInt("iniPrice");
+//        subMenuIntent.putExtra("iniPrice", itemCost);
+//        int noItem = getIntent().getExtras().getInt("iniNoOfItem");
+//        subMenuIntent.putExtra("iniNoOfItem", noItem);
+       // startActivity(subMenuIntent);
+
     }
 
     private void loadItems(String str) {
+             final int itemCost = getIntent().getExtras().getInt("iniPrice");
+
         final ParseQuery<ParseObject> items = ParseQuery.getQuery(str);
         items.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> items, ParseException e) {
-                menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items);
+                menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items, itemCost, tableNumber );
                 listview.setAdapter(menuAdapter);
             }
         });
     }
+
 }
+
+

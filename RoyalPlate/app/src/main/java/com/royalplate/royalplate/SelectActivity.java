@@ -34,7 +34,7 @@ public class SelectActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                Intent hostessIntent = new Intent(getApplicationContext(), HostessActivity.class);
+                Intent hostessIntent = new Intent(SelectActivity.this, HostessActivity.class);
 
 
                 startActivity(hostessIntent);

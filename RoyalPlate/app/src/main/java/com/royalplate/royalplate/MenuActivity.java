@@ -65,9 +65,11 @@ public class MenuActivity extends Activity{
                 final  String menuItemName = listBtn.getText().toString();
                 String tableNum = getIntent().getExtras().getString("table no");
 
+
                 listviewIntent.putExtra("title", menuItemName);
 
-                listviewIntent.putExtra("table no", tableNum);
+                listviewIntent.putExtra("tableNo", tableNum);
+
                 startActivity(listviewIntent);
 
                 Log.v("value ", "result is " + menuItemName);

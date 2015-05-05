@@ -1,7 +1,9 @@
 package com.royalplate.royalplate.adapter;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -46,7 +48,7 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
     private PopupWindow popup;
     ListView waiterListview;
     WaiterAdapter waiterAdapter;
-    int i=0;
+    AlertDialog.Builder dialogbuilder;
 
     public TableAdapter(Context context, List<TablesData> objects) {
         super(context, R.layout.listview_tables, objects);
@@ -61,6 +63,7 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.listview_tables, parent, false);
+        Log.i("size" ,  "" + "passed");
 
         final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
             tableButton.setText(tableslist.get(position).getTable().toString());
@@ -68,6 +71,9 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
             tableButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+
 
 
                     final ParseQuery<WaiterData> waiters = new ParseQuery<WaiterData>( "WaiterParse");
@@ -87,8 +93,6 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
 
                             Log.i("size" ,  "" + waiterdata.size());
 
-                            Log.i("size" ,  "" + waiterdata.toArray().length);
-
 
                             waiterListview = (ListView) view.findViewById(R.id.waiterslist);
 //                            waiterAdapter = new WaiterAdapter(context, (List<WaiterData>) waiters);
@@ -97,25 +101,48 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
                                 CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
                                     waitercheckbox.setText(waiterdata.get(0).getWaiter());
 
+//
+                            dialogbuilder = new AlertDialog.Builder(context);
+                            dialogbuilder.setView(view)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                                popup = new PopupWindow(view, 300, 470, true);
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id){
 
-                              //  popup.setBackgroundDrawable(d);
+                                        }
 
-                                popup.setOutsideTouchable(true);
-                                popup.setTouchable(true);
-                                popup.setFocusable(true);
-                                //the pop-up will be dismissed if touch event occurs anywhere outside its window
-                                popup.setTouchInterceptor(new View.OnTouchListener() {
-                                    public boolean onTouch(View v, MotionEvent event) {
-                                    if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                                        popup.dismiss();
-                                        return true;
-                                    }
-                                    return false;
-                                    }
-                                });
-                                popup.showAtLocation(view, Gravity.CENTER, 0, 0);
+                                    });
+                         dialogbuilder.create();
+
+
+
+
+
+
+
+
+//                                popup = new PopupWindow(view, 300, 470, true);
+//
+//                              //  popup.setBackgroundDrawable(d);
+//
+//                                popup.setOutsideTouchable(true);
+//                                popup.setTouchable(true);
+//                                popup.setFocusable(true);
+//                                //the pop-up will be dismissed if touch event occurs anywhere outside its window
+//                                popup.setTouchInterceptor(new View.OnTouchListener() {
+//                                    public boolean onTouch(View v, MotionEvent event) {
+//                                    if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
+//                                        popup.dismiss();
+//                                        return true;
+//                                    }
+//                                    return false;
+//                                    }
+//                                });
+//                                popup.showAtLocation(view, Gravity.CENTER, 0, 0);
 
                             } catch (Exception e) {
                                 e.printStackTrace();

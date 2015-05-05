@@ -1,6 +1,7 @@
 package com.royalplate.royalplate;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.GridView;
 import android.app.Activity;
 import android.widget.ListView;
@@ -34,8 +35,8 @@ public class HostessActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hostess_activity);
     //    setContentView(R.layout.testing_waiter);
-//
-       loadTables();
+
+        loadTables();
 //        loadWaiters();
 
         //loaddata();
@@ -59,7 +60,7 @@ public class HostessActivity extends Activity {
 //
 //            }
 //        });
-        waiterlistview = (ListView) findViewById(R.id.waiterslist_right);
+        //waiterlistview = (ListView) findViewById(R.id.waiterslist_right);
 //        waiterlistview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 //
 //            @Override
@@ -149,6 +150,7 @@ public class HostessActivity extends Activity {
 //
 //
     private void loadTables() {
+
             final ParseQuery<TablesData> tables = ParseQuery.getQuery("TablesParse");
             tables.findInBackground(new FindCallback<TablesData>() {
 
@@ -159,8 +161,10 @@ public class HostessActivity extends Activity {
 
 
                 }
+
             });
-        }
+
+    }
 
 //        private void loaddata(){
 //
