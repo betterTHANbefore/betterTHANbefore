@@ -21,7 +21,6 @@ import com.parse.ParseQuery;
 import com.royalplate.royalplate.HostessActivity;
 import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.HostessData;
-import com.royalplate.royalplate.data.SubMenuData;
 
 import java.util.List;
 

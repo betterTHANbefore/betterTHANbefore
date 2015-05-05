@@ -33,6 +33,7 @@ public class SubMenuActivity extends FragmentActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submenu_activity);
+        Log.i("HETLE", "SUEE");
         listview = (ListView) findViewById(R.id.itemlist);
 
         TextView subMenuTitle;
