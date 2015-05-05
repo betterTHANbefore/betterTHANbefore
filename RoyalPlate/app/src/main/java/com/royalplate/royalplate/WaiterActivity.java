@@ -2,45 +2,75 @@ package com.royalplate.royalplate;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.ListView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.royalplate.royalplate.adapter.WaiterAdapter;
+import com.royalplate.royalplate.data.WaiterData;
+
+import java.util.List;
 
 
 public class WaiterActivity extends ActionBarActivity {
-
-
-    private Spinner tableSpinner;
-    private static final String[]tables = {"Choose Table#","Table 1","Table 2","Table 3","Table 4" };
-    private Button menuButton;
+    WaiterAdapter waiterAdapter;
+  ListView waiterlistview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.royalplate_setting_activity);
+        setContentView(R.layout.waiter_activity);
+        loadWaitersses();
 
 
-        tableSpinner = (Spinner)findViewById(R.id.table_spinner);
-        ArrayAdapter<String> tableAdapter = new ArrayAdapter<String>(WaiterActivity.this,android.R.layout.simple_spinner_item,tables);
-
-        tableAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        tableSpinner.setAdapter(tableAdapter);
-        // tableSpinner.setOnItemClickListener(this);
 
 
-        /*******************************************************
-         * Go to Menu button listener switchs to Menu Items UI
-         ******************************************************/
-        menuButton = (Button)findViewById(R.id.menuBtn);
-        menuButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+//
+//        tableSpinner = (Spinner)findViewById(R.id.table_spinner);
+//        ArrayAdapter<String> tableAdapter = new ArrayAdapter<String>(WaiterActivity.this,android.R.layout.simple_spinner_item,tables);
+//
+//        tableAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+//        tableSpinner.setAdapter(tableAdapter);
+//        // tableSpinner.setOnItemClickListener(this);
+//
+//
+//        /*******************************************************
+//         * Go to Menu button listener switchs to Menu Items UI
+//         ******************************************************/
+//        menuButton = (Button)findViewById(R.id.menuBtn);
+//        menuButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent menuUI = new Intent(getApplicationContext(),Menu_Items_Activity.class );
+////                startActivity(menuUI);
+//            }
+//        });
+//
+
+
+    }
+
+    private void loadWaitersses() {
+
+
+
+
+
+        final ParseQuery<WaiterData> waiter_hostess = ParseQuery.getQuery("User");
+        waiter_hostess.findInBackground(new FindCallback<WaiterData>() {
+
             @Override
-            public void onClick(View v) {
-//                Intent menuUI = new Intent(getApplicationContext(),Menu_Items_Activity.class );
-//                startActivity(menuUI);
+            public void done(List<WaiterData> waiter_hostess, ParseException e) {
+                waiterAdapter = new WaiterAdapter(WaiterActivity.this, waiter_hostess);
+                waiterlistview.setAdapter(waiterAdapter);
+
+
             }
         });
-
 
 
     }
