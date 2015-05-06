@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,17 +20,58 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.royalplate.royalplate.adapter.SubMenuAdapter;
 
 /**
  * Created by hetu on 4/11/15.
  */
-public class SubMenuActivity extends FragmentActivity {
+public class SubMenuActivity extends FragmentActivity implements SimpleGestureFilter.SimpleGestureListener{
 
     ListView listview;
     SubMenuAdapter menuAdapter;
-String tableNumber;
+    String tableNumber;
+
+    private SimpleGestureFilter detector;
+    private boolean rightSwipeFlag = false;
+
+    @Override
+    public void onSwipe(int direction) {
+        String str = "";
+
+        switch (direction) {
+
+            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
+                Log.i("SWIPE","TO THE RIGHT");
+                break;
+            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
+                break;
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+                break;
+            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
+                break;
+        }
+
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+
+        // We only care about right swipe that intents to go back to MenuActivity
+
+        if (direction == SimpleGestureFilter.SWIPE_RIGHT) {
+            Intent intent = new Intent(this, MenuActivity.class);
+            intent.putExtra("table no", "1");
+            intent.putExtra("iniPrice" , 0);
+            intent.putExtra("iniNoOfItem", 0);
+            startActivity(intent);
+        }
+
+    }
+
+    @Override
+    public void onDoubleTap() {
+
+    }
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
@@ -48,14 +91,11 @@ String tableNumber;
          ****************************************************************/
 
         subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
+        // TO DO : below need to be made pretty
         subMenuTitle.setText(getIntent().getExtras().getString("title") + "    "+ getIntent().getExtras().getString("tableNo"));
 
-       tableNumber = getIntent().getExtras().getString("tableNo"); // pass table no to adapter
+        tableNumber = getIntent().getExtras().getString("tableNo"); // pass table no to adapter
 
-
-       // tableNo = (TextView) findViewById(R.id.tableNo_textview);
-        // lumpped text -> needs to get prettier
-      //  tableNo.setText(getIntent().getExtras().getString("tableNo"));
 
         ImageView icon_right = (ImageView) findViewById(R.id.imageRight_icon);
         ImageView icon_left = (ImageView) findViewById(R.id.imageLeft_icon);
@@ -160,19 +200,20 @@ String tableNumber;
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.fragmentContainer, new OrderListFragment()).commit();
 
-//
-//        Intent subMenuIntent = new Intent(SubMenuActivity.this, SubMenuAdapter.class);
-//
-//        int itemCost = getIntent().getExtras().getInt("iniPrice");
-//        subMenuIntent.putExtra("iniPrice", itemCost);
-//        int noItem = getIntent().getExtras().getInt("iniNoOfItem");
-//        subMenuIntent.putExtra("iniNoOfItem", noItem);
-       // startActivity(subMenuIntent);
+
+        // Detect touched area
+        detector = new SimpleGestureFilter(this,this);
 
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        this.detector.onTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
+    }
+
     private void loadItems(String str) {
-             final int itemCost = getIntent().getExtras().getInt("iniPrice");
+        final int itemCost = getIntent().getExtras().getInt("iniPrice");
 
         final ParseQuery<ParseObject> items = ParseQuery.getQuery(str);
         items.findInBackground(new FindCallback<ParseObject>() {

@@ -1,15 +1,26 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -19,20 +30,69 @@ import com.royalplate.royalplate.data.MainMenuData;
 
 import java.util.List;
 
+
+
 /**
  * Created by hetu on 4/9/15.
  */
-public class MenuActivity extends Activity{
+public class MenuActivity extends Activity implements SimpleGestureFilter.SimpleGestureListener {
 
     ListView listview;
     GridView gridview;
     MainMenuAdapter mainMenuAdapter;
 
     private Button orderedButton;
-
     private TextView tableNumView;
+    private String menuItemName;
+    private String tableNum;
 
-//    int tableNum = getIntent().getIntExtra("table no");
+
+    private SimpleGestureFilter detector;
+    private boolean leftSwipeFlag = false;
+
+    @Override
+    public void onSwipe(int direction) {
+        String str = "";
+
+        switch (direction) {
+
+            case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
+                break;
+            case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
+                Log.i("SWIPE","TO THE LEFT");
+                break;
+            case SimpleGestureFilter.SWIPE_DOWN :  str = "Swipe Down";
+                break;
+            case SimpleGestureFilter.SWIPE_UP :    str = "Swipe Up";
+                break;
+        }
+
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+
+
+
+//        if (direction == SimpleGestureFilter.SWIPE_LEFT)
+//            leftSwipeFlag = true;
+
+
+
+        // We only care about left swipe that intents to go to SubMenuActivity
+        if (direction == SimpleGestureFilter.SWIPE_LEFT) {
+            Intent intent = new Intent(this, SubMenuActivity.class);
+            intent.putExtra("title", "menuItemName");
+            intent.putExtra("tableNo", "tableNum");
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onDoubleTap() {
+        Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
+    }
+
+    private static final String DEBUG_TAG = "Gestures";
+    private GestureDetectorCompat mDetector;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -62,21 +122,29 @@ public class MenuActivity extends Activity{
                 Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
 
                 Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
-                final  String menuItemName = listBtn.getText().toString();
-                String tableNum = getIntent().getExtras().getString("table no");
-
-
+                menuItemName = listBtn.getText().toString();
+                tableNum = getIntent().getExtras().getString("table no");
                 listviewIntent.putExtra("title", menuItemName);
-
                 listviewIntent.putExtra("tableNo", tableNum);
-
                 startActivity(listviewIntent);
 
                 Log.v("value ", "result is " + menuItemName);
-                //  Log.i("item", "Position " + position);
             }
         });
+
+
+        // Detect touched area
+        detector = new SimpleGestureFilter(this,this);
+
+
     }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        this.detector.onTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
+    }
+
 
     /*************************************************************************************
      * This function loads the data from the parse, where the class is
@@ -90,14 +158,12 @@ public class MenuActivity extends Activity{
             @Override
             public void done(List<MainMenuData> mainMenuItems, ParseException e) {
                 mainMenuAdapter = new MainMenuAdapter(MenuActivity.this, mainMenuItems);
-
-               // listview.setAdapter(mainMenuAdapter);
-        // listview.setAdapter(mainMenuAdapter);
                 gridview.setAdapter(mainMenuAdapter);
 
             }
         });
     }
+
 
 }
 
