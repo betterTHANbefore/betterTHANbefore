@@ -10,7 +10,7 @@ import com.parse.ParseObject;
 @ParseClassName("WaiterParse")
 
 //public class WaiterData extends HostessData{
- public class WaiterData extends ParseObject{
+public class WaiterData extends ParseObject{
 
 
         public WaiterData(){}
@@ -30,8 +30,8 @@ import com.parse.ParseObject;
 //    }
 //    public void setUser(String user){
 //        put("username", user);
-
-   // }
+//
+//   }
 }
 
 

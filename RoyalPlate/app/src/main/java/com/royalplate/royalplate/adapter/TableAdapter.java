@@ -45,6 +45,9 @@ import static com.royalplate.royalplate.R.id.waiterslist_right;
 public class TableAdapter extends ArrayAdapter<TablesData>{
     List<TablesData> tableslist;
     Context context;
+
+
+
     private PopupWindow popup;
     ListView waiterListview;
     WaiterAdapter waiterAdapter;
@@ -63,60 +66,65 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.listview_tables, parent, false);
+
         Log.i("size" ,  "" + "passed");
 
-        final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
-            tableButton.setText(tableslist.get(position).getTable().toString());
+//        final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
+//            tableButton.setText(tableslist.get(position).getTable().toString());
 
-            tableButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
+        final CheckBox tableButton = (CheckBox) view.findViewById((R.id.tableBtn));
+        tableButton.setText(tableslist.get(position).getTable().toString());
 
 
 
 
-                    final ParseQuery<WaiterData> waiters = new ParseQuery<WaiterData>( "WaiterParse");
-                     waiters.addAscendingOrder("WaiterName");
 
-
-                    waiters.findInBackground(new FindCallback<WaiterData>() {
-
-                    @Override
-                    public void done(List<WaiterData> waiterdata, com.parse.ParseException ee) {
-                        try {
-                            waiterdata = waiters.find();
-
-                                LayoutInflater inflater = (LayoutInflater) context
-                                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                View view = inflater.inflate(R.layout.listview_waiter, parent, false);
-
-                            Log.i("size" ,  "" + waiterdata.size());
-
-
-                            waiterListview = (ListView) view.findViewById(R.id.waiterslist);
-//                            waiterAdapter = new WaiterAdapter(context, (List<WaiterData>) waiters);
-//                            waiterListview.setAdapter(waiterAdapter);
-
-                                CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
-                                    waitercheckbox.setText(waiterdata.get(0).getWaiter());
+//            tableButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                  final ParseQuery<WaiterData> waiters = new ParseQuery<WaiterData>( "WaiterParse");
+//                     waiters.addAscendingOrder("WaiterName");
+//
+//
+//                    waiters.findInBackground(new FindCallback<WaiterData>() {
+//
+//                    @Override
+//                    public void done(List<WaiterData> waiterdata, com.parse.ParseException ee) {
+//                        try {
+//
+//                                LayoutInflater inflater = (LayoutInflater) context
+//                                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                //                View dialogview = inflater.inflate(R.layout.listview_waiter, parent, false);
+//
+//                            View dialogview = inflater.inflate(R.layout.testing_waiter, parent, false);
+//
+//
+//                            waiterListview = (ListView) dialogview.findViewById(R.id.waiterslist);
+////                            waiterAdapter = new WaiterAdapter(context, (List<WaiterData>) waiters);
+////                            waiterListview.setAdapter(waiterAdapter);
+//
+//                                CheckBox waitercheckbox = (CheckBox) dialogview.findViewById((R.id.waiterchkbox));
+//                                    waitercheckbox.setText(waiterdata.get(position).getWaiter());
 
 //
-                            dialogbuilder = new AlertDialog.Builder(context);
-                            dialogbuilder.setView(view)
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    })
-                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id){
-
-                                        }
-
-                                    });
-                         dialogbuilder.create();
+//                            dialogbuilder = new AlertDialog.Builder(context);
+//                            dialogbuilder.setTitle("Select Waiter");
+//                            dialogbuilder.setView(dialogview)
+//                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//
+//                                        }
+//                                    })
+//                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                                        public void onClick(DialogInterface dialog, int id){
+//
+//                                        }
+//
+//                                    });
+//                            dialogbuilder.create();
+//                            dialogbuilder.show();
 
 
 
@@ -143,15 +151,15 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
 //                                    }
 //                                });
 //                                popup.showAtLocation(view, Gravity.CENTER, 0, 0);
+//
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                        });
 
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        });
-
-                }
-      });
+              //  }
+    //  });
       return view;
     }
 }

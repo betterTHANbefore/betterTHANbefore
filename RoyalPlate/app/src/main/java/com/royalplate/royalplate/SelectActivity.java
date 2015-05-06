@@ -78,6 +78,7 @@ public class SelectActivity extends ActionBarActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menubar_icon, menu);
         menu.add("RoyalPlate");
+
         return super.onCreateOptionsMenu(menu);
     }
 

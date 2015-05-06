@@ -61,7 +61,7 @@ public class OrderListFragment extends Fragment {
                 // temporaly going back to MenuActivity
                 Intent orderBtnIntent = new Intent(v.getContext(), OrderSucceedActivity.class);
 //                orderBtnIntent.putExtra("table no", 1);
-                String tableNum = getActivity().getIntent().getExtras().getString("table no");
+                String tableNum = getActivity().getIntent().getExtras().getString("tableNo");
                 orderBtnIntent.putExtra("table no", tableNum);
                 startActivity(orderBtnIntent);
             }

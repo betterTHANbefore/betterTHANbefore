@@ -1,53 +1,30 @@
 package com.royalplate.royalplate.adapter;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import android.content.Intent;
 
 import com.parse.ParseObject;
-import com.royalplate.royalplate.CountItems;
 import com.royalplate.royalplate.OrderedItem;
 import com.royalplate.royalplate.R;
-import com.royalplate.royalplate.SubMenuActivity;
-import com.royalplate.royalplate.data.MenuData;
 import com.royalplate.royalplate.data.SubMenuData;
-import android.view.ViewGroup.LayoutParams;
-
-import org.w3c.dom.Text;
-
-import static android.content.Intent.getIntent;
-import static android.content.Intent.getIntentOld;
-import static android.support.v4.app.NotificationCompat.getExtras;
-import static com.royalplate.royalplate.R.layout.fragment_orderlist;
 
 
 /**
  * Created by hetu on 4/23/15.
  */
-public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
+public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
     Context context;
     List<ParseObject> menuItems;
@@ -56,8 +33,10 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
     int pluscount = 0;
     int minuscount = 0;
 
-    TextView noOfItemsTextview;
+  //  TextView noOfItemsTextview;
+   EditText noOfItemsTextview;
    List<OrderedItem> orderedList;
+//    TextView itemTextView;
 
 
 
@@ -79,6 +58,8 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
 
         final String getItemPrice;
         String getItemID;
+       final TextView itemTextView;
+
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -90,7 +71,8 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
         itemIdTextView.setText(getItemID);
 
         // view ItemName
-        final TextView itemTextView = (TextView) view.findViewById((R.id.itemName));
+
+        itemTextView = (TextView) view.findViewById((R.id.itemName));
 
         itemTextView.setText(((SubMenuData) (menuItems.get(position))).getName());
 
@@ -110,38 +92,95 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject> {
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                noOfItemsTextview = (TextView) view.findViewById(R.id.no_of_items);
+             noOfItemsTextview = (EditText) view.findViewById(R.id.no_of_items);
                 noOfItemsTextview.setText(String.valueOf(newVal));
+
+
                 int noofitems = Integer.parseInt(noOfItemsTextview.getText().toString());
                 double price = Double.parseDouble(getItemPrice); // give 2 decimal places
 
                 //set the item price = (price * no of items)
-                TextView itempriceTextview = (TextView) view.findViewById(R.id.cost);
+
+                final TextView itempriceTextview = (TextView) view.findViewById(R.id.cost);
                 double eachItemcost = price * noofitems;
 
                 itempriceTextview.setText(String.format("%.2f", eachItemcost));
 
                 // store Table 1, item name, price and no of items
+
                 // into HashMap
                 // display the list here
 
 
                 // creates dynamic scrollView in SubmenuActivity to display
 
-                ScrollView scrl  = (ScrollView) view.findViewById(R.id.scrollview);
-                TextView display = new TextView(context);
-               // TextView display = (TextView) view.findViewById(R.id.orderedlist);
-//                final LinearLayout ll = new LinearLayout(context);
-//                ll.setOrientation(LinearLayout.VERTICAL);
-                    display.setText("fasdfa" + "  " +  "rere");
+             //   ScrollView scrl  = (ScrollView) view.findViewById(R.id.scrollview);
+
+//               // TextView display = (TextView) view.findViewById(R.id.orderedlist);
+////                final LinearLayout ll = new LinearLayout(context);
+////                ll.setOrientation(LinearLayout.VERTICAL);
+//                    display.setText("fasdfa" + "  " +  "rere");
                // display.setMovementMethod(new ScrollingMovementMethod());
+             noOfItemsTextview.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+          //  SubMenuAdapter.this.getFilter().filter(s);
 
 
 
+                String outputedText = s.toString();
+                int no = Integer.parseInt(s.toString());
+                if(no != 0) {
+                    // Log.i("NO", "Item   " + outputedText);
+//                        LinearLayout displayLinearLayout = (LinearLayout) view.findViewById(R.id.orderedLayout);
+//
+//                        TextView display = new TextView(context);
+//                        display.setText(itemIdTextView.getText());
+//                        displayLinearLayout.addView(display);
+                    Log.i("Test", "Item Name  " + itemTextView.getText() + " no of items" + outputedText);
+                }
             }
         });
 
 
+            }
+        });
+//        TextWatcher watcher = new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                String outputedText = s.toString();
+////                int no = Integer.parseInt(s.toString());
+////                if(no != 0) {
+////                    // Log.i("NO", "Item   " + outputedText);
+//////                        LinearLayout displayLinearLayout = (LinearLayout) view.findViewById(R.id.orderedLayout);
+//////
+//////                        TextView display = new TextView(context);
+//////                        display.setText(itemIdTextView.getText());
+//////                        displayLinearLayout.addView(display);
+////                    Log.i("Test", "Item Name  " + itemTextView.getText() + " no of items" + outputedText);
+////                }
+//
+//            }
+//        };
+
+//
         /***************************
          * get total item numbers from the noOfItems_editText
          ***********************/

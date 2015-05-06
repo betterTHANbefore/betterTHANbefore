@@ -48,7 +48,8 @@ public class WelcomeActivity extends ActionBarActivity {
         // Inflate the menu items for use in the action bar
        // MenuInflater inflater = getMenuInflater();
         //inflater.inflate(R.menu.menubar_icon, menu);
-        menu.add(0,0,0,"RoyalPlate").setIcon(R.drawable.ic_royalplate);
+        menu.add(" ")
+            .setIcon(R.drawable.ic_royalplate).setTitle("RoyalPlate");
         return super.onCreateOptionsMenu(menu);
     }
 

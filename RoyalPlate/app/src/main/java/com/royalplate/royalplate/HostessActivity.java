@@ -10,6 +10,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseQueryAdapter;
 import com.royalplate.royalplate.adapter.HostessAdapter;
 import com.royalplate.royalplate.adapter.TableAdapter;
 import com.royalplate.royalplate.adapter.WaiterAdapter;
@@ -26,6 +27,7 @@ public class HostessActivity extends Activity {
 
     GridView tablelistview;
     ListView waiterlistview;
+
     TableAdapter tableAdapter;
     WaiterAdapter waiterAdapter;
     HostessAdapter hostesAdapter;
@@ -34,12 +36,12 @@ public class HostessActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hostess_activity);
-    //    setContentView(R.layout.testing_waiter);
+       // setContentView(R.layout.testing_waiter);
 
         loadTables();
-//        loadWaiters();
+        loadWaiters();
 
-        //loaddata();
+      //  loaddata();
 
         tablelistview = (GridView) findViewById(R.id.tablelist_left);
 
@@ -60,7 +62,7 @@ public class HostessActivity extends Activity {
 //
 //            }
 //        });
-        //waiterlistview = (ListView) findViewById(R.id.waiterslist_right);
+        waiterlistview = (ListView) findViewById(R.id.waiterslist_right);
 //        waiterlistview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 //
 //            @Override
@@ -131,24 +133,20 @@ public class HostessActivity extends Activity {
 //        return true;
 //    }
 
-//    private void loadWaiters(){
-////        final ParseQuery<WaiterData> waiters = ParseQuery.getQuery("User");
-//        final ParseQuery<WaiterData> waiters = ParseQuery.getQuery("WaiterParse");
-//
-//        waiters.findInBackground(new FindCallback<WaiterData>() {
-//
-//            @Override
-//            public void done(List<WaiterData> waiters, ParseException e) {
-//                waiterAdapter = new WaiterAdapter(HostessActivity.this, waiters);
-//                waiterlistview.setAdapter(waiterAdapter);
-//
-//
-//
-//            }
-//        });
-//    }
-//
-//
+    private void loadWaiters(){
+       //final  ParseQuery<WaiterData> waiters = ParseQuery.getQuery("User");
+        final ParseQuery<WaiterData> waiters = ParseQuery.getQuery("WaiterParse");
+        waiters.findInBackground(new FindCallback<WaiterData>() {
+
+            @Override
+            public void done(List<WaiterData> waiters, ParseException e) {
+                waiterAdapter = new WaiterAdapter(HostessActivity.this, waiters);
+                waiterlistview.setAdapter(waiterAdapter);
+
+            }
+        });
+    }
+
     private void loadTables() {
 
             final ParseQuery<TablesData> tables = ParseQuery.getQuery("TablesParse");
@@ -159,11 +157,9 @@ public class HostessActivity extends Activity {
                     tableAdapter = new TableAdapter(HostessActivity.this, tables);
                     tablelistview.setAdapter(tableAdapter);
 
-
                 }
 
             });
-
     }
 
 //        private void loaddata(){
@@ -179,18 +175,18 @@ public class HostessActivity extends Activity {
 //
 //                }
 //            });
-//            final ParseQuery<ParseObject> waiter_hostess = ParseQuery.getQuery("WaiterParse");
-//            waiter_hostess.findInBackground(new FindCallback<ParseObject>() {
+//            final ParseQuery<ParseObject> waiters = ParseQuery.getQuery("WaiterParse");
+//            waiters.findInBackground(new FindCallback<ParseObject>() {
 //
 //                @Override
-//                public void done(List<ParseObject> waiter_hostess, ParseException e) {
-//                    hostesAdapter = new HostessAdapter(HostessActivity.this, waiter_hostess);
+//                public void done(List<ParseObject> waiters, ParseException e) {
+//                    hostesAdapter = new HostessAdapter(HostessActivity.this, waiters);
 //                    waiterlistview.setAdapter(hostesAdapter);
 //
 //
 //                }
 //            });
-    }
+//   }
 
-//}
+}
 
