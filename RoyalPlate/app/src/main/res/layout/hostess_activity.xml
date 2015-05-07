@@ -49,20 +49,32 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
+
+            android:id="@+id/fragmentContainer"
+
             android:layout_weight="3"
-            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:background="@drawable/draw_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ListView
-                android:id="@+id/waiterslist_right"
+        </RelativeLayout>
 
-                android:layout_margin="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+        <!--<LinearLayout-->
+            <!--android:layout_weight="3"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-        </LinearLayout>
+            <!--<ListView-->
+                <!--android:id="@+id/waiterslist_right"-->
+
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"/>-->
+
+        <!--</LinearLayout>-->
 
 
     </LinearLayout>

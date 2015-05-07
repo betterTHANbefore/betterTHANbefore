@@ -1,12 +1,10 @@
 package com.royalplate.royalplate;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +57,7 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
 
         if (direction == SimpleGestureFilter.SWIPE_RIGHT) {
             Intent intent = new Intent(this, MenuActivity.class);
-            intent.putExtra("table no", "1");
+            intent.putExtra("tableNo", "1");
             intent.putExtra("iniPrice" , 0);
             intent.putExtra("iniNoOfItem", 0);
             startActivity(intent);
@@ -198,13 +196,15 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
 
         // this contains OrderListFragment class
         FragmentManager fm = getFragmentManager();
+        Log.i("+++++++++++++++","SELECTED");
         fm.beginTransaction().replace(R.id.fragmentContainer, new OrderListFragment()).commit();
-
-
+        Log.i("===============","SELECTED");
         // Detect touched area
         detector = new SimpleGestureFilter(this,this);
 
     }
+
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

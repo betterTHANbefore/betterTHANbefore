@@ -41,12 +41,12 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                intent.putExtra("table no", "1");
+                intent.putExtra("tableNo", "1");
                 intent.putExtra("iniPrice" , 0);
                 intent.putExtra("iniNoOfItem", 0);
 //                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
-                Log.i("HELLO", "AHHHHHHHHHHHHHHH");
+
             }
         });
 
@@ -56,10 +56,10 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                intent.putExtra("table no", "2");
+                intent.putExtra("tableNo", "2");
 //                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
-                Log.i("HELLO", "AHHHHHHHHHHHHHHH");
+
             }
         });
 
@@ -70,10 +70,10 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                intent.putExtra("table no", "3");
+                intent.putExtra("tableNo", "3");
 //                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
-                Log.i("HELLO", "AHHHHHHHHHHHHHHH");
+
             }
         });
 

@@ -1,13 +1,9 @@
 package com.royalplate.royalplate;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.support.v4.view.GestureDetectorCompat;
-import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,11 +11,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -69,16 +60,10 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
 
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
-
-
-//        if (direction == SimpleGestureFilter.SWIPE_LEFT)
-//            leftSwipeFlag = true;
-
-
-
         // We only care about left swipe that intents to go to SubMenuActivity
         if (direction == SimpleGestureFilter.SWIPE_LEFT) {
             Intent intent = new Intent(this, SubMenuActivity.class);
+            // putExtra params need to be set up correctly accordingly what we need to pass
             intent.putExtra("title", "menuItemName");
             intent.putExtra("tableNo", "tableNum");
             startActivity(intent);
@@ -90,8 +75,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
         Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
     }
 
-    private static final String DEBUG_TAG = "Gestures";
-    private GestureDetectorCompat mDetector;
 
 
     @Override
@@ -104,7 +87,7 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
 
 //        tableNumView.setText(getIntent().getExtras().getString("table no"));
 
-        Log.i("TABLE NOOOOOO", getIntent().getExtras().getString("table no"));
+//        Log.i("TABLE NOOOOOO", getIntent().getExtras().getString("table no"));
 
 
       //  listview = (ListView) findViewById(R.id.menulist_right);
@@ -123,7 +106,7 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
 
                 Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
                 menuItemName = listBtn.getText().toString();
-                tableNum = getIntent().getExtras().getString("table no");
+                tableNum = getIntent().getExtras().getString("tableNo");
                 listviewIntent.putExtra("title", menuItemName);
                 listviewIntent.putExtra("tableNo", tableNum);
                 startActivity(listviewIntent);
@@ -132,10 +115,8 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
             }
         });
 
-
         // Detect touched area
         detector = new SimpleGestureFilter(this,this);
-
 
     }
 
@@ -163,8 +144,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
             }
         });
     }
-
-
 }
 
 
