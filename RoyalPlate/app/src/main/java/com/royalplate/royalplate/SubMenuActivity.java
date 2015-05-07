@@ -62,7 +62,6 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
             intent.putExtra("iniNoOfItem", 0);
             startActivity(intent);
         }
-
     }
 
     @Override
@@ -194,15 +193,11 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
 
         // this contains OrderListFragment class
         FragmentManager fm = getFragmentManager();
-        Log.i("+++++++++++++++","SELECTED");
         fm.beginTransaction().replace(R.id.fragmentContainer, new OrderListFragment()).commit();
-        Log.i("===============","SELECTED");
+
         // Detect touched area
         detector = new SimpleGestureFilter(this,this);
-
     }
-
-
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
@@ -222,7 +217,6 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
             }
         });
     }
-
 }
 
 

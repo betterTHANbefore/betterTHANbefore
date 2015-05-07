@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -27,11 +28,17 @@ import java.util.List;
 // This class belongs to SubMenuActivity
 public class OrderListFragment extends Fragment {
 
-    View v;
+    private View v;
+    private TextView tv;
+//    ListView lv;
 
+<<<<<<< HEAD
     String tableNumStr;
     String itemName;
     String noOfItems;
+=======
+    private String tableNumStr;
+>>>>>>> Progress in Chef
 
     @Nullable
     @Override
@@ -49,6 +56,7 @@ public class OrderListFragment extends Fragment {
 
         tableNumStr = getActivity().getIntent().getExtras().getString("tableNo");
 
+<<<<<<< HEAD
 
         TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
         tv.setText(tableNumStr);
@@ -85,6 +93,11 @@ public class OrderListFragment extends Fragment {
 
 
 
+=======
+        tv = (TextView) v.findViewById(R.id.tableNo_textview);
+        tv.setText(tableNumStr);
+
+>>>>>>> Progress in Chef
 
         final Button orderBtn = (Button) v.findViewById(R.id.orderbutton);
         orderBtn.setOnClickListener(new View.OnClickListener() {

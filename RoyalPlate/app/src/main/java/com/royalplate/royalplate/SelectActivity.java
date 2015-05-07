@@ -35,8 +35,6 @@ public class SelectActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Intent hostessIntent = new Intent(SelectActivity.this, HostessActivity.class);
-
-
                 startActivity(hostessIntent);
             }
         });
@@ -59,7 +57,6 @@ public class SelectActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent chefIntent = new Intent(getApplicationContext(), ChefActivity.class);
                 startActivity(chefIntent);
-
             }
         });
 
@@ -70,7 +67,6 @@ public class SelectActivity extends ActionBarActivity {
                 startActivity(managerIntent);
             }
         });
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,5 +77,4 @@ public class SelectActivity extends ActionBarActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
-
 }
