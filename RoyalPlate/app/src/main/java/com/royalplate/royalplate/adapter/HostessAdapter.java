@@ -32,8 +32,6 @@ public class HostessAdapter extends ArrayAdapter<ParseObject> {
 
     Context context;
     List<ParseObject> hostessData;
-    ListView waiterslistview;
-    private PopupWindow popup;
 
 
     public HostessAdapter(Context context, List<ParseObject> objects){
@@ -50,51 +48,59 @@ public class HostessAdapter extends ArrayAdapter<ParseObject> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.listview_tables, parent, false);
 
-       final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
+
+
+        final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
 
         tableButton.setText(((HostessData) (hostessData.get(position))).getTable());
-        tableButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                try {
-
-                    LayoutInflater inflater = (LayoutInflater) context
-                            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-                    View view = inflater.inflate(R.layout.listview_waiter, parent, false);
-
-
-                    CheckBox waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
-
-                    waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
-
-                    popup = new PopupWindow(view, 300, 370, true);
-                    popup.showAtLocation(view, Gravity.CENTER, 0, 0);
-                    popup.setBackgroundDrawable(new BitmapDrawable());
-                    popup.setOutsideTouchable(true);
-                    popup.setTouchable(true);
-                    popup.setFocusable(true);
-                    //the pop-up will be dismissed if touch event occurs anywhere outside its window
-                    popup.setTouchInterceptor(new View.OnTouchListener() {
-                        public boolean onTouch(View v, MotionEvent event) {
-                            if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                                popup.dismiss();
-                                return true;
-                            }
-                            return false;
-                        }
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
 
 
 
-        });
+        CheckBox waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
+        waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
+//
+//        tableButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                try {
+//
+//                    LayoutInflater inflater = (LayoutInflater) context
+//                            .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                    View view = inflater.inflate(R.layout.listview_waiter, parent, false);
+//
+//
+//                    CheckBox waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
+//
+//                    waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
+//
+//                    popup = new PopupWindow(view, 300, 370, true);
+//                    popup.showAtLocation(view, Gravity.CENTER, 0, 0);
+//                    popup.setBackgroundDrawable(new BitmapDrawable());
+//                    popup.setOutsideTouchable(true);
+//                    popup.setTouchable(true);
+//                    popup.setFocusable(true);
+//                    //the pop-up will be dismissed if touch event occurs anywhere outside its window
+//                    popup.setTouchInterceptor(new View.OnTouchListener() {
+//                        public boolean onTouch(View v, MotionEvent event) {
+//                            if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
+//                                popup.dismiss();
+//                                return true;
+//                            }
+//                            return false;
+//                        }
+//                    });
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//
+//
+//
+//        });
         return view;
     }
 //

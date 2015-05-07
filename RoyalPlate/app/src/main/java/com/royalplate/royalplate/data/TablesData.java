@@ -8,7 +8,7 @@ import com.parse.ParseObject;
  */
 @ParseClassName("TablesParse")
 public class TablesData extends ParseObject{
- //public class TablesData extends HostessData{
+// public class TablesData extends HostessData{
 
         public TablesData(){}
     public String getTable(){

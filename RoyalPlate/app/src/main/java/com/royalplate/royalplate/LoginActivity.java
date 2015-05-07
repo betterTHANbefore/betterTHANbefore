@@ -76,6 +76,11 @@ public class LoginActivity extends Activity {
                             // Start an intent for the dispatch activity
                             // Below is for without table assignment
 //                            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
+
+
+
+
                             Intent intent = new Intent(LoginActivity.this, AssignedTableActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);

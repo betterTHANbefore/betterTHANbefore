@@ -118,10 +118,14 @@
             android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <TextView
+        <EditText
             android:id="@+id/no_of_items"
             android:textStyle="bold"
+android:focusable="true"
+            android:editable="false"
 
+android:inputType="number"
+android:imeOptions="actionDone"
             android:layout_margin="9dp"
             android:paddingTop="4dp"
             android:textSize="25dp"
@@ -133,4 +137,3 @@
 
     </RelativeLayout>
 </LinearLayout>
-

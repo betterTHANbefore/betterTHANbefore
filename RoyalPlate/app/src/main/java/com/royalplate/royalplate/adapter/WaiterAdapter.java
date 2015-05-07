@@ -25,7 +25,7 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
     List<WaiterData> waiterslist;
     ListView waiterListview;
     Context context;
-PopupWindow popup;
+
     public WaiterAdapter(Context context, List<WaiterData> objects) {
         super(context, R.layout.listview_waiter, objects);
         this.context = context;
@@ -40,33 +40,12 @@ PopupWindow popup;
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.listview_waiter, parent, false);
-  waiterListview = (ListView) view.findViewById(R.id.waiterslist);
-        CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
+            waiterListview = (ListView) view.findViewById(R.id.waiterslist);
+
+            CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
             waitercheckbox.setText(waiterslist.get(position).getWaiter());
-//
-                        try{
-                        popup = new PopupWindow(view, 300, 470, true);
-                //
-                              //  popup.setBackgroundDrawable(d);
+         // waitercheckbox.setText(waiterslist.get(position).getUser());
 
-                                popup.setOutsideTouchable(true);
-                                popup.setTouchable(true);
-                               // popup.setFocusable(true);
-                                //the pop-up will be dismissed if touch event occurs anywhere outside its window
-                                popup.setTouchInterceptor(new View.OnTouchListener() {
-                                    public boolean onTouch(View v, MotionEvent event) {
-                                    if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-                                        popup.dismiss();
-                                        return true;
-                                    }
-                                    return false;
-                                    }
-                                });
-                                popup.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
         return view;
     }
 

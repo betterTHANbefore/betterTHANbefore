@@ -17,6 +17,7 @@
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+<<<<<<< HEAD
 
     <!--<TextView-->
     <!--android:text="Items"-->
@@ -29,6 +30,18 @@
         <!--android:textStyle="bold"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content" />-->
+=======
+    <TextView
+        android:id="@+id/tableNo_textview"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/brown"
+        android:hint="Table #"
+        android:textSize="30dp"
+        android:layout_below="@+id/ordertitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+>>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
 
     <!--<TextView-->
         <!--android:id="@+id/tableNo_textview"-->
@@ -41,15 +54,27 @@
 
     <ScrollView
         android:id="@+id/scrollview"
+        android:layout_below="@id/tableNo_textview"
+        android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/orderedlist"
+        <LinearLayout
+            android:id="@+id/orderedlistLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/namelabel"
-            android:textSize="25sp" />
+            <TextView
+                android:id="@+id/orderedlist"
+                android:hint="ordered list"
+
+                android:textColor="@color/antiquewhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/namelabel"
+                android:textSize="25sp" />
+
+        </LinearLayout>
 
     </ScrollView>
 

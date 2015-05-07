@@ -41,12 +41,18 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+<<<<<<< HEAD
                 intent.putExtra("tableNo", "1");
+=======
+                intent.putExtra("table no", "Table 1");
+>>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
                 intent.putExtra("iniPrice" , 0);
                 intent.putExtra("iniNoOfItem", 0);
-//                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
+<<<<<<< HEAD
 
+=======
+>>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
             }
         });
 
@@ -56,10 +62,15 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+<<<<<<< HEAD
                 intent.putExtra("tableNo", "2");
 //                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
 
+=======
+                intent.putExtra("table no", "Table 2");
+                startActivity(intent);
+>>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
             }
         });
 
@@ -70,10 +81,15 @@ public class AssignedTableActivity extends Activity {
 
 
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+<<<<<<< HEAD
                 intent.putExtra("tableNo", "3");
 //                Log.i("HELLO","AHHHHHHHHHHHHHHH");
                 startActivity(intent);
 
+=======
+                intent.putExtra("table no", "Table 3");
+                startActivity(intent);
+>>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
             }
         });
 
