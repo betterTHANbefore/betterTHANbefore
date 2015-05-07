@@ -197,6 +197,9 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
 
         // Detect touched area
         detector = new SimpleGestureFilter(this,this);
+
+//        Intent backIntent = new Intent(this, OrderListFragment.class);
+
     }
 
     @Override
