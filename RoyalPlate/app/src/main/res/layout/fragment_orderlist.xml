@@ -58,23 +58,30 @@
         android:layout_margin="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/orderedlistLayout"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/orderedlist"
+                android:id="@+id/orderedItemName"
                 android:hint="ordered list"
-
+android:layout_alignParentLeft="true"
                 android:textColor="@color/antiquewhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/namelabel"
                 android:textSize="25sp" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/orderednoOfItems"
+                android:hint="ordered list"
+android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/orderedItemName"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
 
     </ScrollView>
 

@@ -30,6 +30,8 @@ public class OrderListFragment extends Fragment {
     View v;
 
     String tableNumStr;
+    String itemName;
+    String noOfItems;
 
     @Nullable
     @Override
@@ -47,13 +49,48 @@ public class OrderListFragment extends Fragment {
 
         tableNumStr = getActivity().getIntent().getExtras().getString("tableNo");
 
+
         TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
         tv.setText(tableNumStr);
+
+//        TextView listOfitems = (TextView) v.findViewById(R.id.orderedlist);
+//
+//        Log.i("OF", itemName + "   "+ noOfItems);
+//        listOfitems.setText(itemName + " " + noOfItems);
+
+
+
+
+        /**************************************************************************
+         * getting itemName and noOfItems from Submenu Activity
+         *
+         * Go to SubMenuAdapter where actual data values are passed thru INTENT
+         **************************************************************************/
+
+        TextView noOfitemsTextview = (TextView) v.findViewById(R.id.orderednoOfItems);
+        TextView listOfitemsTextview = (TextView) v.findViewById(R.id.orderedItemName);
+
+        itemName = getActivity().getIntent().getExtras().getString("Item Name");
+        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+
+        Log.i("OF", itemName + "   "+ noOfItems);
+
+        noOfitemsTextview.setText(noOfItems);
+        listOfitemsTextview.setText(itemName);
+
+
+
+
+
+
+
+
 
         final Button orderBtn = (Button) v.findViewById(R.id.orderbutton);
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // temporaly going back to MenuActivity
                 Intent orderBtnIntent = new Intent(v.getContext(), OrderSucceedActivity.class);
 
@@ -73,8 +110,20 @@ public class OrderListFragment extends Fragment {
 //    @Override
 //    public void onActivityCreated(Bundle savedInstanceState) {
 //        super.onActivityCreated(savedInstanceState);
-//        setText();
-//        Log.i("Table NOOOOO","ACTIVITY CREATED");
+//
+//        TextView noOfitemsTextview = (TextView) v.findViewById(R.id.orderednoOfItems);
+//        TextView listOfitemsTextview = (TextView) v.findViewById(R.id.orderedItemName);
+//
+//        /**************************************************************************
+//         * getting itemName and noOfItems from Submenu Activity
+//         **************************************************************************/
+//        itemName = getActivity().getIntent().getExtras().getString("Item Name");
+//        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+//
+//        Log.i("OF", itemName + "   "+ noOfItems);
+//
+//        noOfitemsTextview.setText(noOfItems);
+//        listOfitemsTextview.setText(itemName);
 //    }
 //
 //    public void setText(){
@@ -86,4 +135,17 @@ public class OrderListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+//    public void setItemName(String itemName) {
+//        this.itemName = itemName;
+//    }
+//
+//    public String getItemName() {
+//        return itemName;
+//    }
+//
+//    public void setNoOfItems(String noOfItems) {
+//        this.noOfItems = noOfItems;
+//    }
+
 }
