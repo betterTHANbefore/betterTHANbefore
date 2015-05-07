@@ -36,7 +36,6 @@ public class OrderListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.fragment_orderlist, container, false);
-        Log.i("FRAGMET", "FROGGGGY");
 
         ParseObject poTest = new ParseObject("Table1");
         poTest.put("Test", "Mange Juice");

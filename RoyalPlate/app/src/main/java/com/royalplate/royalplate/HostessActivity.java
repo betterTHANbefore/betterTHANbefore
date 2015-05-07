@@ -1,8 +1,6 @@
 package com.royalplate.royalplate;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.GridView;
 import android.app.Activity;
@@ -24,7 +22,7 @@ import java.util.List;
 /**
  * Created by hetu on 4/12/15.
  */
-public class HostessActivity extends FragmentActivity {
+public class HostessActivity extends Activity {
 
 
     GridView tablelistview;
@@ -38,18 +36,14 @@ public class HostessActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hostess_activity);
-       // setContentView(R.layout.testing_waiter);
+        // setContentView(R.layout.testing_waiter);
 
         loadTables();
         loadWaiters();
 
-      //  loaddata();
+        //  loaddata();
 
         tablelistview = (GridView) findViewById(R.id.tablelist_left);
-
-
-        FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.fragmentContainer, new WaiterSelectorFragment()).commit();
 
 //        tablelistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
@@ -140,7 +134,7 @@ public class HostessActivity extends FragmentActivity {
 //    }
 
     private void loadWaiters(){
-       //final  ParseQuery<WaiterData> waiters = ParseQuery.getQuery("User");
+        //final  ParseQuery<WaiterData> waiters = ParseQuery.getQuery("User");
         final ParseQuery<WaiterData> waiters = ParseQuery.getQuery("WaiterParse");
         waiters.findInBackground(new FindCallback<WaiterData>() {
 
@@ -155,17 +149,17 @@ public class HostessActivity extends FragmentActivity {
 
     private void loadTables() {
 
-            final ParseQuery<TablesData> tables = ParseQuery.getQuery("TablesParse");
-            tables.findInBackground(new FindCallback<TablesData>() {
+        final ParseQuery<TablesData> tables = ParseQuery.getQuery("TablesParse");
+        tables.findInBackground(new FindCallback<TablesData>() {
 
-                @Override
-                public void done(List<TablesData> tables, ParseException e) {
-                    tableAdapter = new TableAdapter(HostessActivity.this, tables);
-                    tablelistview.setAdapter(tableAdapter);
+            @Override
+            public void done(List<TablesData> tables, ParseException e) {
+                tableAdapter = new TableAdapter(HostessActivity.this, tables);
+                tablelistview.setAdapter(tableAdapter);
 
-                }
+            }
 
-            });
+        });
     }
 
 //        private void loaddata(){
@@ -195,4 +189,3 @@ public class HostessActivity extends FragmentActivity {
 //   }
 
 }
-

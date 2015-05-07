@@ -46,7 +46,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
         String str = "";
 
         switch (direction) {
-
             case SimpleGestureFilter.SWIPE_RIGHT : str = "Swipe Right";
                 break;
             case SimpleGestureFilter.SWIPE_LEFT :  str = "Swipe Left";
@@ -75,20 +74,16 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
         Toast.makeText(this, "Double Tap", Toast.LENGTH_SHORT).show();
     }
 
-
-
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_activity);
 
-
-       tableNumView = (TextView) findViewById(R.id.table_num_view);
+        tableNumView = (TextView) findViewById(R.id.table_num_view);
 
         loadMainMenuItems();
 
         gridview = (GridView) findViewById(R.id.menulist_right);
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
       //  listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,7 +91,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent listviewIntent = new Intent(MenuActivity.this, SubMenuActivity.class);
-
                 Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
                 menuItemName = listBtn.getText().toString();
                 tableNum = getIntent().getExtras().getString("tableNo");
@@ -138,10 +132,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
         });
     }
 }
-
-
-
-
 
 
 //        final Button appetizerBtn = (Button)findViewById(R.id.haveItAll_button);
@@ -198,10 +188,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
 //
 //            }
 //        });
-
-
-
-
 
 
 
