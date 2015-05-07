@@ -85,13 +85,6 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
 
        tableNumView = (TextView) findViewById(R.id.table_num_view);
 
-//        tableNumView.setText(getIntent().getExtras().getString("table no"));
-
-//        Log.i("TABLE NOOOOOO", getIntent().getExtras().getString("table no"));
-
-
-      //  listview = (ListView) findViewById(R.id.menulist_right);
-
         loadMainMenuItems();
 
         gridview = (GridView) findViewById(R.id.menulist_right);

@@ -93,15 +93,12 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
         subMenuTitle.setText(getIntent().getExtras().getString("title") + "    "+ getIntent().getExtras().getString("tableNo"));
 
         tableNumber = getIntent().getExtras().getString("tableNo"); // pass table no to adapter
-//TextView tableno = (TextView) findViewById(R.id.tableNo_textview);
-//        tableno.setText(getIntent().getExtras().getString("tableNo"));
 
         ImageView icon_right = (ImageView) findViewById(R.id.imageRight_icon);
         ImageView icon_left = (ImageView) findViewById(R.id.imageLeft_icon);
         /***************************************************************
          * get the text from the textview
          ***************************************************************/
-        // title = subMenuTitle.getText().toString();
 
         title = getIntent().getExtras().getString("title");
 

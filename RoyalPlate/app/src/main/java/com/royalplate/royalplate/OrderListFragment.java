@@ -48,6 +48,8 @@ public class OrderListFragment extends Fragment {
 
         tableNumStr = getActivity().getIntent().getExtras().getString("tableNo");
 
+        TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
+        tv.setText(tableNumStr);
 
         final Button orderBtn = (Button) v.findViewById(R.id.orderbutton);
         orderBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,13 +57,13 @@ public class OrderListFragment extends Fragment {
             public void onClick(View v) {
                 // temporaly going back to MenuActivity
                 Intent orderBtnIntent = new Intent(v.getContext(), OrderSucceedActivity.class);
-<<<<<<< HEAD
+
                 orderBtnIntent.putExtra("tableNo", tableNumStr);
-=======
+
 //                orderBtnIntent.putExtra("table no", 1);
                 String tableNum = getActivity().getIntent().getExtras().getString("tableNo");
                 orderBtnIntent.putExtra("table no", tableNum);
->>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
+
                 startActivity(orderBtnIntent);
             }
         });
@@ -69,17 +71,17 @@ public class OrderListFragment extends Fragment {
         return v;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setText();
-        Log.i("Table NOOOOO","ACTIVITY CREATED");
-    }
-
-    public void setText(){
-        TextView tv = (TextView) getActivity().findViewById(R.id.ordertitle);
-        tv.setText(tableNumStr);
-    }
+//    @Override
+//    public void onActivityCreated(Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        setText();
+//        Log.i("Table NOOOOO","ACTIVITY CREATED");
+//    }
+//
+//    public void setText(){
+//        TextView tv = (TextView) getActivity().findViewById(R.id.ordertitle);
+//        tv.setText(tableNumStr);
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

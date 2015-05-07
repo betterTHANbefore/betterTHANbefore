@@ -162,10 +162,7 @@ public class HostessActivity extends FragmentActivity {
                 public void done(List<TablesData> tables, ParseException e) {
                     tableAdapter = new TableAdapter(HostessActivity.this, tables);
                     tablelistview.setAdapter(tableAdapter);
-<<<<<<< HEAD
-=======
 
->>>>>>> fca28326ba83e2a7a0fae3a5b1ed0d9ba79d05d5
                 }
 
             });
