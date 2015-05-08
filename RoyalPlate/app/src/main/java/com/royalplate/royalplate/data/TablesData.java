@@ -10,7 +10,7 @@ import com.parse.ParseObject;
 public class TablesData extends ParseObject{
 // public class TablesData extends HostessData{
 
-        public TablesData(){}
+    public TablesData(){}
     public String getTable(){
     return getString("TableNumber");
 }

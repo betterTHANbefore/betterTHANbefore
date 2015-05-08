@@ -18,8 +18,6 @@ public class MenuData extends ParseObject {
         put("ItemName", itemName);
     }
 
-
-
     public double getPrice() {
         return getDouble("ItemPrice");
     }

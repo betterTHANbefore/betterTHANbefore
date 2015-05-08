@@ -42,7 +42,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 //    TextView itemTextView;
 
 
-
     //Map<String, Ordered> noOfItems = new HashMap<String, Ordered>();
 
     // Context is the SubMenuActivity
@@ -102,8 +101,7 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                /*
+              /*
                 if privious is not equal to last then only update esle NOOOO
                  */
                 if (lastText != s.toString()){
@@ -114,9 +112,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
                     Log.i("test", "item name " + itemName + "  no:  " + noOfItem);
                     subMenuActivity.saveOrderedList(itemName, noOfItem);
-
-
-
 
                 /**********************************************************
                  * Sending data values to OrderListFragment class
@@ -129,11 +124,8 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
                     //context.startActivity(sendOrderedItemIntent);
 
 
+                    Log.i("test ", "item name " + itemName + "  no:  " + noOfItem);
                 }
-
-
-
-
 
             }
         });
@@ -173,7 +165,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
                 // creates dynamic scrollView in SubmenuActivity to display
 
-
             }
 
         });
@@ -194,8 +185,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
 
         return view;
-
-
     }
 
 }

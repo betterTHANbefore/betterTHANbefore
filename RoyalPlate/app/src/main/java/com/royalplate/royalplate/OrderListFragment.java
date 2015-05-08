@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -27,11 +28,20 @@ import java.util.List;
 // This class belongs to SubMenuActivity
 public class OrderListFragment extends Fragment {
 
-    View v;
+    private View v;
+    private TextView tv;
+//    ListView lv;
 
-    String tableNumStr;
+
+    //String tableNumStr;
 //    String itemName;
 //    String noOfItems;
+
+    String itemName;
+    String noOfItems;
+
+    private String tableNumStr;
+
 
     @Nullable
     @Override
@@ -49,7 +59,6 @@ public class OrderListFragment extends Fragment {
 
         tableNumStr = getActivity().getIntent().getExtras().getString("tableNo");
 
-
         TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
         tv.setText(tableNumStr);
 
@@ -57,8 +66,6 @@ public class OrderListFragment extends Fragment {
 //
 //        Log.i("OF", itemName + "   "+ noOfItems);
 //        listOfitems.setText(itemName + " " + noOfItems);
-
-
 
 
         /**************************************************************************
@@ -72,19 +79,21 @@ public class OrderListFragment extends Fragment {
 
       String  itemName = getActivity().getIntent().getExtras().getString("Item Name");
      String   noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+//        Bundle arg = getArguments();
+//        Log.i("ARGUMENT", arg.toString() );
+//        itemName = getActivity().getIntent().getExtras().getString("Item Name");
+//        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+
+        itemName = getActivity().getIntent().getExtras().getString("tableNo");
+        noOfItems = getActivity().getIntent().getExtras().getString("title");
 
         Log.i("OF", itemName + "   "+ noOfItems);
 
         noOfitemsTextview.setText(noOfItems);
         listOfitemsTextview.setText(itemName);
 
-
-
-
-
-
-
-
+        tv = (TextView) v.findViewById(R.id.tableNo_textview);
+        tv.setText(tableNumStr);
 
         final Button orderBtn = (Button) v.findViewById(R.id.orderbutton);
         orderBtn.setOnClickListener(new View.OnClickListener() {
@@ -133,8 +142,15 @@ public class OrderListFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+
+//
+//        Bundle arg = getArguments();
+//        Log.i("ARGUMENT", arg.toString() );
     }
+
 
 //    public void setItemName(String itemName) {
 //        this.itemName = itemName;

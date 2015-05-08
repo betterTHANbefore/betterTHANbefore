@@ -53,6 +53,7 @@ public class ChefActivity extends Activity {
 
         tableNumStr = getIntent().getExtras().getString("tableNum");
         int tableNum = Integer.parseInt(tableNumStr);
+
         switch (tableNum) {
             case 1:
                 // Image appears in ImageView widgets from the source file
@@ -133,6 +134,7 @@ public class ChefActivity extends Activity {
             default:
                 subMenuTitle.setText(getIntent().getExtras().getString("To go Main Manu"));
         }
+
         Button confirmBtn;
         confirmBtn = (Button) findViewById(R.id.confirmButton);
         confirmBtn.setOnClickListener(new View.OnClickListener() {
@@ -178,5 +180,4 @@ public class ChefActivity extends Activity {
             }
         });
     }
-
 }
