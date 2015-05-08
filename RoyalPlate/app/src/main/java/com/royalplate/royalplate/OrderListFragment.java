@@ -30,8 +30,8 @@ public class OrderListFragment extends Fragment {
     View v;
 
     String tableNumStr;
-    String itemName;
-    String noOfItems;
+//    String itemName;
+//    String noOfItems;
 
     @Nullable
     @Override
@@ -70,8 +70,8 @@ public class OrderListFragment extends Fragment {
         TextView noOfitemsTextview = (TextView) v.findViewById(R.id.orderednoOfItems);
         TextView listOfitemsTextview = (TextView) v.findViewById(R.id.orderedItemName);
 
-        itemName = getActivity().getIntent().getExtras().getString("Item Name");
-        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+      String  itemName = getActivity().getIntent().getExtras().getString("Item Name");
+     String   noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
 
         Log.i("OF", itemName + "   "+ noOfItems);
 

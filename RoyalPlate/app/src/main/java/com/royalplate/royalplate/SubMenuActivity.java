@@ -30,6 +30,8 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
     ListView listview;
     SubMenuAdapter menuAdapter;
     String tableNumber;
+    String itemName;
+    String noOfItems;
 
     private SimpleGestureFilter detector;
     private boolean rightSwipeFlag = false;
@@ -56,10 +58,23 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
         // We only care about right swipe that intents to go back to MenuActivity
 
         if (direction == SimpleGestureFilter.SWIPE_RIGHT) {
+
+            itemName = getIntent().getExtras().getString("Item Name");
+            noOfItems = getIntent().getExtras().getString("No of Items");
+
+
             Intent intent = new Intent(this, MenuActivity.class);
             intent.putExtra("tableNo", "1");
             intent.putExtra("iniPrice" , 0);
             intent.putExtra("iniNoOfItem", 0);
+
+//            intent.putExtra("Item Name", itemName );
+//            intent.putExtra("No of Items", noOfItems);
+//
+//
+//
+
+
             startActivity(intent);
         }
 
@@ -90,7 +105,8 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
 
         subMenuTitle = (TextView) findViewById(R.id.submenuTitle_textview);
         // TO DO : below need to be made pretty
-        subMenuTitle.setText(getIntent().getExtras().getString("title") + "    "+ getIntent().getExtras().getString("tableNo"));
+        subMenuTitle.setText(getIntent().getExtras().getString("title"));
+//        subMenuTitle.setText(getIntent().getExtras().getString("title") + "    "+ getIntent().getExtras().getString("tableNo"));
 
         tableNumber = getIntent().getExtras().getString("tableNo"); // pass table no to adapter
 
@@ -217,10 +233,35 @@ public class SubMenuActivity extends FragmentActivity implements SimpleGestureFi
         items.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> items, ParseException e) {
-                menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items, itemCost, tableNumber );
+               // menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items, itemCost, tableNumber );
+                menuAdapter = new SubMenuAdapter(SubMenuActivity.this, items, itemCost, tableNumber, SubMenuActivity.this );
+
                 listview.setAdapter(menuAdapter);
             }
         });
+    }
+
+
+
+
+    // empty constructor
+
+    public SubMenuActivity(){}
+
+
+    public void saveOrderedList(String itemname, String noOfItem){
+
+        // getting data value from SubMenuAdapter
+        // passing data value to OrderListFragment class
+
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra("Item Name", itemname);
+        intent.putExtra("No of Items", noOfItem);
+
+        startActivity(intent);
+
+
+
     }
 
 }

@@ -21,7 +21,7 @@ public class WaiterActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiter_activity);
-        loadWaitersses();
+     //   loadWaitersses();
 
 
 
@@ -54,26 +54,26 @@ public class WaiterActivity extends ActionBarActivity {
 
     }
 
-    private void loadWaitersses() {
-
-
-
-
-
-        final ParseQuery<WaiterData> waiter_hostess = ParseQuery.getQuery("User");
-        waiter_hostess.findInBackground(new FindCallback<WaiterData>() {
-
-            @Override
-            public void done(List<WaiterData> waiter_hostess, ParseException e) {
-                waiterAdapter = new WaiterAdapter(WaiterActivity.this, waiter_hostess);
-                waiterlistview.setAdapter(waiterAdapter);
-
-
-            }
-        });
-
-
-    }
+//    private void loadWaitersses() {
+//
+//
+//
+//        // Check Waiter Adapter passing variable have been changed
+//
+//        final ParseQuery<WaiterData> waiter_hostess = ParseQuery.getQuery("User");
+//        waiter_hostess.findInBackground(new FindCallback<WaiterData>() {
+//
+//            @Override
+//            public void done(List<WaiterData> waiter_hostess, ParseException e) {
+//                waiterAdapter = new WaiterAdapter(WaiterActivity.this, waiter_hostess);
+//                waiterlistview.setAdapter(waiterAdapter);
+//
+//
+//            }
+//        });
+//
+//
+//    }
 
 //
 //    @Override

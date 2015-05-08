@@ -94,11 +94,21 @@ public class MenuActivity extends Activity implements SimpleGestureFilter.Simple
                 Button listBtn  = (Button) parent.getChildAt(position).findViewById(R.id.mainmenu);
                 menuItemName = listBtn.getText().toString();
                 tableNum = getIntent().getExtras().getString("tableNo");
+
+
                 listviewIntent.putExtra("title", menuItemName);
                 listviewIntent.putExtra("tableNo", tableNum);
+
+String itemname = getIntent().getExtras().getString("Item Name");
+String noOfItem = getIntent().getExtras().getString("No of Items");
+                listviewIntent.putExtra("Item Name", itemname);
+                listviewIntent.putExtra("No of Items", noOfItem);
                 startActivity(listviewIntent);
 
                 Log.v("value ", "result is " + menuItemName);
+
+                Log.i("OF", itemname + "   "+ noOfItem);
+
             }
         });
 

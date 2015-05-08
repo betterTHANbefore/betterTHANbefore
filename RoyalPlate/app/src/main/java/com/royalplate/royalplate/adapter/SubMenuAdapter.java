@@ -34,6 +34,7 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
     List<ParseObject> menuItems;
     double itemcost;
     String tableNo;
+    SubMenuActivity subMenuActivity;
 
     //TextView noOfItemsTextview;
 //  EditText noOfItemsEditText;
@@ -46,12 +47,15 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
     // Context is the SubMenuActivity
     // objects is the list of items
-    public SubMenuAdapter(Context context, List<ParseObject> objects, double itemcost, String tableNo) {
-        super(context, R.layout.listview_item, objects);
+    public SubMenuAdapter(Context context, List<ParseObject> objects, double itemcost, String tableNo, SubMenuActivity subMenuActivity) {
+//public SubMenuAdapter(Context context, List<ParseObject> objects, double itemcost, String tableNo) {
+
+            super(context, R.layout.listview_item, objects);
         this.context = context;
         this.menuItems = objects;
         this.itemcost = itemcost;
         this.tableNo = tableNo;
+        this.subMenuActivity = subMenuActivity;
     }
 
 
@@ -85,8 +89,9 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
 
         final EditText noOfItemsEditText = (EditText) view.findViewById(R.id.no_of_items);
-        noOfItemsEditText.setText(String.valueOf(0));
-        noOfItemsEditText.addTextChangedListener(new TextWatcher() {
+
+            noOfItemsEditText.setText(String.valueOf(0));
+            noOfItemsEditText.addTextChangedListener(new TextWatcher() {
             private String lastText;
 
             @Override
@@ -97,10 +102,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //  SubMenuAdapter.this.getFilter().filter(s);
-
-                final OrderListFragment of = new OrderListFragment();
-
 
                 /*
                 if privious is not equal to last then only update esle NOOOO
@@ -111,6 +112,8 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
                     String itemName = itemNameTextView.getText().toString();
                     String noOfItem = s.toString();
 
+                    Log.i("test", "item name " + itemName + "  no:  " + noOfItem);
+                    subMenuActivity.saveOrderedList(itemName, noOfItem);
 
 
 
@@ -118,14 +121,13 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
                 /**********************************************************
                  * Sending data values to OrderListFragment class
                  *******************************************************/
-                    Intent sendOrderedItemIntent = new Intent(context, OrderListFragment.class);
+//                    Intent sendOrderedItemIntent = new Intent(context, SubMenuActivity.class);
+//
+//                    sendOrderedItemIntent.putExtra("Item Name", itemName );
+//                    sendOrderedItemIntent.putExtra("No of Items", noOfItem);
 
-                    sendOrderedItemIntent.putExtra("Item Name", itemName );
-                    sendOrderedItemIntent.putExtra("No of Items", "noOfItem");
+                    //context.startActivity(sendOrderedItemIntent);
 
-                   // context.startActivity(sendOrderedItemIntent);
-
-                    Log.i("test ", "item name " + itemName + "  no:  " + noOfItem);
 
                 }
 

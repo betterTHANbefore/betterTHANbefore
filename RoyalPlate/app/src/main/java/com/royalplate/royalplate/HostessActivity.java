@@ -1,7 +1,13 @@
 package com.royalplate.royalplate;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.app.Activity;
 import android.widget.ListView;
@@ -17,12 +23,15 @@ import com.royalplate.royalplate.adapter.WaiterAdapter;
 import com.royalplate.royalplate.data.TablesData;
 import com.royalplate.royalplate.data.WaiterData;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.view.View.OnClickListener;
 
 /**
  * Created by hetu on 4/12/15.
  */
-public class HostessActivity extends Activity {
+public class HostessActivity extends Activity implements OnClickListener {
 
 
     GridView tablelistview;
@@ -31,6 +40,9 @@ public class HostessActivity extends Activity {
     TableAdapter tableAdapter;
     WaiterAdapter waiterAdapter;
     HostessAdapter hostesAdapter;
+    Button assignedButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,12 @@ public class HostessActivity extends Activity {
         //  loaddata();
 
         tablelistview = (GridView) findViewById(R.id.tablelist_left);
+
+        /********************
+         * CheckBox listener
+         ******************/
+
+
 
 //        tablelistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
@@ -63,17 +81,11 @@ public class HostessActivity extends Activity {
 //            }
 //        });
         waiterlistview = (ListView) findViewById(R.id.waiterslist_right);
-//        waiterlistview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-//
-//                CheckBox waitercheckbox = (CheckBox) parent.getChildAt(position).findViewById(R.id.waiterchkbox);
-//                final String waitername = waitercheckbox.getText().toString();
-//
-//            }
-//
-//         });
+
+        /********************
+         * CheckBox listener
+         ******************/
+
 
 
 
@@ -96,8 +108,31 @@ public class HostessActivity extends Activity {
 //            }
 //        });
 
+        Log.i("TAg", "Assignedbutton got NOT clicked");
 
+        assignedButton = (Button) findViewById(R.id.assignedBtn);
+        assignedButton.setOnClickListener(this);
 
+//        assignedButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                /***********************************************************************************
+//                 * if assigned button is clicked, store data values from the checkboxes
+//                 **********************************************************************************/
+//              String  table = getIntent().getExtras().getString("TableNo");
+//
+//
+//
+//            Log.i("TAg", "Assignedbutton got clicked");
+//             Log.i("Tag", "Table no " + table);
+//
+//
+//
+//
+//
+//
+//            }
+//        });
 
 //
 //        findViewById(R.id.table1).setOnTouchListener(this);
@@ -140,7 +175,9 @@ public class HostessActivity extends Activity {
 
             @Override
             public void done(List<WaiterData> waiters, ParseException e) {
-                waiterAdapter = new WaiterAdapter(HostessActivity.this, waiters);
+//                waiterAdapter = new WaiterAdapter(HostessActivity.this, waiters,getBaseContext());
+                waiterAdapter = new WaiterAdapter(getBaseContext(), waiters,HostessActivity.this);
+
                 waiterlistview.setAdapter(waiterAdapter);
 
             }
@@ -154,7 +191,10 @@ public class HostessActivity extends Activity {
 
             @Override
             public void done(List<TablesData> tables, ParseException e) {
-                tableAdapter = new TableAdapter(HostessActivity.this, tables);
+               //tableAdapter = new TableAdapter(HostessActivity.this, tables);
+
+                tableAdapter = new TableAdapter(getBaseContext(), tables, HostessActivity.this);
+
                 tablelistview.setAdapter(tableAdapter);
 
             }
@@ -188,4 +228,29 @@ public class HostessActivity extends Activity {
 //            });
 //   }
 
+    public HostessActivity(){
+
+    }
+
+    public void saveTableNumber(ArrayList<String> tableNo){
+
+
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        String  table = getIntent().getExtras().getString("TableNo");
+
+
+
+        Log.i("TAg", "Assignedbutton got clicked");
+        Log.i("Tag", "Table no " + table);
+
+
+
+
+    }
 }

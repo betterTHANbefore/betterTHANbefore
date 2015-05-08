@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -33,35 +34,43 @@ import com.royalplate.royalplate.data.TablesData;
 import com.royalplate.royalplate.data.WaiterData;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.royalplate.royalplate.R.id.waiterlist;
-import static com.royalplate.royalplate.R.id.waiterslist;
-import static com.royalplate.royalplate.R.id.waiterslist_right;
 
 /**
  * Created by hetu on 5/2/15.
  */
 public class TableAdapter extends ArrayAdapter<TablesData>{
+
     List<TablesData> tableslist;
     Context context;
+    HostessActivity hostessActivity;
 
 
 
-    private PopupWindow popup;
-    ListView waiterListview;
-    WaiterAdapter waiterAdapter;
-    AlertDialog.Builder dialogbuilder;
+//    public TableAdapter(Context context, List<TablesData> objects) {
+//        super(context, R.layout.listview_tables, objects);
+//        this.context = context;
+//        this.tableslist = objects;
+//    }
 
-    public TableAdapter(Context context, List<TablesData> objects) {
+    public TableAdapter(Context context, List<TablesData> objects, HostessActivity hostessActivity) {
         super(context, R.layout.listview_tables, objects);
         this.context = context;
         this.tableslist = objects;
+        this.hostessActivity = hostessActivity;
     }
+
 
 
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent){
+
+
+       final ArrayList<String> tablenolist = new ArrayList<String>();
+
+
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -69,13 +78,47 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
 
         Log.i("size" ,  "" + "passed");
 
-//        final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
-//            tableButton.setText(tableslist.get(position).getTable().toString());
-
         final CheckBox tableButton = (CheckBox) view.findViewById((R.id.tableBtn));
         tableButton.setText(tableslist.get(position).getTable().toString());
 
+        tableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Log.i("Tag", "clicked");
 
+
+                final boolean isChecked = tableButton.isChecked();
+                // do somthing here
+                if(isChecked){
+                     String tableno = tableButton.getText().toString();
+                    tablenolist.add(tableno);
+
+                    hostessActivity.saveTableNumber(tablenolist);
+
+
+                 //   Intent tablebtnIntent = new Intent(context,HostessActivity.class);
+                  //  tablebtnIntent.putStringArrayListExtra("TableNo", tablenolist);
+//
+//                      ParseObject parseObject = new ParseObject("WaiterTable");
+//
+//                    String tableno = tableButton.getText().toString();
+//                    parseObject.put("Table No", tableno);
+//
+//
+//                    parseObject.saveInBackground();
+//
+
+
+
+
+
+                }
+
+
+
+
+            }
+        });
 
 
 
@@ -162,4 +205,9 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
     //  });
       return view;
     }
+
+
+
+
+
 }

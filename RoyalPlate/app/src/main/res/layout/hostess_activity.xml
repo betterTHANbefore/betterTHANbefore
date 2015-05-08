@@ -54,24 +54,47 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <!-- Right side -->
+<!-- RelativeLayout holds tablegrid and assignedbutton -->
+              <RelativeLayout
+                      android:layout_weight="1"
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
 
-                <GridView
-                    android:id="@+id/tablelist_left"
 
-                    android:columnWidth="10dp"
-                    android:numColumns="3"
-                    android:verticalSpacing="12dp"
-                    android:gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    <GridView
+                        android:id="@+id/tablelist_left"
 
-            </LinearLayout>
+                        android:columnWidth="10dp"
+                        android:numColumns="3"
+                        android:verticalSpacing="12dp"
+                        android:gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                  <Button
+                      android:id="@+id/assignedBtn"
+                      android:text="Assigned"
+                      android:textSize="30dp"
+                      android:textStyle="bold"
+                      android:layout_below="@+id/tablelist_left"
+
+                      android:background="@drawable/rounded_corner"
+                      android:layout_margin="20dp"
+                      android:paddingLeft="100dp"
+                      android:paddingRight="100dp"
+
+                      android:textColor="@color/antiquewhite"
+                      android:layout_width="wrap_content"
+
+                      android:layout_height="wrap_content" />
+
+
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_weight="3"

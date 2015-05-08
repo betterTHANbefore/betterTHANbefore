@@ -1,5 +1,6 @@
 package com.royalplate.royalplate.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,9 +14,12 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+import com.royalplate.royalplate.HostessActivity;
 import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.WaiterData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,16 +29,27 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
     List<WaiterData> waiterslist;
     ListView waiterListview;
     Context context;
+    HostessActivity hostessActivity;
 
-    public WaiterAdapter(Context context, List<WaiterData> objects) {
+    public WaiterAdapter(Context context, List<WaiterData> objects,HostessActivity hostessActivity) {
         super(context, R.layout.listview_waiter, objects);
         this.context = context;
         this.waiterslist = objects;
+        this.hostessActivity = hostessActivity;
     }
 
+//    public WatierAdapter(Context context, List<WaiterData> objects) {
+//         super(context, R.layout.listview_waiter, objects);
+    //    this.context = context;
+//    this.waiterslist = objects;
+//    }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
+
+
+        final ArrayList<String> waitername = new ArrayList<String>();
+
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,10 +57,37 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
         View view = inflater.inflate(R.layout.listview_waiter, parent, false);
             waiterListview = (ListView) view.findViewById(R.id.waiterslist);
 
-            CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
+            final CheckBox waitercheckbox = (CheckBox) view.findViewById((R.id.waiterchkbox));
             waitercheckbox.setText(waiterslist.get(position).getWaiter());
-         // waitercheckbox.setText(waiterslist.get(position).getUser());
 
+            waitercheckbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("Tag", "clickedW");
+
+                    final boolean isChecked = waitercheckbox.isChecked();
+                    if(isChecked) {
+                        String tableno = waitercheckbox.getText().toString();
+                        waitername.add(tableno);
+
+                        hostessActivity.saveTableNumber(waitername);
+
+                    }
+//
+//                    ParseObject parseObject = new ParseObject("WaiterTable");
+//
+//                    String tableno = waitercheckbox.getText().toString();
+//                    parseObject.put("Table No", tableno);
+//
+//
+//                    parseObject.saveInBackground();
+
+
+
+
+
+                }
+            });
         return view;
     }
 
