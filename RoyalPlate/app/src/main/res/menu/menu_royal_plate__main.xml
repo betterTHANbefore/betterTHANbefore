@@ -1,6 +1,15 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".RoyalPlate_MainActivity">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_royalplate"
+        android:title="@string/app_name"
+        android:showAsAction="ifRoom" />
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/title"
+        android:title="@string/app_name"
+        android:showAsAction="never" />
 
 </menu>

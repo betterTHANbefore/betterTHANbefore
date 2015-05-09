@@ -66,7 +66,6 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
         final TextView itemNameTextView;
 
 
-
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View view = inflater.inflate(R.layout.listview_item, parent, false);
@@ -87,49 +86,38 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
         priceTextView.setText(getItemPrice);
 
 
-        final EditText noOfItemsEditText = (EditText) view.findViewById(R.id.no_of_items);
-
-            noOfItemsEditText.setText(String.valueOf(0));
-            noOfItemsEditText.addTextChangedListener(new TextWatcher() {
-            private String lastText;
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            //
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-              /*
-                if privious is not equal to last then only update esle NOOOO
-                 */
-                if (lastText != s.toString()){
-
-
-                    String itemName = itemNameTextView.getText().toString();
-                    String noOfItem = s.toString();
-
-                    Log.i("test", "item name " + itemName + "  no:  " + noOfItem);
-                    subMenuActivity.saveOrderedList(itemName, noOfItem);
-
-                /**********************************************************
-                 * Sending data values to OrderListFragment class
-                 *******************************************************/
-//                    Intent sendOrderedItemIntent = new Intent(context, SubMenuActivity.class);
+//        final EditText noOfItemsEditText = (EditText) view.findViewById(R.id.no_of_items);
 //
-//                    sendOrderedItemIntent.putExtra("Item Name", itemName );
-//                    sendOrderedItemIntent.putExtra("No of Items", noOfItem);
-
-                    //context.startActivity(sendOrderedItemIntent);
-
-
-                    Log.i("test ", "item name " + itemName + "  no:  " + noOfItem);
-                }
-
-            }
-        });
-
+//            noOfItemsEditText.setText(String.valueOf(0));
+//            noOfItemsEditText.addTextChangedListener(new TextWatcher() {
+//            private String lastText;
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//            //
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//              /*
+//                if privious is not equal to last then only update esle NOOOO
+//                 */
+//                if (lastText != s.toString()){
+//
+//
+//                    String itemName = itemNameTextView.getText().toString();
+//                    String noOfItem = s.toString();
+//
+//                    Log.i("test1 " , "SubAdapter   " + itemName + "    " + noOfItem);
+//                    subMenuActivity.saveOrderedList(itemName, noOfItem);
+//
+//
+//                }
+//
+//            }
+//        });
+//
 
         /******
          * select no of items from the number picker
@@ -143,7 +131,7 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                //noOfItemsEditText = (EditText) view.findViewById(R.id.no_of_items);
+                final EditText noOfItemsEditText = (EditText) view.findViewById(R.id.no_of_items);
                 noOfItemsEditText.setText(String.valueOf(newVal));
 
 
@@ -165,23 +153,52 @@ public class SubMenuAdapter extends ArrayAdapter<ParseObject>  {
 
                 // creates dynamic scrollView in SubmenuActivity to display
 
+
+
+             //   noOfItemsEditText.setText(String.valueOf(0));
+                noOfItemsEditText.addTextChangedListener(new TextWatcher() {
+                    private String lastText;
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    //
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+              /*
+                if privious is not equal to last then only update esle NOOOO
+                 */
+                        if (!s.toString().equals(null)){
+
+
+                            String itemName = itemNameTextView.getText().toString();
+                            String noOfItem = s.toString();
+
+                            Log.i("test1 " , "SubAdapter   " + itemName + "    " + noOfItem);
+                            subMenuActivity.saveOrderedList(itemName, noOfItem);
+
+
+                        }
+
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
             }
 
         });
-                /*******************************
-                 * Dynamically view items on the order panel
-                 *****************************/
-
-//        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativeLayout1);
-//        sv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-//        LinearLayout l1 = new LinearLayout(context);
-//        l1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-//        l1.setOrientation(LinearLayout.VERTICAL);
-//        sv.addView(l1);
-//
-//        TextView tv = new TextView(context);
-//        tv.setText(itemTextView.getText().toString());
-//        l1.addView(tv);
 
 
         return view;

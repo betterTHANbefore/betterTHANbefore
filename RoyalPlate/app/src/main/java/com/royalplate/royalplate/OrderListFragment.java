@@ -2,15 +2,21 @@ package com.royalplate.royalplate;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.parse.FindCallback;
@@ -30,6 +36,7 @@ public class OrderListFragment extends Fragment {
 
     private View v;
     private TextView tv;
+    TextView displayList;
 //    ListView lv;
 
 
@@ -59,8 +66,8 @@ public class OrderListFragment extends Fragment {
 
         tableNumStr = getActivity().getIntent().getExtras().getString("tableNo");
 
-        TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
-        tv.setText(tableNumStr);
+//        TextView tv = (TextView) v.findViewById(R.id.tableNo_textview);
+//        tv.setText("Table " + tableNumStr);
 
 //        TextView listOfitems = (TextView) v.findViewById(R.id.orderedlist);
 //
@@ -74,26 +81,48 @@ public class OrderListFragment extends Fragment {
          * Go to SubMenuAdapter where actual data values are passed thru INTENT
          **************************************************************************/
 
-        TextView noOfitemsTextview = (TextView) v.findViewById(R.id.orderednoOfItems);
-        TextView listOfitemsTextview = (TextView) v.findViewById(R.id.orderedItemName);
 
-      String  itemName = getActivity().getIntent().getExtras().getString("Item Name");
-     String   noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+//        TextView noOfitemsTextview = (TextView) v.findViewById(R.id.orderednoOfItems);
+//        TextView listOfitemsTextview = (TextView) v.findViewById(R.id.orderedItemName);
+
+//      String  itemName = getActivity().getIntent().getExtras().getString("Item Name");
+//     String   noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
 //        Bundle arg = getArguments();
 //        Log.i("ARGUMENT", arg.toString() );
-//        itemName = getActivity().getIntent().getExtras().getString("Item Name");
-//        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
+        itemName = getActivity().getIntent().getExtras().getString("Item Name");
+        noOfItems = getActivity().getIntent().getExtras().getString("No of Items");
 
-        itemName = getActivity().getIntent().getExtras().getString("tableNo");
-        noOfItems = getActivity().getIntent().getExtras().getString("title");
+//        itemName = getActivity().getIntent().getExtras().getString("tableNo");
+//        noOfItems = getActivity().getIntent().getExtras().getString("title");
 
-        Log.i("OF", itemName + "   "+ noOfItems);
+        Log.i("OF", itemName + "  "+ noOfItems);
 
-        noOfitemsTextview.setText(noOfItems);
-        listOfitemsTextview.setText(itemName);
+//        noOfitemsTextview.setText(noOfItems);
+//        listOfitemsTextview.setText(itemName);
 
         tv = (TextView) v.findViewById(R.id.tableNo_textview);
-        tv.setText(tableNumStr);
+        tv.setText("Table " + tableNumStr);
+
+
+        /* Textview to display item name and no dinamically added to Scrollview
+
+
+         */
+        LinearLayout ll = (LinearLayout) v.findViewById(R.id.linearlayout);
+
+
+       // TextView displayList = new TextView(getActivity());
+        displayList = new TextView(getActivity());
+        displayList.setTextSize(15);
+        displayList.setTextColor(getResources().getColor(R.color.antiquewhite));
+        displayList.setTypeface(null,Typeface.BOLD);
+        displayList.setText(noOfItems+ "     " + itemName );
+
+        ll.addView(displayList);
+
+
+
+
 
         final Button orderBtn = (Button) v.findViewById(R.id.orderbutton);
         orderBtn.setOnClickListener(new View.OnClickListener() {

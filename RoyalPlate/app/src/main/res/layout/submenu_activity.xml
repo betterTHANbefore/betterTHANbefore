@@ -80,7 +80,7 @@
 
     </LinearLayout>
 
-    <!-- Big Paten - list of items and ordered item panels - 3 panels-->
+    <!-- Big Panle - list of items and ordered item panels - 3 panels-->
     <LinearLayout
         android:background="@drawable/draw_background"
         android:orientation="horizontal"
@@ -95,26 +95,26 @@
 
             <ListView
                 android:id="@+id/itemlist"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="50dp"
                 android:descendantFocusability="afterDescendants"
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
 
-            <Button
-                android:id="@+id/mainMenuBtn"
-                android:text="@string/mainMenu_button"
-                android:textSize="20sp"
-                android:layout_below="@+id/itemlist"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:textColor="@color/antiquewhite"
-                android:background="@drawable/rounded_corner"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!--<Button-->
+                <!--android:id="@+id/mainMenuBtn"-->
+                <!--android:text="@string/mainMenu_button"-->
+                <!--android:textSize="20sp"-->
+                <!--android:layout_below="@+id/itemlist"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:textColor="@color/antiquewhite"-->
+                <!--android:background="@drawable/rounded_corner"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
 
         </RelativeLayout>
 
@@ -123,7 +123,7 @@
 
             android:id="@+id/fragmentContainer"
             android:layout_weight="2"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:background="@drawable/draw_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
