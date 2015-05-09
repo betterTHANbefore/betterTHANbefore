@@ -11,6 +11,8 @@
     <color name="saddlebrown">#8B4513</color>
     <color name="transBrown">#50A52A2A</color>
     <color name="transOrange">#70FF8C00</color>
+    <color name="golden">#FFD700</color>
+    <color name="orange">#FFA500</color>
 
 
 </resources>

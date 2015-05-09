@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SelectActivity extends ActionBarActivity {
 
@@ -24,11 +25,23 @@ public class SelectActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_royalplate);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
 
         hostessButton = (Button)findViewById(R.id.hostess_button);
         waiterButton = (Button)findViewById(R.id.waiter_button);
         chefButton = (Button)findViewById(R.id.chef_button);
         managerButton = (Button)findViewById(R.id.manager_button);
+
+        ImageView logoImage = (ImageView)findViewById(R.id.royalplate_title);
+
+        logoImage.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent welcomeApp = new Intent(getApplicationContext(),WelcomeActivity.class);
+                startActivity(welcomeApp);
+            }
+        });
 
         hostessButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +85,9 @@ public class SelectActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menubar_icon, menu);
-        menu.add("RoyalPlate");
-
+        inflater.inflate(R.menu.menu_royalplate, menu);
+//        menu.add(" ")
+//            .setIcon(R.drawable.ic_royalplate).setTitle("RoyalPlate");
         return super.onCreateOptionsMenu(menu);
     }
 }

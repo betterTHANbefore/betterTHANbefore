@@ -79,7 +79,7 @@ public class WaiterActivity extends ActionBarActivity {
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_royal_plate__main, menu);
+//        getMenuInflater().inflate(R.menu.menu_royalplate, menu);
 //        return true;
 //    }
 

@@ -1,5 +1,7 @@
 package com.royalplate.royalplate;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +33,7 @@ import static android.view.View.OnClickListener;
 /**
  * Created by hetu on 4/12/15.
  */
-public class HostessActivity extends Activity implements OnClickListener {
+public class HostessActivity extends Activity implements OnClickListener{
 
 
     GridView tablelistview;
@@ -41,7 +43,6 @@ public class HostessActivity extends Activity implements OnClickListener {
     WaiterAdapter waiterAdapter;
     HostessAdapter hostesAdapter;
     Button assignedButton;
-
 
 
     @Override
@@ -253,4 +254,7 @@ public class HostessActivity extends Activity implements OnClickListener {
 
 
     }
+
+
+
 }
