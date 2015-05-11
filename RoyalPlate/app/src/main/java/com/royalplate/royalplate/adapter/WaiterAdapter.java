@@ -20,7 +20,9 @@ import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.WaiterData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by hetu on 5/2/15.
@@ -30,6 +32,7 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
     ListView waiterListview;
     Context context;
     HostessActivity hostessActivity;
+     Set<String> waiternameSet;
 
     public WaiterAdapter(Context context, List<WaiterData> objects,HostessActivity hostessActivity) {
         super(context, R.layout.listview_waiter, objects);
@@ -48,8 +51,9 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
     public View getView(final int position, View convertView, ViewGroup parent){
 
 
-        final ArrayList<String> waitername = new ArrayList<String>();
+      //  final ArrayList<String> waitername = new ArrayList<String>();
 
+      waiternameSet = new HashSet<String>();
 
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,27 +71,22 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
 
                     final boolean isChecked = waitercheckbox.isChecked();
                     if(isChecked) {
-                        String tableno = waitercheckbox.getText().toString();
-                        waitername.add(tableno);
+                        String waitername = waitercheckbox.getText().toString();
+                        waiternameSet.add(waitername);
 
-                        hostessActivity.saveTableNumber(waitername);
+                      //  hostessActivity.saveTableNumber(waitername);
+
+                        Log.i("Tag", "TableAdapter: table no  " + waitername);
+
+
+                        Log.i("Tag", " set  " + waiternameSet);
 
                     }
-//
-//                    ParseObject parseObject = new ParseObject("WaiterTable");
-//
-//                    String tableno = waitercheckbox.getText().toString();
-//                    parseObject.put("Table No", tableno);
-//
-//
-//                    parseObject.saveInBackground();
-
-
-
-
 
                 }
             });
+          hostessActivity.saveWaiterName((HashSet<String>) waiternameSet);
+
         return view;
     }
 

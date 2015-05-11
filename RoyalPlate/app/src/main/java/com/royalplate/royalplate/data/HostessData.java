@@ -15,13 +15,18 @@ public class HostessData extends ParseObject{
     public void setTable(String tableNo) {
 
         put("Number", tableNo);
+
     }
      public String getWaiter()
+
      {
          return getString("WaiterName");
      }
+
+
     public void setWaiter(String waiterName)
     {
+
         put("WaiterName", waiterName);
     }
 

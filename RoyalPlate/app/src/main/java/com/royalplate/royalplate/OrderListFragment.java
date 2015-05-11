@@ -48,7 +48,7 @@ public class OrderListFragment extends Fragment {
     String noOfItems;
 
     private String tableNumStr;
-
+    private String privous = null;
 
     @Nullable
     @Override
@@ -113,9 +113,16 @@ public class OrderListFragment extends Fragment {
 
        // TextView displayList = new TextView(getActivity());
         displayList = new TextView(getActivity());
-        displayList.setTextSize(15);
+        displayList.setTextSize(25);
         displayList.setTextColor(getResources().getColor(R.color.antiquewhite));
         displayList.setTypeface(null,Typeface.BOLD);
+
+        privous = displayList.getText().toString();
+
+      //  if(!privous.equals(null) && )
+
+
+
         displayList.setText(noOfItems+ "     " + itemName );
 
         ll.addView(displayList);

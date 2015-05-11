@@ -8,9 +8,7 @@ import com.parse.ParseObject;
  */
 @ParseClassName("TablesParse")
 public class TablesData extends ParseObject{
-// public class TablesData extends HostessData{
-
-    public TablesData(){}
+   public TablesData(){}
     public String getTable(){
     return getString("TableNumber");
 }
@@ -19,3 +17,10 @@ public class TablesData extends ParseObject{
         put("TableNubmer", tablenumber);
     }
 }
+
+//
+//public class TablesData extends HostessData{
+//
+//    public TablesData(){}
+//
+//}

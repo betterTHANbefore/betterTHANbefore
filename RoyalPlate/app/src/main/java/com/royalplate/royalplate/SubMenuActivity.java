@@ -121,6 +121,16 @@ Log.i("LOG", itemName +  "   " + noOfItems);
 
         title = getIntent().getExtras().getString("title");
 
+
+        final ListView list = (ListView) findViewById(R.id.itemlist);
+        list.post(new Runnable() {
+            @Override
+            public void run() {
+                list.setSelection(0);
+            }
+        });
+
+
         switch (title) {
             case "APPETIZER":
                 // Image appears in ImageView widgets from the source file
@@ -220,6 +230,8 @@ Log.i("LOG", itemName +  "   " + noOfItems);
 
 //        Intent backIntent = new Intent(this, OrderListFragment.class);
 
+
+
     }
 
     @Override
@@ -271,18 +283,6 @@ Log.i("LOG", itemName +  "   " + noOfItems);
 
 
     }
-//
-//    public void setNoOfItems(String noOfItems) {
-//        this.noOfItems = noOfItems;
-//    }
-//
-//    public void setItemName(String itemName) {
-//        this.itemName = itemName;
-//    }
-//
-//    public String getItemName() {
-//        return itemName;
-//    }
 
 
     @Override
@@ -304,7 +304,7 @@ Log.i("LOG", itemName +  "   " + noOfItems);
         String noofitems= noofitemedittext.getText().toString();
         outState.putString("Price", itemprice);
         outState.putString("NoItem", noofitems);
-
+        Log.i("TAG", " saveed  "  + itemprice);
 
 
 

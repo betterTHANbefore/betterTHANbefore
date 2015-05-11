@@ -21,9 +21,9 @@ public class WelcomeActivity extends ActionBarActivity {
         super.onCreate((savedInstancesState));
         setContentView(R.layout.welcome_activity);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.ic_royalplate);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setLogo(R.mipmap.ic_royalplate);
+//        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
 
 //        anim = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.welcome_animation);
@@ -31,16 +31,17 @@ public class WelcomeActivity extends ActionBarActivity {
 //        anim.setAnimationListener(this);
 
        ImageView logoImage = (ImageView)findViewById(R.id.royalplate_logo);
-        logoImage.setBackgroundResource(R.drawable.animated_background);
-        AnimationDrawable frameAnimation = (AnimationDrawable) logoImage.getBackground();
-        frameAnimation.start();
-        logoImage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent welcomeApp = new Intent(getApplicationContext(),SelectActivity.class);
-                startActivity(welcomeApp);
-            }
-        });
+            logoImage.setBackgroundResource(R.drawable.animated_background);
+            AnimationDrawable frameAnimation = (AnimationDrawable) logoImage.getBackground();
+            frameAnimation.start();
+
+            logoImage.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent welcomeApp = new Intent(getApplicationContext(),SelectActivity.class);
+                    startActivity(welcomeApp);
+                }
+            });
     }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {

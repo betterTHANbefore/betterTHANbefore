@@ -6,11 +6,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" >
 
+    <stroke
+        android:width="3dp"
+        android:color="@color/chocolate" />
+
+
     <gradient
         android:startColor="@color/orange"
-        android:gradientRadius="10dp"
-        android:centerColor="@color/golden"
-        android:endColor="@color/orange"
+        android:centerColor="@color/orange"
+        android:endColor="@color/chocolate"
         android:angle="90"/>
 
     <corners
@@ -18,5 +22,6 @@
         android:bottomLeftRadius="1dp"
         android:topLeftRadius="1dp"
         android:topRightRadius="1dp"/>
+
 
 </shape>

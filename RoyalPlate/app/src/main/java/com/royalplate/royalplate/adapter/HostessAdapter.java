@@ -21,6 +21,7 @@ import com.parse.ParseQuery;
 import com.royalplate.royalplate.HostessActivity;
 import com.royalplate.royalplate.R;
 import com.royalplate.royalplate.data.HostessData;
+import com.royalplate.royalplate.data.WaiterData;
 
 import java.util.List;
 
@@ -31,33 +32,60 @@ import java.util.List;
 public class HostessAdapter extends ArrayAdapter<ParseObject> {
 
     Context context;
+    Context context1;
+    Context context2;
     List<ParseObject> hostessData;
 
-
     public HostessAdapter(Context context, List<ParseObject> objects){
-        super(context, R.layout.listview_tables, objects);
+//        super(context, R.layout.listview_tables,objects);
+        super(context, 0,objects);
+
         this.context = context;
         this.hostessData = objects;
 
     }
 
+
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent){
 
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.listview_tables, parent, false);
+        View view = convertView;
+        if(view == null) {
+
+
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
 
-        final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
+            // 0 --> table no
+            if(getItemViewType(position)== 0) {
+               view = inflater.inflate(R.layout.listview_tables,null, false);
 
-        tableButton.setText(((HostessData) (hostessData.get(position))).getTable());
+
+                final Button tableButton = (Button) view.findViewById((R.id.tableBtn));
+
+                tableButton.setText(((HostessData) (hostessData.get(position))).getTable());
+                final CheckBox  waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
+
+                waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
 
 
 
-        CheckBox waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
-        waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
+            }
+
+            // 1 --> waiter name on listview_waiter
+            else{
+                view = inflater.inflate(R.layout.listview_waiter, null, false);
+
+                final CheckBox  waitercheckbox = (CheckBox) view.findViewById(R.id.waiterchkbox);
+
+                waitercheckbox.setText(((HostessData) (hostessData.get(position))).getWaiter());
+
+
+            }
+
+        }
 //
 //        tableButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -103,22 +131,7 @@ public class HostessAdapter extends ArrayAdapter<ParseObject> {
 //        });
         return view;
     }
-//
-//    private void QueryData() {
-//
-//        final ParseQuery<ParseObject> waiter_hostess = ParseQuery.getQuery("WaiterParse");
-//        waiter_hostess.findInBackground(new FindCallback<ParseObject>() {
-//
-//            @Override
-//            public void done(List<ParseObject> waiter_hostess, ParseException e) {
-//                hostesAdapter = new HostessAdapter(HostessActivity.this, waiter_hostess);
-//                waiterlistview.setAdapter(hostesAdapter);
-//
-//
-//            }
-//        });
-//
-//    }
+
 
 }
 

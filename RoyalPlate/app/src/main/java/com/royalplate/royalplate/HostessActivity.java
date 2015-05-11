@@ -4,12 +4,15 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.GridView;
 import android.app.Activity;
 import android.widget.ListView;
@@ -26,6 +29,7 @@ import com.royalplate.royalplate.data.TablesData;
 import com.royalplate.royalplate.data.WaiterData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import static android.view.View.OnClickListener;
@@ -43,7 +47,9 @@ public class HostessActivity extends Activity implements OnClickListener{
     WaiterAdapter waiterAdapter;
     HostessAdapter hostesAdapter;
     Button assignedButton;
-
+    ArrayList<String> tableNo;
+    SharedPreferences sharedtable;
+    SharedPreferences sharedwaiter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +60,17 @@ public class HostessActivity extends Activity implements OnClickListener{
         loadTables();
         loadWaiters();
 
-        //  loaddata();
+       // loaddata();
 
         tablelistview = (GridView) findViewById(R.id.tablelist_left);
+
 
         /********************
          * CheckBox listener
          ******************/
 
 
-
+//
 //        tablelistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
 //            @Override
@@ -71,13 +78,13 @@ public class HostessActivity extends Activity implements OnClickListener{
 //
 //            // to pass the text from that button to other UI or parse
 //
-//                Button tableButton = (Button) parent.getChildAt(position).findViewById(R.id.tableBtn);
+//                CheckBox tableButton = (CheckBox) parent.getChildAt(position).findViewById(R.id.tableBtn);
 //                final String tableno = tableButton.getText().toString();
-//
-//
-//                Intent tablelistviewIntent = new Intent(HostessActivity.this,HostessActivity.class);
-//                tablelistviewIntent.putExtra("hostess", tableno);
-//                startActivity(tablelistviewIntent);
+//                Log.i("Tag", "table no  "+ tableno);
+////
+////                Intent tablelistviewIntent = new Intent(HostessActivity.this,HostessActivity.class);
+////                tablelistviewIntent.putExtra("hostess", tableno);
+////                startActivity(tablelistviewIntent);
 //
 //            }
 //        });
@@ -110,6 +117,9 @@ public class HostessActivity extends Activity implements OnClickListener{
 //        });
 
         Log.i("TAg", "Assignedbutton got NOT clicked");
+
+
+
 
         assignedButton = (Button) findViewById(R.id.assignedBtn);
         assignedButton.setOnClickListener(this);
@@ -233,25 +243,48 @@ public class HostessActivity extends Activity implements OnClickListener{
 
     }
 
-    public void saveTableNumber(ArrayList<String> tableNo){
+    public void saveTableNumber(HashSet<String> tablelist){
+
+       sharedtable = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = sharedtable.edit();
+
+        editor.clear();
+        editor.putStringSet("TableNo", tablelist);
+
+        editor.apply();
+    }
 
 
 
+
+    public void saveWaiterName(HashSet<String> waiternameset){
+
+        sharedwaiter = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = sharedwaiter.edit();
+
+
+        editor.clear();
+        editor.putStringSet("WaiterName", waiternameset);
+
+        editor.apply();
     }
 
 
     @Override
     public void onClick(View v) {
 
-        String  table = getIntent().getExtras().getString("TableNo");
+        //String  table = getIntent().getExtras().getString("TableNo");
 
-
+        CheckBox tablecheckbox = (CheckBox) findViewById(R.id.waiterchkbox);
 
         Log.i("TAg", "Assignedbutton got clicked");
-        Log.i("Tag", "Table no " + table);
 
 
+        Log.i("Tag", "HA:  " + sharedtable.getStringSet("TableNo", new HashSet<String>()));
 
+        Log.i("Tag", "HA:  " + sharedwaiter.getStringSet("WaiterName", new HashSet<String>()));
 
     }
 
