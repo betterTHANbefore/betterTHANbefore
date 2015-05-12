@@ -94,19 +94,20 @@ public class TableAdapter extends ArrayAdapter<TablesData>{
                     String tableno = tableButton.getText().toString();
                     tablenolist.add(tableno);
 
-                    Log.i("Tag", "TableAdapter: table no  " + tableno);
+                  //  Log.i("Tag", "TableAdapter: table no  " + tableno);
 
 
                     Log.i("Tag", " set  " + tablenolist);
 
 
                 }
+                hostessActivity.saveTableNumber((HashSet<String>) tablenolist);
 
 
             }
         });
 
-        hostessActivity.saveTableNumber((HashSet<String>) tablenolist);
+      //  hostessActivity.saveTableNumber((HashSet<String>) tablenolist);
 
       return view;
     }

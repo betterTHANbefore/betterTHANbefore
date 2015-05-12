@@ -32,7 +32,8 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
     ListView waiterListview;
     Context context;
     HostessActivity hostessActivity;
-     Set<String> waiternameSet;
+    Set<String> waiternameSet;
+    
 
     public WaiterAdapter(Context context, List<WaiterData> objects,HostessActivity hostessActivity) {
         super(context, R.layout.listview_waiter, objects);
@@ -76,19 +77,26 @@ public class WaiterAdapter extends ArrayAdapter<WaiterData> {
 
                       //  hostessActivity.saveTableNumber(waitername);
 
-                        Log.i("Tag", "TableAdapter: table no  " + waitername);
+                       // Log.i("Tag", "WaiterAdapter: table no  " + waitername);
 
 
                         Log.i("Tag", " set  " + waiternameSet);
 
                     }
-
+                    hostessActivity.saveWaiterName((HashSet<String>) waiternameSet);
                 }
             });
-          hostessActivity.saveWaiterName((HashSet<String>) waiternameSet);
+        //  hostessActivity.saveWaiterName((HashSet<String>) waiternameSet);
 
+//
+//                for(int i=0; i<waiterListview.getChildCount(); i++){
+//                    waitercheckbox.setChecked(false);
+//
+//                }
         return view;
     }
+
+
 
 }
 

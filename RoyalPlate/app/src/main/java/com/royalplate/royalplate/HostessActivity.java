@@ -2,6 +2,7 @@ package com.royalplate.royalplate;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +32,8 @@ import com.royalplate.royalplate.data.WaiterData;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static android.view.View.OnClickListener;
 
@@ -45,11 +48,13 @@ public class HostessActivity extends Activity implements OnClickListener{
 
     TableAdapter tableAdapter;
     WaiterAdapter waiterAdapter;
-    HostessAdapter hostesAdapter;
     Button assignedButton;
-    ArrayList<String> tableNo;
     SharedPreferences sharedtable;
     SharedPreferences sharedwaiter;
+    SharedPreferences.Editor waitereditor;
+    SharedPreferences.Editor tableeditor;
+    Map<String, Set<String>> waitertables;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,14 +250,17 @@ public class HostessActivity extends Activity implements OnClickListener{
 
     public void saveTableNumber(HashSet<String> tablelist){
 
-       sharedtable = PreferenceManager.getDefaultSharedPreferences(this);
+//       sharedtable = PreferenceManager.getDefaultSharedPreferences(this);
+        sharedtable = PreferenceManager.getDefaultSharedPreferences(this);
 
-        SharedPreferences.Editor editor = sharedtable.edit();
 
-        editor.clear();
-        editor.putStringSet("TableNo", tablelist);
+//        SharedPreferences.Editor tableeditor = sharedtable.edit();
+        tableeditor = sharedtable.edit();
 
-        editor.apply();
+        tableeditor.clear();
+        tableeditor.putStringSet("TableNo", tablelist);
+
+        tableeditor.apply();
     }
 
 
@@ -262,29 +270,67 @@ public class HostessActivity extends Activity implements OnClickListener{
 
         sharedwaiter = PreferenceManager.getDefaultSharedPreferences(this);
 
-        SharedPreferences.Editor editor = sharedwaiter.edit();
+//        SharedPreferences.Editor waitereditor = sharedwaiter.edit();
+        waitereditor = sharedwaiter.edit();
 
 
-        editor.clear();
-        editor.putStringSet("WaiterName", waiternameset);
+        waitereditor.clear();
+        waitereditor.putStringSet("WaiterName", waiternameset);
 
-        editor.apply();
+        waitereditor.apply();
     }
 
 
     @Override
     public void onClick(View v) {
 
-        //String  table = getIntent().getExtras().getString("TableNo");
-
-        CheckBox tablecheckbox = (CheckBox) findViewById(R.id.waiterchkbox);
-
-        Log.i("TAg", "Assignedbutton got clicked");
-
+//        Log.i("Tag", "HA:  " + sharedtable.getStringSet("TableNo", new HashSet<String>()).size());
 
         Log.i("Tag", "HA:  " + sharedtable.getStringSet("TableNo", new HashSet<String>()));
 
         Log.i("Tag", "HA:  " + sharedwaiter.getStringSet("WaiterName", new HashSet<String>()));
+
+        Set<String> tableSet = sharedtable.getStringSet("TableNo", new HashSet<String>());
+        Set<String> waiterSet = sharedwaiter.getStringSet("WaiterName", new HashSet<String>());
+
+
+        int waitersetSize = sharedwaiter.getStringSet("WaiterName", new HashSet<String>()).size();
+        int tablesetSize = sharedtable.getStringSet("TableNo", new HashSet<String>()).size();
+
+        for(String table : tableSet) {
+            Log.i("Tag", "TSet " + table);
+        }
+        for(String waiter : waiterSet) {
+            Log.i("Tag", "WSet " + waiter);
+        }
+
+        // each waiter from the watierset get the set of tables she has been assigned
+        // outer for loop reads watierset and inner reads tableset
+
+        for(String waiter : waiterSet){
+            for(String table : tableSet) {
+
+
+                waitertables.put(waiter, tableSet);
+            }
+
+
+        }
+
+        for (Map.Entry<String,Set<String>> entry : waitertables.entrySet()) {
+            String key = entry.getKey();
+//            for(String table : tableSet) {
+//                Log.i("Tag", "TSet " +key + "   " + table);
+//            }
+        }
+
+//        for(String key : waitertables.keySet()){
+//            Log.i("tag", key +  "  " + waitertables.get(key));
+//        }
+//        for  (Map.Entry<String, String> e : waitertables.entrySet()) {
+//           Log.i("Tag" , e.getKey()+"="+e.getValue());
+//        }
+      //  Log.i("Tag", "Map size" + waitertables.size());
 
     }
 
